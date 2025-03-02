@@ -1,0 +1,1379 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CryptoGorac.com</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <link rel="icon" type="image/png" href="logo-navit.png">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: white;
+            min-height: 100vh;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Navigacija */
+        .navbar {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            padding: 1.2rem 1rem;
+        }
+
+        .navbar-brand img {
+            height: 40px;
+            width: auto;
+            border-radius: 10px;
+            box-shadow: 0 6px 20px rgba(26, 188, 156, 1.6);
+        }
+
+        .navbar-toggler {
+            border: none;
+            color: #ecf0f1;
+            font-size: 1.8rem;
+        }
+
+        .navbar-toggler:focus {
+            outline: none;
+        }
+
+        .navbar-nav {
+            justify-content: center;
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link {
+            color: #ecf0f1;
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease, transform 0.3s ease;
+            position: relative;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            color: #1abc9c;
+            transform: translateY(-2px);
+        }
+
+        .navbar-nav .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #1abc9c;
+            bottom: 0;
+            left: 1rem;
+            transition: width 0.3s ease;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: calc(100% - 2rem);
+        }
+
+        /* Dropdown */
+        .dropdown-menu {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            border: none;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-item {
+            color: #ecf0f1;
+            font-size: 1rem;
+            padding: 0.8rem 1rem;
+            transition: color 0.3s ease, background-color 0.3s ease;
+            position: relative;
+        }
+
+        .dropdown-item:hover {
+            color: #1abc9c;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .dropdown-item::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #1abc9c;
+            bottom: 0;
+            left: 1rem;
+            transition: width 0.3s ease;
+        }
+
+        .dropdown-item:hover::after {
+            width: calc(100% - 2rem);
+        }
+
+     main {
+    padding-top: 4.4rem; /* Ostaje isto */
+    flex: 1;
+}
+    
+
+    /* pocetna */
+  .main-container {
+            max-width: 1400px; /* Veća širina */
+            margin: 40px auto; /* Centrirano sa razmakom odozgo */
+            padding: 40px; /* Veći unutrašnji prostor */
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex; /* Horizontalni raspored */
+            flex-wrap: wrap; /* Omogućava prelazak na mobilnom */
+            gap: 40px; /* Razmak između delova */
+        }
+
+        /* Levi deo - paragraf i naslov */
+        .left-section {
+            flex: 1; /* Jednako raspoređuje širinu */
+            min-width: 400px; /* Veće polje */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start; /* Poravnanje levo */
+            padding: 20px;
+        }
+
+        .left-section p {
+            font-size: 24px; /* Veći tekst */
+            margin-bottom: 20px;
+            color:  #1abc9c;
+        }
+
+        .left-section h1 {
+            font-size: 42px; /* Veći naslov */
+            color: #2C3E50;
+        }
+
+        /* Desni deo - dugme */
+       .right-section {
+    flex: 1;
+    min-width: 400px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.right-section .button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #1abc9c, #34495e);
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    font-weight: 500;
+    border: 3px solid #1abc9c;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+    text-align: center;
+}
+
+.right-section .button:hover {
+    background: #1abc9c; /* Changed to background instead of background-color to override the gradient */
+}
+
+@media (max-width: 768px) {
+    .main-container {
+        flex-direction: column;
+        padding: 20px;
+    }
+
+    .left-section, .right-section {
+        min-width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .left-section p {
+        font-size: 18px;
+    }
+
+    .left-section h1 {
+        font-size: 32px;
+    }
+
+    .right-section .button {
+        padding: 15px 30px;
+        font-size: 16px;
+    }
+}
+
+/* Assuming this animation is defined somewhere in your CSS */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* About Container */
+.about-container {
+    border: 3px solid #1abc9c;
+    border-radius: 15px;
+    padding: 2rem;
+    background-color: #ffffff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    max-width: 70%;
+    margin: 2rem auto;
+    opacity: 0;
+    transform: translateX(-100px) rotate(-10deg);
+    transition: all 0.8s ease-out;
+    height: auto; /* Visina zavisi od sadržaja */
+}
+
+.about-container.visible {
+    opacity: 1;
+    transform: translateX(0) rotate(0);
+}
+
+.about-container h1 {
+    text-align: center;
+    font-size: 2.2rem;
+    margin: 0 0 1.5rem 0;
+    color: #1abc9c;
+    line-height: 1.2; /* Normalan razmak između redova na desktopu */
+    letter-spacing: 0; /* Normalan razmak između slova */
+}
+
+.about-container h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 1.5rem 0;
+    color: #2c3e50;
+    line-height: 1.2;
+    letter-spacing: 0;
+}
+
+.about-container p {
+    font-size: 1rem;
+    text-align: justify;
+    margin: 0 0 1rem 0;
+    line-height: 1.6; /* Normalan razmak između redova na desktopu */
+    letter-spacing: 0; /* Normalan razmak između slova */
+}
+
+.about-container p b {
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+.about-container:hover {
+    transform: translateY(-5px) rotate(0);
+    box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4);
+}
+
+
+
+
+
+/* Responzivnost za mobilne uređaje */
+@media (max-width: 768px) {
+    .about-container {
+        max-width: 90%;
+        padding: 1.2rem; /* Smanjen padding za 40% (2rem * 0.6) */
+        transform: translateX(-50px) rotate(-5deg);
+    }
+
+    .about-container h1 {
+        font-size: 1.2rem; /* Smanjen za 40% (2rem * 0.6) */
+        line-height: 1; /* Smanjen razmak između redova */
+        letter-spacing: -0.5px; /* Skupi slova */
+    }
+
+    .about-container h2 {
+        font-size: 0.9rem; /* Smanjen za 40% (1.5rem * 0.6) */
+        line-height: 1;
+        letter-spacing: -0.5px;
+    }
+
+    .about-container p {
+        font-size: 0.6rem; /* Smanjen za 40% (1rem * 0.6) */
+        line-height: 1.2; /* Smanjen razmak između redova za kompaktnost */
+        letter-spacing: -0.3px; /* Skupi slova */
+    }
+}
+
+@media (max-width: 480px) {
+    .about-container h1 {
+        font-size: 1rem;
+        line-height: 0.9;
+        letter-spacing: -0.4px;
+    }
+
+    .about-container h2 {
+        font-size: 0.8rem;
+        line-height: 0.9;
+        letter-spacing: -0.4px;
+    }
+
+    .about-container p {
+        font-size: 0.5rem;
+        line-height: 1.1;
+        letter-spacing: -0.2px;
+    }
+}
+
+
+   /* Services Container */
+.services-container {
+    max-width: 1300px; /* Ograničava širinu na desktopu */
+    margin: 2rem auto; /* Centrirano sa razmakom */
+    display: flex; /* Horizontalni raspored */
+    justify-content: space-between; /* Jednako raspoređene slike */
+    gap: 1rem; /* Razmak između slika */
+    padding: 0 1rem; /* Bočni razmak */
+}
+
+.service-item {
+    flex: 1; /* Svaka slika zauzima jednak deo prostora */
+    max-width: 600px; /* Maksimalna širina na desktopu */
+    text-align: center; /* Centriranje slike unutar item-a */
+}
+
+.service-item img {
+    width: 600px; /* Fiksna širina na desktopu */
+    height: 600px; /* Fiksna visina na desktopu */
+    max-width: 100%; /* Osigurava da slika ne prelazi kontejner */
+    border-radius: 10px; /* Zaobljene ivice */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lagana senka */
+    transition: transform 0.3s ease; /* Efekat na hover */
+    object-fit: contain; /* Zadržava izvorni izgled slike bez isečenja */
+}
+
+.service-item img:hover {
+    transform: scale(1.05); /* Blago uvećanje na hover */
+}
+
+/* Responzivnost za mobilne uređaje */
+@media (max-width: 768px) {
+    .services-container {
+        flex-wrap: wrap; /* Omogućava prelazak u novi red */
+        justify-content: space-around; /* Jednako raspoređeno po širini */
+    }
+
+    .service-item {
+        flex: 0 0 calc(50% - 0.5rem); /* Dve slike po redu, uz razmak */
+        max-width: calc(50% - 0.5rem); /* Polovina širine minus razmak */
+    }
+
+    .service-item img {
+        width: 100%; /* Proporcionalno skaliranje na mobilnim */
+        height: auto; /* Zadržava proporcije slike */
+    }
+}
+
+@media (max-width: 480px) {
+    .service-item {
+        flex: 0 0 calc(50% - 0.5rem); /* I dalje dve po redu */
+        max-width: calc(50% - 0.5rem);
+    }
+
+    .service-item img {
+        width: 100%; /* Maksimalna širina unutar kontejnera */
+        height: auto; /* Zadržava proporcije */
+    }
+}
+        
+
+
+        .tech-container {
+    max-width: 1200px; /* Veća širina za veću sliku */
+    margin: 2rem auto;
+    padding: 2rem 1rem;
+    background:background: linear-gradient(135deg, rgba(44, 62, 80, 0.6), rgba(52, 73, 94, 0.08));
+
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.tech-container h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: black;
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+}
+
+.tech-container h2::after {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 2px;
+    background: #1abc9c;
+    bottom: -0.5rem;
+    left: 15%;
+    transition: width 0.3s ease;
+}
+
+.tech-container:hover h2::after {
+    width: 80%;
+}
+
+.tech-image {
+    width: 1250px; /* Fiksna širina na desktopu */
+    height: 625px; /* Fiksna visina na desktopu */
+    object-fit: cover; /* Obezbeđuje da slika ispuni prostor bez izobličenja */
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tech-image:hover {
+    transform: scale(1.03); /* Blago uvećanje na hover */
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3), 0 0 15px #1abc9c;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .tech-image {
+        width: 800px; /* Smanjena veličina za veće tablete */
+        height: 640px;
+    }
+}
+
+@media (max-width: 768px) {
+    .tech-container {
+        padding: 1.5rem 1rem;
+    }
+
+    .tech-container h2 {
+        font-size: 1.6rem;
+    }
+
+    .tech-image {
+        width: 600px; /* Smanjena veličina za tablete */
+        height: 480px;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-container h2 {
+        font-size: 1.4rem;
+    }
+
+    .tech-image {
+        width: 100%; /* Na mobilnim uređajima popunjava širinu kontejnera */
+        height: auto; /* Visina se prilagođava proporcijama slike */
+        max-width: 300px; /* Maksimalna širina za male ekrane */
+    }
+}
+
+/* linijica */
+.line {
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(135deg, #1abc9c, #34495e, #1abc9c); /* Gradijent sa povratkom boje */
+    background-size: 200% 100%; /* Povećavamo pozadinu za animaciju */
+    position: relative;
+    box-shadow: 0 2px 8px rgba(26, 188, 156, 0.4);
+    animation: gradientMove 4s ease infinite; /* Animacija traje 4 sekunde, beskonačno se ponavlja */
+    transition: all 0.3s ease;
+}
+
+/* Hover efekat */
+.line:hover {
+    box-shadow: 0 4px 12px rgba(26, 188, 156, 0.6);
+    transform: translateY(-1px);
+}
+
+/* Animacija prelaza boja */
+@keyframes gradientMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+
+          /* kripto edukacija */
+
+           .crypto-container {
+            max-width: 800px; /* Ograničena širina na desktopu */
+            width: 90%; /* Prilagođava se ekranu */
+            margin: 2rem auto; /* Centrirano sa razmakom */
+            padding: 2rem; /* Unutrašnji razmak */
+            background: linear-gradient(135deg, #2c3e50, #34495e); /* Gradijent kao nav i footer */
+            border-radius: 15px; /* Zaobljene ivice */
+            position: relative; /* Za animaciju senke */
+            overflow: hidden; /* Sprečava preklapanje senke */
+            box-shadow: 0 0 10px rgba(26, 188, 156, 0.6); /* Početna zelena senka */
+            animation: shadowRotate 6s linear infinite; /* Rotacija senke */
+            transition: all 0.3s ease; /* Glatka tranzicija */
+        }
+
+        .crypto-container p {
+            font-size: 1.2rem; /* Veličina teksta */
+            color: #1abc9c; /* Zelena slova */
+            font-weight: 500; /* Srednja debljina */
+            text-align: center; /* Centriran tekst */
+            margin: 0; /* Uklanja podrazumevani razmak */
+            line-height: 1.6; /* Razmak između redova */
+        }
+
+        /* Animacija rotacije senke */
+        @keyframes shadowRotate {
+            0% {
+                box-shadow: 0 0 10px rgba(26, 188, 156, 0.6), 
+                           10px 10px 20px rgba(26, 188, 156, 0.4);
+            }
+            25% {
+                box-shadow: 0 0 10px rgba(26, 188, 156, 0.6), 
+                           -10px 10px 20px rgba(26, 188, 156, 0.4);
+            }
+            50% {
+                box-shadow: 0 0 10px rgba(26, 188, 156, 0.6), 
+                           -10px -10px 20px rgba(26, 188, 156, 0.4);
+            }
+            75% {
+                box-shadow: 0 0 10px rgba(26, 188, 156, 0.6), 
+                           10px -10px 20px rgba(26, 188, 156, 0.4);
+            }
+            100% {
+                box-shadow: 0 0 10px rgba(26, 188, 156, 0.6), 
+                           10px 10px 20px rgba(26, 188, 156, 0.4);
+            }
+        }
+
+        /* Hover efekat */
+        .crypto-container:hover {
+            transform: translateY(-5px); /* Blagi pomak kao kod drugih elemenata */
+            box-shadow: 0 0 15px rgba(26, 188, 156, 0.8); /* Jača senka na hover */
+        }
+
+        /* Responzivnost za mobilne uređaje */
+        @media (max-width: 768px) {
+            .crypto-container {
+                padding: 1.5rem; /* Smanjen padding */
+                max-width: 90%; /* Širina se prilagođava ekranu */
+            }
+
+            .crypto-container p {
+                font-size: 1.1rem; /* Smanjena veličina teksta */
+                line-height: 1.4; /* Malo gušći tekst */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .crypto-container {
+                padding: 1rem; /* Još manji padding */
+            }
+
+            .crypto-container p {
+                font-size: 0.9rem; /* Još manja veličina teksta */
+                line-height: 1.3; /* Kompaktan tekst */
+            }
+        }
+
+             /* kripto za knjige */
+    /* Stil za kontejner karusela */
+        .carousel-container {
+            max-width: 1000px;
+            width: 95%;
+            height: 850px;
+            margin: 1rem auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6);
+            background: white;
+        }
+
+        /* Stil za karusel */
+        .carousel {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* Stil za linkove i slike */
+        .carousel a {
+            display: block;
+            position: absolute;
+            width: 530px;
+            height: 760px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0; /* Početno skriveno */
+            transition: opacity 0.5s ease;
+        }
+
+        .carousel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            max-width: 100%;
+            display: block;
+        }
+
+        /* Aktivna slika */
+        .carousel a.active {
+            opacity: 1; /* Vidljiva slika */
+            z-index: 1; /* Osigurava da je klikabilna */
+        }
+
+        /* Responzivnost */
+        @media (max-width: 1000px) {
+            .carousel-container {
+                max-width: 90%;
+                height: 600px;
+            }
+
+            .carousel a {
+                width: 100%;
+                height: 100%;
+                max-height: 600px;
+            }
+
+            .carousel img {
+                object-fit: contain;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .carousel-container {
+                height: 400px;
+                margin: 1.5rem auto;
+                box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), 0 0 8px rgba(26, 188, 156, 0.4);
+            }
+
+            .carousel a {
+                max-height: 400px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-container {
+                height: 300px;
+                margin: 1rem auto;
+            }
+
+            .carousel a {
+                max-height: 300px;
+            }
+        }
+   
+
+
+           /* Kontakt informacije */
+.contact-info {
+   background: linear-gradient(135deg, #2c3e50, #34495e);
+    backdrop-filter: blur(10px); /* Stakleni efekat */
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 850px;
+    border-radius: 20px; /* Zaobljeniji uglovi */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.1); /* Dublja senka + unutrašnji sjaj */
+    color: #ecf0f1;
+    border: 3px solid #1abc9c;
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Glatka animacija */
+}
+
+.contact-info:hover {
+    transform: scale(1.02); /* Suptilno uvećanje na hover */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 1.2rem 0;
+    font-size: 1.15rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    background: rgba(255, 255, 255, 0.09); /* Suptilna pozadina za svaku stavku */
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+}
+
+.contact-item i {
+    margin-right: 1.2rem;
+    color: #1abc9c;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(5px); /* Bočni pomak na hover */
+    color: #1abc9c;
+}
+
+.contact-item:hover i {
+    transform: scale(1.2); /* Uvećanje ikone na hover */
+}
+
+.contact-item span {
+    position: relative;
+}
+
+.contact-item span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #1abc9c;
+    bottom: -6px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.contact-item:hover span::after {
+    width: 100%;
+}
+
+
+           /* kontakt dugme */
+   .button-wrapper {
+    display: flex;
+    justify-content: center; /* Horizontalno centriranje */
+    width: 100%; /* Popunjava širinu roditelja (main) */
+    padding: 2rem 0; /* Razmak iznad i ispod dugmeta */
+}
+
+/* Stil za dugme - vraćamo ga u normalan tok */
+.contact-button {
+    display: inline-block;
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #1abc9c, #34495e);
+    color: #ecf0f1;
+    font-size: 1.2rem;
+    font-weight: 500;
+     border: 3px solid #1abc9c;
+    text-decoration: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 15px rgba(26, 188, 156, 0.4);
+    transition: all 0.3s ease;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s ease forwards;
+    text-align: center;
+   
+}
+
+/* Hover efekat */
+.contact-button:hover {
+    background: linear-gradient(135deg, #34495e, #1abc9c);
+    transform: translateY(-3px); /* Samo vertikalni pomak */
+    box-shadow: 0 6px 20px rgba(26, 188, 156, 0.6);
+    color: #ecf0f1;
+}
+
+/* Animacija pojavljivanja */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+    .contact-button {
+        padding: 10px 20px;
+        font-size: 1rem;
+    }
+    .button-wrapper {
+        padding: 1.5rem 0; /* Smanjen razmak za manje ekrane */
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-button {
+        padding: 8px 16px;
+        font-size: 0.9rem;
+    }
+    .button-wrapper {
+        padding: 1rem 0; /* Još manji razmak */
+    }
+}
+                  /* Mapa */
+.map-container {
+    max-width: 900px;
+    margin: 2rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka iz navbar/footer */
+    border: 3px solid #1abc9c; 
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+}
+
+/* Responsive podešavanja */
+@media (max-width: 768px) {
+    .contact-info,
+    #contactForm,
+    .map-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        font-size: 1rem;
+    }
+
+    #contactForm h2 {
+        font-size: 1.3rem;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+        padding: 0.6rem;
+    }
+
+    #contactForm button {
+        padding: 0.6rem 1.2rem;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info,
+    #contactForm {
+        padding: 1rem;
+    }
+
+    .contact-item {
+        font-size: 0.9rem;
+    }
+
+    .contact-item i {
+        font-size: 1.1rem;
+    }
+
+    #contactForm h2 {
+        font-size: 1.2rem;
+    }
+}
+
+
+           
+        /* Footer */
+        .footer {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            padding: 2rem 1rem;
+            box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .footer-section h5 {
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            color: #1abc9c;
+        }
+
+        .footer-section p {
+            font-size: 1rem;
+            color: #ecf0f1;
+            margin: 0.5rem 0;
+        }
+
+        .footer-link {
+            color: #ecf0f1;
+            text-decoration: none;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .footer-link:hover {
+            color: #1abc9c;
+            transform: translateY(-2px);
+        }
+
+        .footer-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            background: #1abc9c;
+            bottom: -4px;
+            left: 0;
+            transition: width 0.3s ease;
+        }
+
+        .footer-link:hover::after {
+            width: 100%;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            text-align: center;
+        }
+
+        .footer-bottom p {
+            font-size: 0.9rem;
+            color: #bdc3c7;
+        }
+
+        /* Back-to-top */
+        .btn-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-back-to-top:hover {
+            background: #1abc9c;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-back-to-top.show {
+            display: block;
+        }
+
+        /* Responzivnost */
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                height: 30px;
+            }
+
+            .navbar-nav {
+                padding: 1rem;
+                justify-content: flex-start;
+            }
+
+            .navbar-nav .nav-link {
+                font-size: 1.2rem;
+                padding: 0.8rem 0;
+            }
+
+            .navbar-nav .nav-link::after {
+                bottom: 0.2rem;
+                left: 0;
+            }
+
+            .navbar-nav .nav-link:hover::after,
+            .navbar-nav .nav-link.active::after {
+                width: 100%;
+            }
+
+            .navbar-nav .nav-link:hover,
+            .navbar-nav .nav-link.active {
+                transform: translateX(5px);
+            }
+
+            .dropdown-menu {
+                margin: 0.5rem 0;
+            }
+
+            .dropdown-item {
+                padding: 0.6rem 1.5rem;
+            }
+
+            .hero-container {
+                height: 60vh;
+            }
+
+            .hero-button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .about-container {
+                max-width: 90%;
+                padding: 1.5rem;
+                transform: translateX(-50px) rotate(-5deg);
+            }
+
+            .about-container h1 {
+                font-size: 1.5rem;
+            }
+
+            .about-container h2 {
+                font-size: 1.3rem;
+            }
+
+            .about-container p {
+                font-size: 0.875rem;
+            }
+
+            main p {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .navbar-nav .nav-link {
+                font-size: 1.1rem;
+            }
+
+            .dropdown-item {
+                font-size: 0.9rem;
+            }
+
+            .about-container h1 {
+                font-size: 1.3rem;
+            }
+
+            .about-container h2 {
+                font-size: 1.2rem;
+            }
+
+            .about-container p {
+                font-size: 0.8rem;
+            }
+        }
+
+          /* Back-to-top */
+        .btn-back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            border: none;
+            border-radius: 50px;
+            padding: 10px 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            display: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-back-to-top:hover {
+            background: #1abc9c;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-back-to-top.show {
+            display: block;
+        }
+
+        /* Responzivnost */
+        @media (max-width: 768px) {
+            .navbar-brand img {
+                height: 30px;
+            }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid nav-container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo navi.jpg" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                ☰
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Početna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="o-nama.html">O nama</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#usluge" id="uslugeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usluge
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="uslugeDropdown">
+                            <li><a class="dropdown-item" href="it-konsalting.html">IT konsalting</a></li>
+                            <li><a class="dropdown-item" href="sajtovi.html">Izrada sajtova</a></li>
+                            <li><a class="dropdown-item" href="web-app.html">Izrada web app</a></li>
+                            <li><a class="dropdown-item" href="desktop-app.html">Izrada desk-top app</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#kripto-edukacija" id="kriptoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Crypto edukacija
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="kriptoDropdown">
+                            <li><a class="dropdown-item" href="crypto-valute.html">Crypto valute</a></li>
+                            <li><a class="dropdown-item" href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
+                            <li><a class="dropdown-item" href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="kontakti.html">Kontakti</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+
+            <div class="main-container">
+        <div class="left-section">
+            <p><b>Mi smo tim profesionalaca, mi smo ljudi, mi smo</b></p>
+            <h1>CryptoGorac.com</h1>
+        </div>
+
+        <div class="right-section">
+    <a href="kontakti.html" class="button">Zakažite konsultacije</a>
+</div>
+    </div>
+       
+        
+        <div style="margin-bottom: 35px;"></div>
+       
+        <div class="about-container">
+            <h1>O nama</h1>
+            <p><b>Cryptogorac.com</b> je osnovan 2025. godine. Nastali smo kroz dugogodišnju saradnju na raznim projektima i tako došli na ideju da formiramo naš profesionalni tim. Cryptogorac kao softverski studio baziran je na <b>Microsoft tehnologijama</b>, ali koristi i druge tehnologije i svakodnevno usvaja nova znanja, kako bi svojim klijentima i modernom, savremenom poslovanju pružio što bolju i sigurniju uslugu.</p>
+            <br>
+            <p><b>Naš tim je sertifikovan od najeminentnijih fakulteta i kompanija iz oblasti blockchaina i crypto industrije</b>. Namjena crypto edukativne sekcije je da kroz vrijeme preraste u portal koji će biti informativno, obrazovnog karaktera usmjeren na crypto tržište, ali i na kompletnu IT industriju.</p>
+            
+            <h2>Kako radimo</h2>
+            
+            <p>Bazirani smo na Microsoft tehnologiji, ali smo spremni na rešavanje vaših zahtjeva u različitim izazovnim tehnologijama. Usluge koje pružamo su od IT konsaltinga, marketinga, izrade planova, sve do gotovog digitalnog proizvoda. Naši menadžeri proizvoda i projekata, kao i arhitekte softvera, su iskusni u kompletnom vođenju projekata, pa tako nudimo i usluge održavanja i nadogradnji nakon lansiranja projekta.</p>
+        </div>
+        <div style="margin-bottom: 60px;"></div>
+        <h1 style="text-align: center; color:  #1abc9c; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Usluge</h1>
+
+          <div style="margin-bottom: 90px;"></div>
+
+           <div class="services-container">
+    <div class="service-item">
+        <a href="it-konsalting.html">
+            <img src="slika-konsalting.jpg" alt="IT Konsalting">
+        </a>
+    </div>
+    <div class="service-item">
+        <a href="sajtovi.html">
+            <img src="slika-sajtovi.jpg" alt="Izrada sajtova">
+        </a>
+    </div>
+    <div class="service-item">
+        <a href="web-app.html">
+            <img src="slika-webapp.jpg" alt="Izrada web aplikacija">
+        </a>
+    </div>
+    <div class="service-item">
+        <a href="desktop-app.html">
+            <img src="slika-dapp.jpg" alt="Izrada desktop aplikacija">
+        </a>
+    </div>
+</div>
+<div style="margin-bottom: 70px;"></div>
+
+ <section class="tech-container">
+        <h2>Tehnologije i alati koje koristimo</h2>
+        <img src="tehnologija i servisi.jpg" alt="Tehnologije sajta" class="tech-image">
+    </section>
+
+            <div style="margin-bottom: 70px;"></div>
+
+           <div class="line"></div>
+
+            <div style="margin-bottom: 70px;"></div>
+            <h3 style="display: block; font-size: 40px; color: #2c3e50; font-family: 'Poppins', sans-serif; font-weight: 500; margin: 0 auto; padding: 0.5rem; text-align: center;">cryptogorac.com</h3>
+            <div style="margin-bottom: 70px;"></div>
+            <h1 style="text-align: center; color:  #1abc9c; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Crypto edukacija</h1>
+            <div style="margin-bottom: 30px;"></div>
+            <div class="crypto-container">
+    <p>Ova sekcija nastala je sa posebnom emocijom jednog našeg developera i šefice marketinga. Plan je da preraste u informativno-obrazovni portal za kriptovalute, ali i da se bavi svim granama IT industrije.</p>
+</div>
+ <div style="margin-bottom: 70px;"></div>
+
+  <div class="carousel-container">
+        <div class="carousel">
+            <a href="crypto-valute.html">
+                <img src="valtulice.jpg" alt="Slika 1">
+            </a>
+            <a href="blockchain-tehnologije.html">
+                <img src="blockchain.jpg" alt="Slika 2">
+            </a>
+            <a href="tehnike-trejdovanja.html">
+                <img src="trejdovanje.jpg" alt="Slika 3">
+            </a>
+        </div>
+    </div>
+
+<div style="margin-bottom: 90px;"></div>
+  <div class="line"></div>
+
+
+      <div style="margin-bottom: 90px;"></div>
+      <h1 style="text-align: center; color:  #1abc9c; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);">Kontakti</h1>
+      <div style="margin-bottom: 60px;"></div>
+
+
+        <div class="contact-info">
+    <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>+382 20 332 331</span>
+    </div>
+    <div class="contact-item">
+        <a href="mailto:info@cryptogorac.com">
+            <i class="fas fa-envelope"></i>
+            <span>info@cryptogorac.com</span>
+        </a>
+    </div>
+    <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Podgorica, Crna Gora</span>
+    </div>
+</div>
+
+
+           <div class="button-wrapper">
+        <a href="kontakti.html" class="contact-button">Zakažite konsultacije</a>
+    </div>
+
+
+
+
+ <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.677614407361!2d19.259464315434!3d42.441582979181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134deb1f8f6b6f1b%3A0x5c8b7b9c9e4d7b!2sPodgorica%2C%20Montenegro!5e0!3m2!1sen!2srs!4v1677654321987!5m2!1sen!2srs" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-4 col-12 footer-section">
+                    <h5>Kontakt</h5>
+                    <p>Email: <a href="mailto:info@cryptogorac.com">info@cryptogorac.com</a></p>
+                    <br>
+                    <p>Telefon: +382 20 332 331</p>
+                </div>
+              <div class="col-md-4 col-12 footer-section">
+    <h5>Pratite nas</h5>
+    <p>
+        <a href="https://fa-x-twitter.com/tvojprofil" target="_blank">
+            <i class="fab fa-x-twitter" style="font-size: 3em;"></i>
+        </a>|
+        <a href="https://instagram.com/tvojprofil" target="_blank">
+            <i class="fab fa-instagram" style="font-size: 3em;"></i>
+        </a>
+    </p>
+</div>
+                <div class="col-md-4 col-12 footer-section">
+                    <h5>Navigacija</h5>
+                    <p>
+                        <a href="index.html" class="footer-link">Početna</a> | 
+                        <a href="o-nama.html" class="footer-link">O nama</a> | 
+
+                        <a href="kontakti.html" class="footer-link">Kontakti</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 CryptoGorac.com | Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="btn-back-to-top">↑</button>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+        const aboutContainer = document.querySelector('.about-container');
+
+        // Funkcija za proveru vidnog polja
+        function isInViewport(element) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top >= 0 &&
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8
+            );
+        }
+
+        // Skrolovanje
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+
+            if (aboutContainer && isInViewport(aboutContainer)) {
+                aboutContainer.classList.add('visible');
+            }
+        });
+
+        // Provera pri učitavanju
+        window.addEventListener('load', () => {
+            if (aboutContainer && isInViewport(aboutContainer)) {
+                aboutContainer.classList.add('visible');
+            }
+        });
+
+        // Back-to-top funkcionalnost
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+         const carousel = document.querySelector('.carousel');
+        const slides = carousel.querySelectorAll('a');
+        let currentIndex = 0;
+
+        function showSlide(index) {
+            slides.forEach((slide, i) => {
+                slide.classList.toggle('active', i === index);
+            });
+        }
+
+        function nextSlide() {
+            currentIndex = (currentIndex + 1) % slides.length; // Kruži kroz slike
+            showSlide(currentIndex);
+        }
+
+        // Prikaz prve slike na početku
+        showSlide(currentIndex);
+
+        // Automatsko menjanje slika svakih 2 sekunde
+        setInterval(nextSlide, 2500);
+    </script>
+</body>
+</html>

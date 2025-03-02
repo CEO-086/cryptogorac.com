@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="sr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kontakti</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: 'Poppins', sans-serif;
+        background-color: white;
+        min-height: 100vh; /* Ensures body takes full viewport height */
+        margin: 0; /* Removes default margin */
+        display: flex;
+        flex-direction: column;
+    }
+
+    /* Navigacija */
+    .navbar {
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        padding: 1.2rem 1rem;
+    }
+
+    .navbar-brand img {
+        height: 40px;
+        width: auto;
+        border-radius: 10px; /* Blago zaobljenje ivica */
+        box-shadow: 0 6px 20px rgba(26, 188, 156, 1.6);
+    }
+
+    .navbar-toggler {
+        border: none;
+        color: #ecf0f1;
+        font-size: 1.8rem;
+    }
+
+    .navbar-toggler:focus {
+        outline: none;
+    }
+
+    .navbar-nav {
+        justify-content: center; /* Centriranje stavki na desktopu */
+        width: 100%; /* Osigurava da meni zauzme punu širinu container-a */
+    }
+
+    .navbar-nav .nav-link {
+        color: #ecf0f1;
+        font-size: 1.1rem;
+        font-weight: 500;
+        padding: 0.5rem 1rem;
+        transition: color 0.3s ease, transform 0.3s ease;
+        position: relative;
+    }
+
+    .navbar-nav .nav-link:hover,
+    .navbar-nav .nav-link.active {
+        color: #1abc9c;
+        transform: translateY(-2px);
+    }
+
+    .navbar-nav .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #1abc9c;
+        bottom: 0;
+        left: 1rem;
+        transition: width 0.3s ease;
+    }
+
+    .navbar-nav .nav-link:hover::after,
+    .navbar-nav .nav-link.active::after {
+        width: calc(100% - 2rem);
+    }
+
+    /* Dropdown */
+    .dropdown-menu {
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        border: none;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+
+    .dropdown-item {
+        color: #ecf0f1;
+        font-size: 1rem;
+        padding: 0.8rem 1rem;
+        transition: color 0.3s ease, background-color 0.3s ease;
+        position: relative;
+    }
+
+    .dropdown-item:hover {
+        color: #1abc9c;
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .dropdown-item::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #1abc9c;
+        bottom: 0;
+        left: 1rem;
+        transition: width 0.3s ease;
+    }
+
+    .dropdown-item:hover::after {
+        width: calc(100% - 2rem);
+    }
+
+    /* Sadržaj */
+    main {
+        padding-top: 4.4rem;
+        flex: 1; /* Allows main content to grow and push footer down */
+    }
+
+    p {
+        font-size: 1.2rem;
+        color: #333;
+        text-align: center;
+        padding: 1rem;
+    }
+
+    /* Kontakt informacije */
+.contact-info {
+   background: linear-gradient(135deg, #2c3e50, #34495e);
+    backdrop-filter: blur(10px); /* Stakleni efekat */
+    padding: 2.5rem;
+    margin: 2rem auto;
+    max-width: 850px;
+    border-radius: 20px; /* Zaobljeniji uglovi */
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25), inset 0 0 10px rgba(255, 255, 255, 0.1); /* Dublja senka + unutrašnji sjaj */
+    color: #ecf0f1;
+    border: 3px solid #1abc9c;
+    transition: transform 0.4s ease, box-shadow 0.4s ease; /* Glatka animacija */
+}
+
+.contact-info:hover {
+    transform: scale(1.02); /* Suptilno uvećanje na hover */
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3), inset 0 0 12px rgba(255, 255, 255, 0.15);
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    margin: 1.2rem 0;
+    font-size: 1.15rem;
+    transition: transform 0.3s ease, color 0.3s ease;
+    background: rgba(255, 255, 255, 0.09); /* Suptilna pozadina za svaku stavku */
+    padding: 0.8rem 1rem;
+    border-radius: 10px;
+}
+
+.contact-item i {
+    margin-right: 1.2rem;
+    color: #1abc9c;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.contact-item:hover {
+    transform: translateX(5px); /* Bočni pomak na hover */
+    color: #1abc9c;
+}
+
+.contact-item:hover i {
+    transform: scale(1.2); /* Uvećanje ikone na hover */
+}
+
+.contact-item span {
+    position: relative;
+}
+
+.contact-item span::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 2px;
+    background: #1abc9c;
+    bottom: -6px;
+    left: 0;
+    transition: width 0.3s ease;
+}
+
+.contact-item:hover span::after {
+    width: 100%;
+}
+
+/* Forma */
+#contactForm {
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* Gradijent iz navbar/footer */
+    padding: 2rem;
+    margin: 2rem auto;
+    max-width: 600px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka iz navbar/footer */
+    color: #ecf0f1; /* Boja teksta */
+    border: 3px solid #1abc9c; 
+}
+
+#contactForm h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #1abc9c; /* Akcentna boja */
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+#contactForm label {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+#contactForm input,
+#contactForm textarea {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: none;
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.3); /* Suptilna pozadina */
+    color: #ecf0f1;
+    font-family: 'Poppins', sans-serif;
+    transition: box-shadow 0.3s ease; /* Tranzicija */
+}
+
+#contactForm input:focus,
+#contactForm textarea:focus {
+    outline: none;
+    box-shadow: 0 0 8px #1abc9c; /* Zelena senka na fokus */
+}
+
+#contactForm button {
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* Gradijent iz dugmeta */
+    color: #ecf0f1;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    transition: all 0.3s ease; /* Tranzicija iz dugmeta */
+    box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka iz back-to-top */
+    display: block;
+    margin: 1rem auto 0;
+}
+
+#contactForm button:hover {
+    background: #1abc9c; /* Akcentna boja na hover */
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3); /* Jača senka */
+}
+
+/* Mapa */
+.map-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka iz navbar/footer */
+    border: 3px solid #1abc9c; 
+}
+
+.map-container iframe {
+    width: 100%;
+    height: 400px;
+    border: none;
+}
+
+/* Responsive podešavanja */
+@media (max-width: 768px) {
+    .contact-info,
+    #contactForm,
+    .map-container {
+        margin: 1rem;
+        padding: 1.5rem;
+    }
+
+    .contact-item {
+        font-size: 1rem;
+    }
+
+    #contactForm h2 {
+        font-size: 1.3rem;
+    }
+
+    #contactForm input,
+    #contactForm textarea {
+        padding: 0.6rem;
+    }
+
+    #contactForm button {
+        padding: 0.6rem 1.2rem;
+    }
+
+    .map-container iframe {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .contact-info,
+    #contactForm {
+        padding: 1rem;
+    }
+
+    .contact-item {
+        font-size: 0.9rem;
+    }
+
+    .contact-item i {
+        font-size: 1.1rem;
+    }
+
+    #contactForm h2 {
+        font-size: 1.2rem;
+    }
+}
+
+
+
+
+                  .social-links {
+    text-align: center;
+    margin: 2rem auto;
+    max-width: 800px;
+}
+
+.social-links h4 {
+    color: #1abc9c;
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+}
+
+.social-links a {
+    color: #bdc0c1;
+    font-size: 3rem;
+    margin: 0 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-links a:hover {
+    color: #1abc9c;
+    transform: translateY(-3px);
+}
+
+
+
+
+
+    /* Footer */
+    .footer {
+        background: linear-gradient(135deg, #2c3e50, #34495e);
+        color: #ecf0f1;
+        padding: 2rem 1rem;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .footer-section h5 {
+        font-size: 1.3rem;
+        font-weight: 500;
+        margin-bottom: 1rem;
+        color: #1abc9c;
+    }
+
+    .footer-section p {
+        font-size: 1rem;
+        color: #ecf0f1;
+        margin: 0.5rem 0;
+    }
+
+    .footer-link {
+        color: #ecf0f1;
+        text-decoration: none;
+        position: relative;
+        transition: color 0.3s ease, transform 0.3s ease;
+    }
+
+    .footer-link:hover {
+        color: #1abc9c;
+        transform: translateY(-2px);
+    }
+
+    .footer-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        background: #1abc9c;
+        bottom: -4px;
+        left: 0;
+        transition: width 0.3s ease;
+    }
+
+    .footer-link:hover::after {
+        width: 100%;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        text-align: center;
+    }
+
+    .footer-bottom p {
+        font-size: 0.9rem;
+        color: #bdc3c7;
+    }
+
+    /* Responsive podešavanja */
+    @media (max-width: 768px) {
+        .navbar-brand img {
+            height: 30px;
+        }
+
+        .navbar-nav {
+            padding: 1rem; /* Dodat padding za bolji raspored */
+            justify-content: flex-start; /* Vraćeno na početak za mobilni */
+        }
+
+        .navbar-nav .nav-link {
+            font-size: 1.2rem;
+            padding: 0.8rem 0;
+        }
+
+        .navbar-nav .nav-link::after {
+            bottom: 0.2rem;
+            left: 0;
+        }
+
+        .navbar-nav .nav-link:hover::after,
+        .navbar-nav .nav-link.active::after {
+            width: 100%;
+        }
+
+        .navbar-nav .nav-link:hover,
+        .navbar-nav .nav-link.active {
+            transform: translateX(5px);
+        }
+
+        .dropdown-menu {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 0.5rem 0;
+        }
+
+        .dropdown-item {
+            padding: 0.6rem 1.5rem;
+        }
+
+        .dropdown-item::after {
+            left: 1.5rem;
+            bottom: 0.1rem;
+        }
+
+        .dropdown-item:hover::after {
+            width: calc(100% - 3rem);
+        }
+
+        main {
+            padding-top: 3.4rem;
+        }
+
+        p {
+            font-size: 1rem;
+        }
+
+        .footer-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-section h5 {
+            font-size: 1.2rem;
+        }
+
+        .footer-section p {
+            font-size: 0.9rem;
+        }
+
+        .footer-bottom p {
+            font-size: 0.8rem;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .navbar-nav .nav-link {
+            font-size: 1.1rem;
+        }
+
+        .dropdown-item {
+            font-size: 0.9rem;
+        }
+
+        .footer-section h5 {
+            font-size: 1.1rem;
+        }
+
+        .footer-section p {
+            font-size: 0.85rem;
+        }
+    }
+
+
+    .btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    display: none; /* Početno sakriveno */
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2); /* Zelena senka + originalna senka */
+}
+
+.btn-back-to-top:hover {
+    background: #1abc9c;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3); /* Jača senka na hover */
+}
+
+.btn-back-to-top.show {
+    display: block; /* Prikazuje se kada se doda klasa 'show' */
+}
+</style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container-fluid nav-container">
+            <a class="navbar-brand" href="index.html">
+                <img src="logo navi.jpg" alt="Logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                ☰
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Početna</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="o-nama.html">O nama</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#usluge" id="uslugeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Usluge
+                        </a>
+                         <ul class="dropdown-menu" aria-labelledby="uslugeDropdown">
+                             <li><a class="dropdown-item" href="it-konsalting.html">IT konsalting</a></li>
+                            <li><a class="dropdown-item" href="sajtovi.html">Izrada sajtova</a></li>
+                            <li><a class="dropdown-item" href="web-app.html">izrada web app</a></li>
+                            <li><a class="dropdown-item" href="desktop-app.html">Izrada desk-top app</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#kripto-edukacija" id="kriptoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Crypto edukacija
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="kriptoDropdown">
+                            <li><a class="dropdown-item" href="crypto-valute.html">Crypto valute</a></li>
+                            <li><a class="dropdown-item" href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
+                            <li><a class="dropdown-item" href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="kontakti.html">Kontakti</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+         <div style="margin-bottom: 50px;"></div>
+
+        <p style="display: block; font-size: 27px; color: #1abc9c; font-family: 'Poppins', sans-serif; font-weight: 500; margin: 0 auto; padding: 0.5rem; text-align: center;">Kontakti</p>
+
+      <div class="contact-info">
+    <div class="contact-item">
+        <i class="fas fa-phone"></i>
+        <span>+382 20 332 331</span>
+    </div>
+    <div class="contact-item">
+        <a href="mailto:info@cryptogorac.com">
+            <i class="fas fa-envelope"></i>
+            <span>info@cryptogorac.com</span>
+        </a>
+    </div>
+    <div class="contact-item">
+        <i class="fas fa-map-marker-alt"></i>
+        <span>Podgorica, Crna Gora</span>
+    </div>
+</div>
+
+        <div style="margin-bottom: 50px;"></div>
+
+        <h3 style="display: block; font-size: 40px; color: #2c3e50; font-family: 'Poppins', sans-serif; font-weight: 500; margin: 0 auto; padding: 0.5rem; text-align: center;">cryptogorac.com</h3>
+
+        <div style="margin-bottom: 50px;"></div>
+
+        <div class="container">
+            <form id="contactForm">
+                <h2>Zakažite konsultacije</h2>
+                <label for="name">Ime:</label>
+                <input type="text" id="name" name="name" required>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+                <label for="message">Poruka:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Pošalji</button>
+            </form>
+        </div>
+
+        <div style="margin-bottom: 80px;"></div>
+
+     <div class="social-links">
+    <h4>Pratite nas na društvenim mrežama</h4>
+    <a href="https://fa-x-twitter.com/tvojprofil" target="_blank"><i class="fab fa-x-twitter"></i></a>
+    <a href="https://instagram.com/tvojprofil" target="_blank"><i class="fab fa-instagram"></i></a>
+</div>
+        <div style="margin-bottom: 50px;"></div>
+
+        <div class="map-container">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.677614407361!2d19.259464315434!3d42.441582979181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134deb1f8f6b6f1b%3A0x5c8b7b9c9e4d7b!2sPodgorica%2C%20Montenegro!5e0!3m2!1sen!2srs!4v1677654321987!5m2!1sen!2srs" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row text-center">
+                <div class="col-md-4 col-12 footer-section">
+                    <h5>Kontakt</h5>
+                    <p>Email: <a href="mailto:info@cryptogorac.com">info@cryptogorac.com</a></p>
+                    <p>Telefon: +382 20 332 331</p>
+                </div>
+              <div class="col-md-4 col-12 footer-section">
+    <h5>Pratite nas</h5>
+    <p>
+        <a href="https://fa-x-twitter.com/tvojprofil" target="_blank">
+            <i class="fab fa-x-twitter" style="font-size: 3em;"></i>
+        </a>|
+        <a href="https://instagram.com/tvojprofil" target="_blank">
+            <i class="fab fa-instagram" style="font-size: 3em;"></i>
+        </a>
+    </p>
+</div>
+                <div class="col-md-4 col-12 footer-section">
+                    <h5>Navigacija</h5>
+                    <p>
+                        <a href="index.html" class="footer-link">Početna</a> | 
+                        <a href="o-nama.html" class="footer-link">O nama</a> | 
+
+                        <a href="kontakti.html" class="footer-link">Kontakti</a>
+                    </p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 CryptoGorac.com | Sva prava zadržana.</p>
+            </div>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="btn-back-to-top">↑</button>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <script>
+        const backToTopButton = document.getElementById('back-to-top');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    </script>
+</body>
+</html>
