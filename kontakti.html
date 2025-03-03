@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-<link rel="icon" type="image/png" href="logo-naviT.png">
 <style>
     * {
         box-sizing: border-box;
@@ -197,72 +196,86 @@
 .contact-item:hover span::after {
     width: 100%;
 }
+           /* Stil za kontejner FORMA */
+        .container {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            padding: 2rem;
+            margin: 2rem auto;
+            max-width: 750px;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            color: #ecf0f1;
+            border: 3px solid #1abc9c;
+        }
 
-/* Forma */
-#contactForm {
-    background: linear-gradient(135deg, #2c3e50, #34495e); /* Gradijent iz navbar/footer */
-    padding: 2rem;
-    margin: 2rem auto;
-    max-width: 600px;
-    border-radius: 15px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka iz navbar/footer */
-    color: #ecf0f1; /* Boja teksta */
-    border: 3px solid #1abc9c; 
-}
+        .container form {
+            display: flex;
+            flex-direction: column;
+        }
 
-#contactForm h2 {
-    font-size: 1.5rem;
-    font-weight: 500;
-    color: #1abc9c; /* Akcentna boja */
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
+        /* Stil za naslov */
+        .container h2 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            color: #1abc9c; /* Zelena boja */
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-family: 'Poppins', sans-serif;
+        }
 
-#contactForm label {
-    font-size: 1.1rem;
-    margin-bottom: 0.5rem;
-    display: block;
-}
+        /* Stil za input i textarea */
+        .container input,
+        .container textarea {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: none;
+            border-radius: 4px;
+            background-color: rgba(255, 255, 255, 0.3);
+            color: #ecf0f1;
+            font-family: 'Poppins', sans-serif;
+            transition: box-shadow 0.3s ease;
+        }
 
-#contactForm input,
-#contactForm textarea {
-    width: 100%;
-    padding: 0.8rem;
-    margin-bottom: 1rem;
-    border: none;
-    border-radius: 4px;
-    background-color: rgba(255, 255, 255, 0.3); /* Suptilna pozadina */
-    color: #ecf0f1;
-    font-family: 'Poppins', sans-serif;
-    transition: box-shadow 0.3s ease; /* Tranzicija */
-}
+        .container input:focus,
+        .container textarea:focus {
+            outline: none;
+            box-shadow: 0 0 8px #1abc9c;
+        }
 
-#contactForm input:focus,
-#contactForm textarea:focus {
-    outline: none;
-    box-shadow: 0 0 8px #1abc9c; /* Zelena senka na fokus */
-}
+        /* Stil za placeholder tekst */
+        .container input::placeholder,
+        .container textarea::placeholder {
+            color: #bdc3c7;
+            opacity: 1;
+        }
 
-#contactForm button {
-    background: linear-gradient(135deg, #2c3e50, #34495e); /* Gradijent iz dugmeta */
-    color: #ecf0f1;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 4px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    transition: all 0.3s ease; /* Tranzicija iz dugmeta */
-    box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka iz back-to-top */
-    display: block;
-    margin: 1rem auto 0;
-}
+        /* Sakrivanje honeypot polja */
+        .container input[type="checkbox"] {
+            display: none;
+        }
 
-#contactForm button:hover {
-    background: #1abc9c; /* Akcentna boja na hover */
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3); /* Jača senka */
-}
+        /* Stil za dugme */
+        .container button {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: #ecf0f1;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-family: 'Poppins', sans-serif;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2);
+            display: block;
+            margin: 1rem auto 0;
+        }
+
+        .container button:hover {
+            background: #1abc9c;
+            transform: translateY(-3px);
+            box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
 
 /* Mapa */
 .map-container {
@@ -617,18 +630,17 @@
 
         <div style="margin-bottom: 50px;"></div>
 
-        <div class="container">
-            <form id="contactForm">
-                <h2>Zakažite konsultacije</h2>
-                <label for="name">Ime:</label>
-                <input type="text" id="name" name="name" required>
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
-                <label for="message">Poruka:</label>
-                <textarea id="message" name="message" required></textarea>
-                <button type="submit">Pošalji</button>
-            </form>
-        </div>
+         <div class="container">
+        <h2>Zakažite konsultacije</h2>
+        <form action="https://api.web3forms.com/submit" method="POST">
+            <input type="hidden" name="access_key" value="YOUR_ACCESS_KEY_HERE">
+            <input type="text" name="name" placeholder="Vaše ime" required>
+            <input type="email" name="email" placeholder="Vaš email" required>
+            <textarea name="message" placeholder="Vaša poruka" required></textarea>
+            <input type="checkbox" name="botcheck" class="hidden" style="display: none;">
+            <button type="submit">Pošalji</button>
+        </form>
+    </div>
 
         <div style="margin-bottom: 80px;"></div>
 
@@ -640,7 +652,7 @@
         <div style="margin-bottom: 50px;"></div>
 
         <div class="map-container">
-           <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2944.454888231875!2d19.238574866818702!3d42.439336601289035!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134deb25b43fd619%3A0xbc8943cd5d443df2!2sAtlas%20Capital%2C%20%C5%A0eika%20Zaida%2C%20Podgorica%2081000%2C%20Montenegro!5e0!3m2!1sen!2s!4v1740962023816!5m2!1sen!2s" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2946.677614407361!2d19.259464315434!3d42.441582979181!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x134deb1f8f6b6f1b%3A0x5c8b7b9c9e4d7b!2sPodgorica%2C%20Montenegro!5e0!3m2!1sen!2srs!4v1677654321987!5m2!1sen!2srs" allowfullscreen="" loading="lazy"></iframe>
         </div>
     </main>
 
