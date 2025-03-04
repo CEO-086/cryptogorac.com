@@ -189,65 +189,97 @@
 
 
                  /* Stil za tekst kontejner */
-        .tekst-kontejner {
-            max-width: 1000px; /* Maksimalna širina */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano sa razmakom odozgo */
-            padding: 40px; /* Unutrašnji razmak */
-            background-color: white;
-            border: 4px solid #2ecc71; /* Zeleni border */
-            border-radius: 15px; /* Zaobljene ivice */
-            text-align: center; /* Centriran sadržaj */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Blaga senka */
-        }
+       .tekst-kontejner {
+    max-width: 1000px; /* Maksimalna širina */
+    width: 95%; /* Prilagođava se ekranu */
+    margin: 2rem auto; /* Centrirano sa razmakom odozgo */
+    padding: 40px; /* Unutrašnji razmak */
+    background-color: white;
+    border: 4px solid #2ecc71; /* Zeleni border */
+    border-radius: 15px; /* Zaobljene ivice */
+    text-align: center; /* Centriran sadržaj */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Blaga senka */
+}
 
-        /* Stil za naslov */
-        .tekst-kontejner h2 {
-            font-size: 36px; /* Veliki naslov */
-            color: red; /* crvena boja */
-            margin-bottom: 20px;
-        }
+/* Stil za naslov */
+.tekst-kontejner h2 {
+    font-size: 36px; /* Veliki naslov */
+    color: red; /* Crvena boja */
+    margin-bottom: 20px;
+}
+.tekst-kontejner p {
+    font-size: 18px; /* Normalna veličina teksta */
+    color: #333; /* Tamno siva boja za tekst */
+    line-height: 1.6; /* Prored za čitljivost */
+    margin-bottom: 20px; /* Razmak između paragrafa i ikonica */
+}
 
-        /* Stil za paragraf */
-        .tekst-kontejner p {
-            font-size: 18px; /* Normalna veličina teksta */
-            color: #333; /* Tamno siva boja za tekst */
-            line-height: 1.6; /* Prored za čitljivost */
-        }
+/* Stil za kontejner sa ikonama */
+.tekst-kontejner .store-icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px; /* Razmak između ikonica */
+    margin-top: 20px; /* Razmak od naslova */
+}
 
-        /* Responzivnost */
-        @media (max-width: 768px) {
-            .tekst-kontejner {
-                width: 90%;
-                padding: 20px; /* Smanjeni padding */
-                border-width: 3px; /* Malo tanji border */
-                margin: 1.5rem auto;
-            }
+/* Stil za linkove sa ikonama */
+.tekst-kontejner .store-link {
+    font-size: 2.5rem; /* Veličina ikonica */
+    color: #333; /* Osnovna boja ikonica, usklađena sa tekstom */
+    text-decoration: none; /* Bez podvlačenja */
+    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Prelazi usklađeni sa temom */
+    position: relative;
+}
 
-            .tekst-kontejner h2 {
-                font-size: 28px; /* Smanjeni naslov */
-            }
+/* Hover efekat za ikonice */
+.tekst-kontejner .store-link:hover {
+    color: #1abc9c; /* Zelena boja iz teme za hover */
+    transform: translateY(-2px); /* Efekat pomeranja, isti kao kod nav-link */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka slična ostalim elementima */
+}
 
-            .tekst-kontejner p {
-                font-size: 16px; /* Smanjeni tekst */
-            }
-        }
+/* Responzivnost */
+@media (max-width: 768px) {
+    .tekst-kontejner {
+        width: 90%;
+        padding: 20px; /* Smanjeni padding */
+        border-width: 3px; /* Malo tanji border */
+        margin: 1.5rem auto;
+    }
 
-        @media (max-width: 480px) {
-            .tekst-kontejner {
-                padding: 15px;
-                margin: 1rem auto;
-                border-width: 2px; /* Još tanji border */
-            }
+    .tekst-kontejner h2 {
+        font-size: 28px; /* Smanjeni naslov */
+    }
 
-            .tekst-kontejner h2 {
-                font-size: 24px;
-            }
+    .tekst-kontejner .store-link {
+        font-size: 2rem; /* Smanjena veličina ikonica za tablete */
+    }
 
-            .tekst-kontejner p {
-                font-size: 14px;
-            }
-        }
+    .tekst-kontejner .store-icons {
+        gap: 20px; /* Smanjeni razmak između ikonica */
+    }
+}
+
+@media (max-width: 480px) {
+    .tekst-kontejner {
+        padding: 15px;
+        margin: 1rem auto;
+        border-width: 2px; /* Još tanji border */
+    }
+
+    .tekst-kontejner h2 {
+        font-size: 24px;
+    }
+
+    .tekst-kontejner .store-link {
+        font-size: 1.5rem; /* Smanjena veličina ikonica za mobilne */
+    }
+
+    .tekst-kontejner .store-icons {
+        gap: 15px; /* Još manji razmak između ikonica */
+    }
+}
 
 
 
@@ -487,10 +519,19 @@
         <img src="blockchain.jpg" alt="blockchain tehnologija Slika">
     </div>
 
-                            <div class="tekst-kontejner">
-        <h2>Blockchain tehnologija</h2>
-        <p>Uskoro na Apple-Books i na Google-Books.</p>
+             <div class="tekst-kontejner">
+    <h2>Blockchain tehnologija</h2>
+ <p>Uskoro na Apple-Books i Google-Books </p>
+    <div class="store-icons">
+        <a href="https://books.apple.com/" target="_blank" class="store-link" title="Uskoro na Apple Books">
+            <i class="fab fa-apple"></i>
+        </a>
+        <a href="https://play.google.com/store/books" target="_blank" class="store-link" title="Uskoro na Google Books">
+            <i class="fab fa-google-play"></i>
+        </a>
+      
     </div>
+</div>
 
 
 
