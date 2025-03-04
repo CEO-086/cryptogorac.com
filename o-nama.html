@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sr">
 <head>
@@ -9,7 +10,6 @@
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
- <link rel="icon" type="image/png" href="logo-naviT.png">
 <style>
     * {
         box-sizing: border-box;
@@ -118,6 +118,106 @@
     .dropdown-item:hover::after {
         width: calc(100% - 2rem);
     }
+
+/* Stil za animirani naslov */
+.animated-title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 3.5rem; /* Veliki naslov, prilagođen za cryptogorac.com */
+    font-weight: 500;
+    color: #2c3e50; /* Tamnija boja iz navbar-a za osnovni ton */
+    text-align: center;
+    margin: 2rem auto; /* Centrirano sa razmakom */
+    position: relative;
+    overflow: hidden; /* Sakriva preliv teksta tokom animacije */
+    display: inline-block; /* Omogućava animaciju po slovima */
+    padding: 0.5rem 1rem; /* Unutrašnji razmak */
+    border-radius: 10px; /* Zaobljene ivice */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka sa zelenim sjajem */
+}
+
+/* Podešavanje za slova unutar naslova */
+.animated-title span {
+    display: inline-block;
+    position: relative;
+    opacity: 0; /* Početno nevidljivo */
+    animation: typeAndGlow 3.5s infinite steps(12); /* Pisaća mašina + sjaj, prilagođeno za 12 slova */
+}
+
+/* Animacija za pisaću mašinu i sjaj */
+@keyframes typeAndGlow {
+    0% {
+        opacity: 0;
+        transform: translateY(20px); /* Slova dolaze odozdo */
+        filter: blur(2px); /* Blago zamućenje */
+    }
+    20% {
+        opacity: 1;
+        transform: translateY(0); /* Slova se postavljaju na mesto */
+        filter: blur(0);
+    }
+    30% {
+        text-shadow: 0 0 12px rgba(26, 188, 156, 0.9), 0 0 20px rgba(26, 188, 156, 0.6); /* Sjaj u #1abc9c */
+    }
+    50% {
+        text-shadow: none; /* Sjaj nestaje */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Podešavanje kašnjenja za svako slovo (cryptogorac.com ima 12 karaktera) */
+.animated-title span:nth-child(1) { animation-delay: 0s; }    /* c */
+.animated-title span:nth-child(2) { animation-delay: 0.1s; }  /* r */
+.animated-title span:nth-child(3) { animation-delay: 0.2s; }  /* y */
+.animated-title span:nth-child(4) { animation-delay: 0.3s; }  /* p */
+.animated-title span:nth-child(5) { animation-delay: 0.4s; }  /* t */
+.animated-title span:nth-child(6) { animation-delay: 0.5s; }  /* o */
+.animated-title span:nth-child(7) { animation-delay: 0.6s; }  /* g */
+.animated-title span:nth-child(8) { animation-delay: 0.7s; }  /* o */
+.animated-title span:nth-child(9) { animation-delay: 0.8s; }  /* r */
+.animated-title span:nth-child(10) { animation-delay: 0.9s; } /* a */
+.animated-title span:nth-child(11) { animation-delay: 1s; }   /* c */
+.animated-title span:nth-child(12) { animation-delay: 1.1s; } /* . */
+.animated-title span:nth-child(13) { animation-delay: 1.2s; } /* c */
+.animated-title span:nth-child(14) { animation-delay: 1.3s; } /* o */
+.animated-title span:nth-child(15) { animation-delay: 1.4s; } /* m */
+
+/* Hover efekat - rotacija slova */
+.animated-title:hover span {
+    animation: rotateLetter 0.6s ease forwards; /* Rotacija na hover */
+}
+
+/* Animacija za rotaciju slova */
+@keyframes rotateLetter {
+    0% {
+        transform: rotate(0deg);
+    }
+    50% {
+        transform: rotate(12deg); /* Blaga rotacija */
+        color: #1abc9c; /* Zelena boja iz teme */
+    }
+    100% {
+        transform: rotate(0deg);
+        color: #2c3e50; /* Vraća se na osnovnu boju */
+    }
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+    .animated-title {
+        font-size: 2.8rem; /* Smanjena veličina za tablete */
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .animated-title {
+        font-size: 2.2rem; /* Smanjena veličina za mobilne */
+        padding: 0.3rem 0.6rem;
+    }
+}
 
 /* Stilovi za main i about-container */
 main {
@@ -493,7 +593,8 @@ main {
         </div>
     </nav>
                       
-                 <div style="margin-bottom: 150px;"></div>
+                 <div style="margin-bottom: 100px;"></div>
+<h1 class="animated-title">cryptogorac.com</h1>
 
     <main>
          <div class="about-container">
@@ -567,6 +668,20 @@ main {
                 behavior: 'smooth'
             });
         });
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const title = document.querySelector('.animated-title');
+        const text = title.textContent;
+        title.innerHTML = ''; // Briše originalni tekst
+        
+        // Razdvaja tekst na slova i dodaje ih u span-ove
+        text.split('').forEach(char => {
+            const span = document.createElement('span');
+            span.textContent = char === ' ' ? '\u00A0' : char; // Zadržava razmak
+            title.appendChild(span);
+        });
+    });
+
     </script>
 </body>
 </html>
