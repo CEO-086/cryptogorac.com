@@ -424,6 +424,139 @@
         height: auto; /* Zadržava proporcije */
     }
 }
+
+/* kod simulacija */
+.code-container {
+    width: 650px;
+    height: 280px;
+    background-color: #ffffff; /* Bela pozadina, u skladu sa main-container i about-container */
+    border-radius: 15px; /* Zaobljenije ivice, kao kod about-container i crypto-container */
+    padding: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    line-height: 1.5;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka slična tech-container i carousel-container */
+    margin: 2rem auto; /* Centriranje i razmak kao kod drugih kontejnera */
+    transition: all 0.3s ease; /* Glatka tranzicija kao kod contact-info */
+}
+
+.code-container:hover {
+    transform: translateY(-5px); /* Hover efekat kao kod about-container i crypto-container */
+    box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4); /* Jača senka na hover, slično about-container */
+}
+
+.code-line {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.word {
+    opacity: 0;
+    animation: typeIn 0.3s forwards;
+    margin-right: 5px;
+    font-weight: bold; /* Istaknuta slova za vidljivost */
+}
+
+/* Animacija za pojavljivanje reči */
+@keyframes typeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Različite boje za ključne reči - usklađene sa sajnom paletom */
+.keyword { color: #e74c3c; } /* Crvena za ključne reči, zadržano */
+.string { color: #1abc9c; } /* Zelena iz palete sajta (#1abc9c) za stringove */
+.variable { color: #34495e; } /* Tamno plava iz gradijenata za promenljive */
+.operator { color: #8e44ad; } /* Ljubičasta zadržana za operatore */
+.default { color: #2c3e50; } /* Tamno siva iz palete sajta za ostalo */
+
+/* Responzivnost u skladu sa ostalim kontejnerima */
+@media (max-width: 768px) {
+    .code-container {
+        width: 90%; /* Prilagođava se ekranu kao crypto-container */
+        height: auto; /* Prilagođava visinu sadržaju */
+        padding: 15px; /* Smanjen padding kao kod drugih */
+    }
+}
+
+@media (max-width: 480px) {
+    .code-container {
+        padding: 10px; /* Još manji padding za male ekrane */
+    }
+}
+/* Services Container */
+.services-container {
+    max-width: 1300px; /* Ograničava širinu na desktopu */
+    margin: 2rem auto; /* Centrirano sa razmakom */
+    display: flex; /* Horizontalni raspored */
+    justify-content: space-between; /* Jednako raspoređene slike */
+    gap: 1rem; /* Razmak između slika */
+    padding: 0 1rem; /* Bočni razmak */
+}
+
+.service-item {
+    flex: 1; /* Svaka slika zauzima jednak deo prostora */
+    max-width: 600px; /* Maksimalna širina na desktopu */
+    text-align: center; /* Centriranje slike unutar item-a */
+}
+
+.service-item img {
+    width: 600px; /* Fiksna širina na desktopu */
+    height: 600px; /* Fiksna visina na desktopu */
+    max-width: 100%; /* Osigurava da slika ne prelazi kontejner */
+    border-radius: 10px; /* Zaobljene ivice */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lagana senka */
+    transition: transform 0.3s ease; /* Efekat na hover */
+    object-fit: contain; /* Zadržava izvorni izgled slike bez isečenja */
+    animation: equalizerShadow 2s infinite ease-in-out; /* Dodata animacija senke */
+}
+
+.service-item img:hover {
+    transform: scale(1.05); /* Blago uvećanje na hover */
+}
+
+/* Animacija za sivu senku kao ekvilajzer */
+@keyframes equalizerShadow {
+    0% {
+        box-shadow: 0 0 0 rgba(128, 128, 128, 0.5); /* Početak bez senke na dnu */
+    }
+    50% {
+        box-shadow: 0 20px 20px rgba(128, 128, 128, 0.5); /* Senka se diže ka vrhu */
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(128, 128, 128, 0.5); /* Vraća se na početak */
+    }
+}
+
+/* Responzivnost za mobilne uređaje */
+@media (max-width: 768px) {
+    .services-container {
+        flex-wrap: wrap; /* Omogućava prelazak u novi red */
+        justify-content: space-around; /* Jednako raspoređeno po širini */
+    }
+
+    .service-item {
+        flex: 0 0 calc(50% - 0.5rem); /* Dve slike po redu, uz razmak */
+        max-width: calc(50% - 0.5rem); /* Polovina širine minus razmak */
+    }
+
+    .service-item img {
+        width: 100%; /* Proporcionalno skaliranje na mobilnim */
+        height: auto; /* Zadržava proporcije slike */
+    }
+}
+
+@media (max-width: 480px) {
+    .service-item {
+        flex: 0 0 calc(50% - 0.5rem); /* I dalje dve po redu */
+        max-width: calc(50% - 0.5rem);
+    }
+
+    .service-item img {
+        width: 100%; /* Maksimalna širina unutar kontejnera */
+        height: auto; /* Zadržava proporcije */
+    }
+}
         
 
 
@@ -1230,7 +1363,21 @@
         </a>
     </div>
 </div>
-<div style="margin-bottom: 70px;"></div>
+     <div class="code-container" id="codeContainer">
+    <div class="code-line" data-words="class SoftwareStudio {"></div>
+    <div class="code-line" data-words="constructor(name, project) {"></div>
+    <div class="code-line" data-words="this.name = name;"></div>
+    <div class="code-line" data-words="this.project = project;"></div>
+    <div class="code-line" data-words="this.status = 'active';"></div>
+    <div class="code-line" data-words="this.website = 'CryptoGorac.com';"></div>
+    <div class="code-line" data-words="this.teamSize = 10;"></div>
+    <div class="code-line" data-words="}"></div>
+    <div class="code-line" data-words="develop() {"></div>
+    <div class="code-line" data-words="console.log('Building ' + this.project + this business);"></div>
+   
+    <div class="code-line" data-words="}"></div>
+  
+  </div>
 
  <section class="tech-container">
         <h2>Tehnologije i alati koje koristimo</h2>
@@ -1394,6 +1541,54 @@
                 behavior: 'smooth'
             });
         });
+
+    function animateCode() {
+    const container = document.getElementById('codeContainer');
+    const lines = container.querySelectorAll('.code-line');
+    let delay = 0;
+
+    // Resetujemo sve reči na opacity: 0
+    container.querySelectorAll('.word').forEach(word => {
+        word.style.opacity = '0';
+        word.style.animation = 'none'; // Uklanjamo prethodnu animaciju
+    });
+
+    // Brišemo stare span elemente
+    lines.forEach(line => line.innerHTML = '');
+
+    // Ponovo kreiramo i animiramo reči
+    lines.forEach((line, lineIndex) => {
+        const words = line.getAttribute('data-words').split(' ');
+        words.forEach((word, wordIndex) => {
+            const span = document.createElement('span');
+            span.className = 'word';
+            span.textContent = word;
+
+            if (['class', 'constructor', 'return'].includes(word)) {
+                span.classList.add('keyword');
+            } else if (word.startsWith("'") || word.startsWith('"')) {
+                span.classList.add('string');
+            } else if (['this.name', 'this.project', 'this.status', 'this.website', 'this.teamSize'].includes(word)) {
+                span.classList.add('variable');
+            } else if (['=', '+'].includes(word)) {
+                span.classList.add('operator');
+            } else {
+                span.classList.add('default');
+            }
+
+            span.style.animationDelay = `${delay + wordIndex * 0.15}s`; // Smanjeno sa 0.3s na 0.15s
+            line.appendChild(span);
+        });
+        delay += words.length * 0.15 + 0.25; // Smanjena pauza između linija sa 0.5s na 0.25s
+    });
+
+    // Ukupno trajanje animacije + 3 sekunde pauze
+    const totalAnimationTime = delay * 1000 + 3000; // delay u milisekundama + 3 sekunde
+    setTimeout(animateCode, totalAnimationTime); // Ponavljanje nakon završetka
+}
+
+// Pokrećemo animaciju
+animateCode();
 
          const carousel = document.querySelector('.carousel');
         const slides = carousel.querySelectorAll('a');
