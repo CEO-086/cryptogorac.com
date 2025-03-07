@@ -174,7 +174,7 @@
 .right-section .button {
     display: inline-block;
     padding: 12px 24px;
-    background: linear-gradient(135deg, #1abc9c, #34495e);
+    background: linear-gradient(135deg, #1abc9c, #34495e); /* Osnovni gradijent */
     color: #ecf0f1;
     font-size: 1.2rem;
     font-weight: 500;
@@ -185,14 +185,38 @@
     transition: all 0.3s ease;
     opacity: 0;
     transform: translateY(20px);
-    animation: fadeInUp 1s ease forwards;
+    animation: fadeInUp 1s ease forwards, gradientShift 3s infinite ease-in-out; /* Samo prelivanje */
     text-align: center;
 }
 
+/* Hover efekat */
 .right-section .button:hover {
-    background: #1abc9c; /* Changed to background instead of background-color to override the gradient */
+    box-shadow: 0 9px 22px rgba(26, 188, 156, 0.6);
+    transform: translateY(-3px); /* Blagi podizanje */
 }
 
+/* Animacija za prelivanje plave u zelenu */
+@keyframes gradientShift {
+    0% {
+        background: linear-gradient(135deg, #1abc9c, #34495e); /* Zelena ka plavoj */
+    }
+    50% {
+        background: linear-gradient(135deg, #34495e, #1abc9c); /* Plava ka zelenoj */
+    }
+    100% {
+        background: linear-gradient(135deg, #1abc9c, #34495e); /* Povratak na početak */
+    }
+}
+
+/* Postojeća animacija */
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Media querije */
 @media (max-width: 768px) {
     .main-container {
         flex-direction: column;
@@ -216,14 +240,6 @@
     .right-section .button {
         padding: 15px 30px;
         font-size: 16px;
-    }
-}
-
-/* Assuming this animation is defined somewhere in your CSS */
-@keyframes fadeInUp {
-    to {
-        opacity: 1;
-        transform: translateY(0);
     }
 }
 
