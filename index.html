@@ -351,7 +351,7 @@
 }
 
 
-   /* Services Container */
+  /* Services Container */
 .services-container {
     max-width: 1300px; /* Ograničava širinu na desktopu */
     margin: 2rem auto; /* Centrirano sa razmakom */
@@ -375,10 +375,24 @@
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Lagana senka */
     transition: transform 0.3s ease; /* Efekat na hover */
     object-fit: contain; /* Zadržava izvorni izgled slike bez isečenja */
+    animation: equalizerShadow 2s infinite ease-in-out; /* Dodata animacija senke */
 }
 
 .service-item img:hover {
     transform: scale(1.05); /* Blago uvećanje na hover */
+}
+
+/* Animacija za sivu senku kao ekvilajzer */
+@keyframes equalizerShadow {
+    0% {
+        box-shadow: 0 0 0 rgba(128, 128, 128, 0.5); /* Početak bez senke na dnu */
+    }
+    50% {
+        box-shadow: 0 20px 20px rgba(128, 128, 128, 0.5); /* Senka se diže ka vrhu */
+    }
+    100% {
+        box-shadow: 0 0 0 rgba(128, 128, 128, 0.5); /* Vraća se na početak */
+    }
 }
 
 /* Responzivnost za mobilne uređaje */
