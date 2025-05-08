@@ -1518,17 +1518,16 @@
         }
 
         // Skrolovanje
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-
-            if (aboutContainer && isInViewport(aboutContainer)) {
-                aboutContainer.classList.add('visible');
-            }
-        });
+       window.addEventListener('scroll', () => {
+    if (window.scrollY > 300) {
+        backToTopButton.classList.add('show');
+    } else {
+        backToTopButton.classList.remove('show');
+    }
+    if (aboutContainer && isInViewport(aboutContainer)) {
+        aboutContainer.classList.add('visible');
+    }
+}, { passive: true });
 
         // Provera pri učitavanju
         window.addEventListener('load', () => {
