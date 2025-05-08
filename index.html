@@ -1518,7 +1518,7 @@
         }
 
         // Skrolovanje
-       window.addEventListener('scroll', () => {
+  window.addEventListener('scroll', () => {
     if (window.scrollY > 300) {
         backToTopButton.classList.add('show');
     } else {
@@ -1527,7 +1527,7 @@
     if (aboutContainer && isInViewport(aboutContainer)) {
         aboutContainer.classList.add('visible');
     }
-}, { passive: true });
+});
 
         // Provera pri učitavanju
         window.addEventListener('load', () => {
