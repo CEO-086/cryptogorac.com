@@ -136,7 +136,7 @@
             text-align: center;
         }
 
-        .portfolio-container h1 {
+        .page-title {
             font-size: 2.2rem;
             color: #1abc9c;
             margin-bottom: 1.5rem;
@@ -144,7 +144,7 @@
             display: inline-block;
         }
 
-        .portfolio-container h1::after {
+        .page-title::after {
             content: '';
             position: absolute;
             width: 50%;
@@ -155,7 +155,7 @@
             transition: width 0.3s ease;
         }
 
-        .portfolio-container:hover h1::after {
+        .portfolio-container:hover .page-title::after {
             width: 80%;
         }
 
@@ -353,6 +353,10 @@
                 height: 250px;
             }
 
+            .page-title {
+                font-size: 1.8rem;
+            }
+
             .footer-section {
                 margin-bottom: 1.5rem;
             }
@@ -379,8 +383,8 @@
                 font-size: 0.9rem;
             }
 
-            .portfolio-container h1 {
-                font-size: 1.8rem;
+            .page-title {
+                font-size: 1.6rem;
             }
 
             .portfolio-item img {
@@ -452,7 +456,7 @@
 
     <main>
         <section class="portfolio-container">
-            <h1>Naš portfolio</h1>
+            <h1 class="page-title">Naš portfolio</h1>
             <div class="portfolio-grid">
                 <div class="portfolio-item">
                     <img src="projekt1.jpg" alt="Projekt 1">
