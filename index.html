@@ -1229,38 +1229,41 @@
             }
         }
 
-          /* Back-to-top */
-        .btn-back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            color: #ecf0f1;
-            border: none;
-            border-radius: 50px;
-            padding: 10px 20px;
-            font-size: 1rem;
-            cursor: pointer;
-            display: none;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2);
-        }
+         /* Back-to-top */
+.btn-back-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: linear-gradient(135deg, #2c3e50, #34495e);
+    color: #ecf0f1;
+    border: none;
+    border-radius: 50px;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    display: none; /* Početno sakriveno */
+    transition: all 0.3s ease;
+    box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2); /* Zelena senka + originalna senka */
+}
 
-        .btn-back-to-top:hover {
-            background: #1abc9c;
-            transform: translateY(-3px);
-            box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3);
-        }
+.btn-back-to-top:hover {
+    background: #1abc9c;
+    transform: translateY(-3px);
+    box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3); /* Jača senka na hover */
+}
 
-        .btn-back-to-top.show {
-            display: block;
-        }
+.btn-back-to-top.show {
+    display: block; /* Prikazuje se kada se doda klasa 'show' */
+}
 
-        /* Responzivnost */
-        @media (max-width: 768px) {
-            .navbar-brand img {
-                height: 30px;
-            }
+/* Media upit za uređaje manje od 900px širine */
+@media only screen and (max-width: 900px) {
+    .btn-back-to-top {
+        right: auto; /* Uklanja desnu poziciju */
+        left: 20px; /* Postavlja dugme u levi donji ugao */
+    }
+}
     </style>
 </head>
 <body>
@@ -1626,4 +1629,5 @@ s0.parentNode.insertBefore(s1,s0);
     </script>
 </body>
 </html>
+
 
