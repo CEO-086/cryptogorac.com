@@ -676,7 +676,12 @@
 
     <main>
 
-        <div style="margin-bottom: 50px;"></div>
+                <!-- HTML dio za prikaz cijena BTC i ETH. Dodajte ovo unutar <div class="price-bar"> ili kao novi fiksni element ispod navi bara. Ako želite da zamijeni postojeći sadržaj .price-bar, zamijenite <div class="price-bar">Cijena: 100€</div> sa ovim: -->
+<div class="price-bar">
+    <span id="btc-price">BTC: Učitavanje...</span> | 
+    <span id="eth-price">ETH: Učitavanje...</span>
+</div>
+        <div style="margin-bottom: 100px;"></div>
        
 
           <div class="kripto-valute">
@@ -897,6 +902,7 @@ setInterval(updatePrices, 60000);
     </script>
 </body>
 </html>
+
 
 
 
