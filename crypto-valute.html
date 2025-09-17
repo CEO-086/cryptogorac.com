@@ -540,6 +540,88 @@
 .btn-back-to-top.show {
     display: block; /* Prikazuje se kada se doda klasa 'show' */
 }
+
+.price-bar {
+    position: fixed;
+    top: 90px; /* Odmaknuto od navi bara */
+    right: 20px;
+    background: linear-gradient(135deg, #2c3e50, #34495e); /* Usklađeno sa temom sajta */
+    color: #ecf0f1;
+    padding: 0.75rem 1.25rem;
+    font-size: 1.1rem;
+    font-weight: 500;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    border-radius: 12px;
+    border: 1px solid rgba(26, 188, 156, 0.5);
+    transition: all 0.3s ease;
+    display: inline-flex; /* Dinamična širina prema sadržaju */
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    white-space: nowrap; /* Sprečava prelamanje */
+    max-width: 100vw;
+}
+
+.price-bar:hover {
+    box-shadow: 0 6px 16px rgba(26, 188, 156, 0.6);
+    transform: translateY(-2px);
+}
+
+#btc-price, #eth-price {
+    color: #1abc9c;
+    font-weight: bold;
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.5rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+#btc-price::before {
+    content: '₿';
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    color: #f7931a;
+}
+
+#eth-price::before {
+    content: '◇';
+    margin-right: 0.5rem;
+    font-size: 1.2rem;
+    color: #627eea;
+}
+
+/* Responzivnost za mobilne i tablet uređaje */
+@media (max-width: 1024px) {
+    .price-bar {
+        top: 90px; /* Veći razmak od navi bara */
+        right: 10px;
+        font-size: 1rem; /* ~10% umanjenje */
+        padding: 0.6rem 1rem;
+        gap: 0.6rem;
+        border-radius: 10px;
+        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+        background: linear-gradient(135deg, #2c3e50, #3b4b5e); /* Blago tamnija pozadina */
+        max-width: 95vw;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+    }
+
+    #btc-price, #eth-price {
+        font-size: 0.95rem;
+        padding: 0.2rem 0.4rem;
+        border-radius: 6px;
+        background-color: rgba(255, 255, 255, 0.04);
+    }
+
+    #btc-price::before, #eth-price::before {
+        font-size: 1rem;
+        margin-right: 0.4rem;
+    }
+}
+
 </style>
 </head>
 <body>
@@ -753,6 +835,7 @@ Ovo su neki od dijelova iz našeg priručnika za kriptovalute  od autora:<br> Mi
     </script>
 </body>
 </html>
+
 
 
 
