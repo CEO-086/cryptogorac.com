@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="sr">
 <head>
@@ -541,77 +540,6 @@
 .btn-back-to-top.show {
     display: block; /* Prikazuje se kada se doda klasa 'show' */
 }
-/* CSS dio za stilizovanje cijena. Ovo možete dodati u postojeći <style> tag ili modificirati .price-bar ako je potrebno. Boje i stilovi uklopljeni sa temom sajta (zelena za cijene, bijeli tekst, itd.). */
-.price-bar {
-    position: fixed;
-    top: 90px;
-    right: 20px;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: #ecf0f1;
-    text-align: center;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-radius: 12px;
-    border: 1px solid rgba(26, 188, 156, 0.5);
-    transition: all 0.3s ease;
-    display: inline-flex; /* Dinamična širina prema sadržaju */
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    max-width: calc(100% - 40px); /* Da ne izađe van ekrana */
-    white-space: nowrap; /* Sprečava prelamanje teksta */
-}
-
-.price-bar:hover {
-    box-shadow: 0 6px 16px rgba(26, 188, 156, 0.6);
-    transform: translateY(-2px);
-}
-
-#btc-price, #eth-price {
-    color: #1abc9c;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05); /* Blaga pozadina za cijenu */
-    border-radius: 8px;
-}
-
-#btc-price::before {
-    content: '₿';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-    color: #f7931a;
-}
-
-#eth-price::before {
-    content: 'Ξ';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-    color: #627eea;
-}
-
-@media (max-width: 768px) {
-    .price-bar {
-        top: 70px;
-        right: 10px;
-        flex-direction: column;
-        font-size: 1rem;
-        gap: 0.5rem;
-        padding: 0.5rem 1rem;
-        width: auto;
-        max-width: 90vw;
-    }
-
-    #btc-price, #eth-price {
-        justify-content: center;
-        width: 100%;
-    }
-}
-
 </style>
 </head>
 <body>
@@ -661,11 +589,6 @@
     </nav>
 
     <main>
-        <!-- HTML dio za prikaz cijena BTC i ETH. Dodajte ovo unutar <div class="price-bar"> ili kao novi fiksni element ispod navi bara. Ako želite da zamijeni postojeći sadržaj .price-bar, zamijenite <div class="price-bar">Cijena: 100€</div> sa ovim: -->
-<div class="price-bar">
-    <span id="btc-price">BTC: Učitavanje...</span> | 
-    <span id="eth-price">ETH: Učitavanje...</span>
-</div>
         <div style="margin-bottom: 50px;"></div>
         
 
@@ -686,11 +609,11 @@
              <div class="tekst-kontejner">
     <h2>Blockchain tehnologija</h2>
  <p>Priručnike možete naručiti odmah putem društvenih mreža.</p>
-    <div class="store-icons">
-       <a href="https://x.com/" target="_blank" class="store-link" title="Visit us on X">
+   <div class="store-icons">
+       <a href="https://x.com/cryptogorac" target="_blank" class="store-link" title="Visit us on X">
     <i class="fab fa-x-twitter"></i>
 </a>
-<a href="https://www.instagram.com/" target="_blank" class="store-link" title="Visit us on Instagram">
+<a href="https://www.instagram.com/cryptogorac/" target="_blank" class="store-link" title="Visit us on Instagram">
     <i class="fab fa-instagram"></i>
 </a>
       
@@ -911,31 +834,10 @@ Ovo su neki od dijelova iz našeg priručnika za Blockchain tehnologija od autor
                 behavior: 'smooth'
             });
         });
-        async function updatePrices() {
-    try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
-        const data = await response.json();
-        
-        const btcPrice = data.bitcoin.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        const ethPrice = data.ethereum.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        
-        document.getElementById('btc-price').textContent = `BTC: ${btcPrice}`;
-        document.getElementById('eth-price').textContent = `ETH: ${ethPrice}`;
-    } catch (error) {
-        console.error('Greška pri dohvaćanju cijena:', error);
-        document.getElementById('btc-price').textContent = 'BTC: Greška';
-        document.getElementById('eth-price').textContent = 'ETH: Greška';
-    }
-}
-
-// Pozovi funkciju na učitavanju stranice
-window.addEventListener('load', updatePrices);
-
-// Ažuriraj svakih 60 sekundi
-setInterval(updatePrices, 60000);
     </script>
 </body>
 </html>
+
 
 
 
