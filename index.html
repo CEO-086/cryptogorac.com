@@ -757,12 +757,13 @@
             }
         }
 
-/* ====================== PROJEKTI ====================== */
-/* === OBICNE KARTICE - VEĆI LOGO === */
+/* ====================== PROJEKTI SEKCIJA ====================== */
+
+/* Občne kartice */
 .project-card {
   background: #f8f9fa;
   border-radius: 16px;
-  padding: 20px 16px 24px;
+  padding: 24px 16px 28px;
   text-align: center;
   height: 100%;
   transition: all 0.3s ease;
@@ -770,16 +771,21 @@
   border: 1px solid #e9ecef;
 }
 
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+}
+
 .project-logo {
-  width: 120px;           /* ← VEĆI */
-  height: 120px;          /* ← VEĆI */
+  width: 130px;
+  height: 130px;
   object-fit: contain;
-  margin-bottom: 16px;
+  margin-bottom: 18px;
   transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-logo {
-  transform: scale(1.08);   /* blago uvećanje na hover */
+  transform: scale(1.08);
 }
 
 .project-name {
@@ -789,27 +795,47 @@
   margin: 0;
 }
 
-/* === POSEBNA MotoGorac KARTICA - JOŠ VEĆI LOGO === */
+/* Posebna MotoGorac kartica */
 .special-project {
   background: linear-gradient(135deg, #fffaf0 0%, #fff9e6 100%);
   border: 3px solid #f39c12;
   border-radius: 20px;
-  padding: 40px 30px 35px;
+  padding: 40px 30px 38px;
   text-align: center;
   position: relative;
   box-shadow: 0 10px 30px rgba(243, 156, 18, 0.18);
-  min-height: 300px;
+  min-height: 340px;
+  width: 100%;
+  max-width: 520px;
+  margin: 0 auto;
+  transition: all 0.3s ease;
+}
+
+.special-project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(243, 156, 18, 0.25);
+}
+
+.badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f39c12;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 50px;
+  white-space: nowrap;
+  box-shadow: 0 5px 12px rgba(243, 156, 18, 0.3);
 }
 
 .special-logo {
-  width: 180px;           /* ← JOŠ VEĆI */
-  height: 180px;          /* ← JOŠ VEĆI */
+  width: 175px;
+  height: 175px;
   object-fit: contain;
-  margin-bottom: 20px;
-}
-
-.special-project:hover .special-logo {
-  transform: scale(1.05);
+  margin-bottom: 22px;
 }
 
 .special-name {
@@ -821,8 +847,16 @@
 
 .special-desc {
   color: #e67e22;
-  font-size: 1.1rem;
+  font-size: 1.12rem;
   font-weight: 500;
+  margin: 0;
+}
+
+/* Responzivnost */
+@media (max-width: 576px) {
+  .project-logo { width: 110px; height: 110px; }
+  .special-logo { width: 150px; height: 150px; }
+  .special-project { min-height: 300px; padding: 35px 20px 30px; }
 }
         
              /* kripto za knjige */
@@ -1460,21 +1494,21 @@
 
                       <div style="margin-bottom: 30px;"></div>
 
-<!-- ====================== PROJEKTI SEKCIJA ====================== -->
 
-<section style="background-color: #ffffff; padding: 80px 0 60px 0; border-top: 1px solid #1abc9c;">
+<!-- ====================== PROJEKTI SEKCIJA ====================== -->
+<section style="background-color: #ffffff; padding: 90px 0 70px 0;">
   <div class="container">
-    
+
     <div class="text-center mb-5">
-      <h2 style="color: #2c3e50; font-size: 2.4rem; font-weight: 700;">
+      <h2 style="color: #2c3e50; font-size: 2.5rem; font-weight: 700;">
         Projekti koje smo realizovali
       </h2>
     </div>
 
+    <!-- 4 obične kartice -->
     <div class="row g-4 justify-content-center">
 
-      <!-- Good Food -->
-      <div class="col-6 col-md-6 col-lg-3">
+      <div class="col-6 col-lg-3 col-md-6">
         <a href="https://www.goodfood-mne.com" target="_blank" class="text-decoration-none">
           <div class="project-card">
             <img src="goodfood.png" class="project-logo" alt="Good Food">
@@ -1483,18 +1517,16 @@
         </a>
       </div>
 
-      <!-- Montebilans -->
-      <div class="col-6 col-md-6 col-lg-3">
+      <div class="col-6 col-lg-3 col-md-6">
         <a href="https://www.montebilans.me" target="_blank" class="text-decoration-none">
           <div class="project-card">
-            <img src="motnebilans.png" class="project-logo" alt="Montebilans">
+            <img src="montebilans.png" class="project-logo" alt="Montebilans">
             <p class="project-name">Montebilans</p>
           </div>
         </a>
       </div>
 
-      <!-- City Apartments -->
-      <div class="col-6 col-md-6 col-lg-3">
+      <div class="col-6 col-lg-3 col-md-6">
         <a href="https://www.city-apartments.me" target="_blank" class="text-decoration-none">
           <div class="project-card">
             <img src="city-apartments.png" class="project-logo" alt="City Apartments">
@@ -1503,8 +1535,7 @@
         </a>
       </div>
 
-      <!-- Unique Production -->
-      <div class="col-6 col-md-6 col-lg-3">
+      <div class="col-6 col-lg-3 col-md-6">
         <a href="https://www.uniqueproduction.me" target="_blank" class="text-decoration-none">
           <div class="project-card">
             <img src="unique-production.png" class="project-logo" alt="Unique Production">
@@ -1515,15 +1546,15 @@
 
     </div>
 
-    <!-- MotoGorac -->
+    <!-- MotoGorac - posebna kartica -->
     <div class="row justify-content-center mt-5">
       <div class="col-12 col-lg-6">
         <a href="https://motogorac.com" target="_blank" class="text-decoration-none">
-          <div class="special-project-simple">
+          <div class="special-project">
             <div class="badge">VLASTITI PROIZVOD</div>
             <img src="motgorac.jpg" class="special-logo" alt="MotoGorac">
             <p class="special-name">MotoGorac.com</p>
-            <p style="color: #e67e22; font-size: 15px;">Oglasnik za motore</p>
+            <p class="special-desc">Oglasnik za motore</p>
           </div>
         </a>
       </div>
