@@ -757,6 +757,92 @@
             }
         }
 
+/* ====================== PROJEKTI ====================== */
+.project-card {
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 28px 20px;
+  text-align: center;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  border: 1px solid #e9ecef;
+}
+
+.project-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+
+.project-logo {
+  width: 70px;
+  height: 70px;
+  object-fit: contain;
+  margin-bottom: 16px;
+}
+
+.project-name {
+  color: #2c3e50;
+  font-weight: 600;
+  font-size: 1.15rem;
+  margin: 0;
+}
+
+/* === POSEBNA KARTICA MotoGorac === */
+.special-project {
+  background: linear-gradient(135deg, #fffaf0 0%, #fff9e6 100%);
+  border: 3px solid #f39c12;
+  border-radius: 20px;
+  padding: 50px 30px 45px;     /* ← POVEĆALI SMO VERTIKALNI PADDING */
+  text-align: center;
+  position: relative;
+  box-shadow: 0 10px 30px rgba(243, 156, 18, 0.18);
+  transition: all 0.3s ease;
+  min-height: 280px;            /* ← Minimalna visina (možeš povećati) */
+  width: 100%;                  /* Širina ostaje ista */
+}
+
+.special-project:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 18px 40px rgba(243, 156, 18, 0.25);
+}
+
+.badge {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #f39c12;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 8px 22px;
+  border-radius: 50px;
+  white-space: nowrap;
+  box-shadow: 0 5px 12px rgba(243, 156, 18, 0.3);
+}
+
+.special-logo {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+  margin-bottom: 20px;          /* malo veći razmak ispod loga */
+}
+
+.special-name {
+  color: #2c3e50;
+  font-size: 1.55rem;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.special-desc {
+  color: #e67e22;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin: 0;
+}        
+        
              /* kripto za knjige */
     /* Stil za kontejner karusela */
         .carousel-container {
@@ -1390,7 +1476,75 @@
   
   </div>
 
-            <div style="margin-bottom: 70px;"></div>
+                      <div style="margin-bottom: 30px;"></div>
+
+<!-- ====================== PROJEKTI SEKCIJA ====================== -->
+<section style="background-color: #ffffff; padding: 90px 0 70px 0;">
+  <div class="container">
+
+    <div class="text-center mb-5">
+      <h2 style="color: #2c3e50; font-size: 2.5rem; font-weight: 700;">
+        Projekti koje smo realizovali
+      </h2>
+    </div>
+
+    <!-- Četiri obične kartice -->
+    <div class="row g-4 justify-content-center">
+
+      <div class="col-6 col-lg-3 col-md-6">
+        <a href="https://www.goodfood-mne.com" target="_blank" class="text-decoration-none">
+          <div class="project-card">
+            <img src="goodfood.png" class="project-logo" alt="Good Food">
+            
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-lg-3 col-md-6">
+        <a href="https://www.montebilans.me" target="_blank" class="text-decoration-none">
+          <div class="project-card">
+            <img src="montebilans.png" class="project-logo" alt="Montebilans">
+            
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-lg-3 col-md-6">
+        <a href="https://www.city-apartments.me" target="_blank" class="text-decoration-none">
+          <div class="project-card">
+            <img src="city-apartments.png" class="project-logo" alt="City Apartments">
+            
+          </div>
+        </a>
+      </div>
+
+      <div class="col-6 col-lg-3 col-md-6">
+        <a href="https://www.uniqueproduction.me" target="_blank" class="text-decoration-none">
+          <div class="project-card">
+            <img src="unique-production.png" class="project-logo" alt="Unique Production">
+            
+          </div>
+        </a>
+      </div>
+
+    </div>
+
+    <!-- MotoGorac - posebna kartica -->
+    <div class="row justify-content-center mt-5">
+      <div class="col-12 col-lg-6">
+        <a href="https://motogorac.com" target="_blank" class="text-decoration-none">
+          <div class="special-project">
+            <div class="badge">VLASTITI PROIZVOD</div>
+            <img src="motogorac.png" class="special-logo" alt="MotoGorac">
+            
+            
+          </div>
+        </a>
+      </div>
+    </div>
+
+  </div>
+</section>
 
            <div class="line"></div>
 
