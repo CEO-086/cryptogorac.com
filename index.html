@@ -758,85 +758,72 @@
         }
 
 /* ====================== PROJEKTI ====================== */
+/* === OBICNE KARTICE - VEĆI LOGO === */
 .project-card {
-  background-color: #f8f9fa;
-  border: 1px solid #e0e0e0;
-  border-radius: 20px;
-  padding: 25px 20px 20px;
+  background: #f8f9fa;
+  border-radius: 16px;
+  padding: 20px 16px 24px;
+  text-align: center;
   height: 100%;
-  min-height: 220px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-.project-card:hover {
-  border-color: #1abc9c;
-  transform: translateY(-6px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.1);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  border: 1px solid #e9ecef;
 }
 
 .project-logo {
-  width: 110px;           /* VEĆE */
-  height: 110px;
+  width: 120px;           /* ← VEĆI */
+  height: 120px;          /* ← VEĆI */
   object-fit: contain;
-  filter: grayscale(70%);
-  transition: filter 0.4s ease;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
+  transition: transform 0.3s ease;
 }
 
 .project-card:hover .project-logo {
-  filter: grayscale(0%);
+  transform: scale(1.08);   /* blago uvećanje na hover */
 }
 
 .project-name {
   color: #2c3e50;
-  font-size: 15px;
-  font-weight: 500;
-  text-align: center;
+  font-weight: 600;
+  font-size: 1.15rem;
   margin: 0;
 }
 
-/* MotoGorac */
-.special-project-simple {
-  background: linear-gradient(145deg, #fffaf0, #fff);
-  border: 2px solid #e67e22;
-  border-radius: 24px;
-  padding: 40px 30px;
+/* === POSEBNA MotoGorac KARTICA - JOŠ VEĆI LOGO === */
+.special-project {
+  background: linear-gradient(135deg, #fffaf0 0%, #fff9e6 100%);
+  border: 3px solid #f39c12;
+  border-radius: 20px;
+  padding: 40px 30px 35px;
   text-align: center;
   position: relative;
-  transition: all 0.4s ease;
-  box-shadow: 0 8px 25px rgba(230, 126, 34, 0.15);
-}
-
-.special-project-simple:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 25px 45px rgba(230, 126, 34, 0.3);
+  box-shadow: 0 10px 30px rgba(243, 156, 18, 0.18);
+  min-height: 300px;
 }
 
 .special-logo {
-  width: 130px;
-  height: 130px;
+  width: 180px;           /* ← JOŠ VEĆI */
+  height: 180px;          /* ← JOŠ VEĆI */
   object-fit: contain;
-  transition: none;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
-.badge {
-  position: absolute;
-  top: -14px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #e67e22;
-  color: white;
-  font-size: 11px;
+.special-project:hover .special-logo {
+  transform: scale(1.05);
+}
+
+.special-name {
+  color: #2c3e50;
+  font-size: 1.6rem;
   font-weight: 700;
-  padding: 5px 18px;
-  border-radius: 9999px;
-}  
+  margin: 0 0 8px 0;
+}
+
+.special-desc {
+  color: #e67e22;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
         
              /* kripto za knjige */
     /* Stil za kontejner karusela */
