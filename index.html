@@ -758,6 +758,101 @@
         }
 
 
+        /* ===================== PROJEKTI - SLIKE ===================== */
+.projects-section {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.project-card {
+    background: white;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+    transition: all 0.4s ease;
+    text-decoration: none;
+    color: #2c3e50;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 35px rgba(26, 188, 156, 0.18);
+}
+
+.project-card img {
+    width: 100%;
+    height: 180px;           /* Idealna visina za male kartice */
+    object-fit: cover;       /* Slika se lijepo popunjava bez kidanja */
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.project-card span {
+    padding: 16px;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.1rem;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* MotoGorac velika kartica */
+.moto-card {
+    display: block;
+    max-width: 720px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    text-decoration: none;
+    color: #2c3e50;
+    transition: all 0.4s ease;
+}
+
+.moto-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 25px 50px rgba(26, 188, 156, 0.2);
+}
+
+.moto-card img {
+    width: 100%;
+    height: 380px;           /* Idealna visina za veliku karticu */
+    object-fit: cover;
+}
+
+.moto-card span {
+    display: block;
+    padding: 20px;
+    text-align: center;
+    font-size: 1.75rem;
+    font-weight: 700;
+    background: #f8fafc;
+}
+
+/* Responzivnost */
+@media (max-width: 768px) {
+    .project-card img {
+        height: 160px;
+    }
+    .moto-card img {
+        height: 280px;
+    }
+}
+
+
         
              /* kripto za knjige */
     /* Stil za kontejner karusela */
@@ -1393,6 +1488,48 @@
   </div>
 
                       <div style="margin-bottom: 60px;"></div>
+        <!-- ==================== PROJEKTI SEKCIJA ==================== -->
+<div style="margin-bottom: 80px;"></div>
+
+<h1 style="text-align: center; color: #1abc9c; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); margin-bottom: 50px;">
+  Projekti koje smo realizovali
+  <div style="width: 60px; height: 3px; background-color: #1abc9c; margin: 15px auto;"></div>
+</h1>
+
+<div class="projects-section">
+  
+  <!-- 4 male kartice sa slikama -->
+  <div class="projects-grid">
+    <a href="LINK1" target="_blank" class="project-card">
+      <img src="slike/good-food.jpg" alt="Good Food">
+      <span>Good Food</span>
+    </a>
+    
+    <a href="LINK2" target="_blank" class="project-card">
+      <img src="slike/montebilans.jpg" alt="Montebilans">
+      <span>Montebilans</span>
+    </a>
+    
+    <a href="LINK3" target="_blank" class="project-card">
+      <img src="slike/city-apartments.jpg" alt="City Apartments">
+      <span>City Apartments</span>
+    </a>
+    
+    <a href="LINK4" target="_blank" class="project-card">
+      <img src="slike/unique-production.jpg" alt="Unique Production">
+      <span>Unique Production</span>
+    </a>
+  </div>
+
+  <!-- MotoGorac velika kartica -->
+  <a href="LINK-MOTOGORAC" target="_blank" class="moto-card">
+    <img src="slike/motogorac.jpg" alt="MotoGorac">
+    <span>MotoGorac</span>
+  </a>
+
+</div>
+
+<div style="margin-bottom: 100px;"></div>
 
 
 
