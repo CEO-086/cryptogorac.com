@@ -826,11 +826,11 @@
     justify-content: center;
 }
 
-/* MotoGorac kartica */
+/* MotoGorac kartica - Značka u gornjem lijevom uglu */
 .moto-card {
     display: block;
     max-width: 720px;
-    margin: 62px auto 0;
+    margin: 40px auto 0;
     background: white;
     border: 3px solid #f97316;
     border-radius: 24px;
@@ -842,22 +842,22 @@
     overflow: hidden;
 }
 
+/* Značka u gornjem lijevom uglu */
 .moto-card::before {
     content: "VLASTITI PROIZVOD";
     position: absolute;
-    top: -14px;
-    left: 50%;
-    transform: translateX(-50%);
+    top: 16px;           /* razmak od vrha */
+    left: 20px;          /* razmak od lijeve ivice */
     background: #f97316;
     color: white;
-    font-size: 0.82rem;
+    font-size: 0.78rem;
     font-weight: 700;
-    padding: 7px 24px;
+    padding: 6px 18px;
     border-radius: 30px;
-    box-shadow: 0 5px 14px rgba(249, 115, 22, 0.4);
+    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.4);
     z-index: 10;
     white-space: nowrap;
-    border: 1px solid white;        /* Umanjen bijeli rub na 1px */
+    border: 2px solid white;
 }
 
 .moto-card:hover {
@@ -896,8 +896,11 @@
         font-size: 1.5rem;
         padding: 18px;
     }
-    .moto-card {
-        margin: 50px auto 0;
+    .moto-card::before {
+        font-size: 0.72rem;
+        padding: 5px 16px;
+        top: 12px;
+        left: 16px;
     }
 }
 
