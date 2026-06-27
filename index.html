@@ -804,7 +804,7 @@
 
 .project-card:hover {
     transform: translateY(-12px);
-    border-color: #059669;               /* Tamnija zelena na hover */
+    border-color: #059669;
     box-shadow: 0 20px 35px rgba(16, 185, 129, 0.25);
 }
 
@@ -826,38 +826,40 @@
     justify-content: center;
 }
 
-/* === MotoGorac kartica === */
+/* === MotoGorac kartica - POPRAVLJENO === */
 .moto-card {
     display: block;
     max-width: 720px;
-    margin: 40px auto 0;
+    margin: 55px auto 0;                 /* Veći razmak odozgo */
     background: white;
-    border: 3px solid #f97316;           /* Orange okvir */
+    border: 3px solid #f97316;
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
     text-decoration: none;
     color: #2c3e50;
     transition: all 0.4s ease;
-    position: relative;                  /* Za značku */
+    position: relative;
     overflow: visible;
 }
 
+/* Značka - bolje pozicionirana */
 .moto-card::before {
     content: "VLASTITI PROIZVOD";
     position: absolute;
-    top: -14px;
+    top: -17px;
     left: 50%;
     transform: translateX(-50%);
     background: #f97316;
     color: white;
-    font-size: 0.85rem;
+    font-size: 0.83rem;
     font-weight: 700;
-    padding: 6px 22px;
+    padding: 7px 24px;
     border-radius: 30px;
-    box-shadow: 0 4px 12px rgba(249, 115, 22, 0.35);
-    z-index: 2;
+    box-shadow: 0 6px 15px rgba(249, 115, 22, 0.4);
+    z-index: 10;
     white-space: nowrap;
+    border: 2px solid white;             /* Bijeli rub za bolji izgled */
 }
 
 .moto-card:hover {
@@ -892,6 +894,9 @@
     .moto-card span {
         font-size: 1.5rem;
         padding: 16px;
+    }
+    .moto-card {
+        margin: 45px auto 0;
     }
 }
 
