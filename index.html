@@ -772,7 +772,7 @@
     margin-bottom: 60px;
 }
 
-/* Responzivnost - 2 kolone na mobilnim i tabletima */
+/* Responzivnost */
 @media (max-width: 992px) {
     .projects-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -787,7 +787,7 @@
     }
 }
 
-/* === Male kartice === */
+/* Male kartice */
 .project-card {
     background: white;
     border: 2px solid #10b981;
@@ -826,20 +826,20 @@
     justify-content: center;
 }
 
-/* === MotoGorac kartica - ISpravljeno === */
+/* MotoGorac - Konačna ispravka */
 .moto-card {
     display: block;
     max-width: 720px;
     margin: 55px auto 0;
     background: white;
     border: 3px solid #f97316;
-    border-radius: 24px;           /* Malo veći radius za ljepši izgled */
+    border-radius: 24px;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     text-decoration: none;
     color: #2c3e50;
     transition: all 0.4s ease;
     position: relative;
-    overflow: visible;             /* VAŽNO - da ne siječe ivice */
+    overflow: hidden;           /* Vraćamo hidden ovdje */
 }
 
 .moto-card::before {
@@ -866,10 +866,12 @@
     box-shadow: 0 25px 50px rgba(249, 115, 22, 0.35);
 }
 
+/* VAŽNO - Slika sa zaobljenim ivicama */
 .moto-card img {
     width: 100%;
     height: 380px;
     object-fit: cover;
+    border-radius: 21px 21px 0 0;   /* Zaobljuje gornje ivice */
     display: block;
 }
 
@@ -882,20 +884,18 @@
     background: #f8fafc;
 }
 
-/* Responzivnost za male ekrane */
+/* Responzivnost */
 @media (max-width: 576px) {
     .project-card img {
         height: 160px;
     }
     .moto-card img {
         height: 260px;
+        border-radius: 21px 21px 0 0;
     }
     .moto-card span {
         font-size: 1.5rem;
         padding: 18px;
-    }
-    .moto-card {
-        margin: 45px auto 0;
     }
 }
 
