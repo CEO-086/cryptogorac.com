@@ -758,7 +758,7 @@
         }
 
 
-        /* ===================== PROJEKTI - SLIKE ===================== */
+     /* ===================== PROJEKTI - SLIKE ===================== */
 .projects-section {
     max-width: 1200px;
     margin: 0 auto;
@@ -770,6 +770,21 @@
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 24px;
     margin-bottom: 60px;
+}
+
+/* === Eksplicitno podešavanje za mobilne i tablete === */
+@media (max-width: 992px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);   /* 2 kolone na tabletima i mobilnim */
+        gap: 20px;
+    }
+}
+
+@media (max-width: 576px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);   /* i dalje 2 kolone na malim telefonima */
+        gap: 16px;
+    }
 }
 
 .project-card {
@@ -792,8 +807,8 @@
 
 .project-card img {
     width: 100%;
-    height: 180px;           /* Idealna visina za male kartice */
-    object-fit: cover;       /* Slika se lijepo popunjava bez kidanja */
+    height: 180px;
+    object-fit: cover;
     border-bottom: 1px solid #f1f1f1;
 }
 
@@ -801,18 +816,18 @@
     padding: 16px;
     text-align: center;
     font-weight: 600;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
-/* MotoGorac velika kartica */
+/* MotoGorac - ostaje nepromijenjen */
 .moto-card {
     display: block;
     max-width: 720px;
-    margin: 0 auto;
+    margin: 40px auto 0;
     background: white;
     border-radius: 20px;
     overflow: hidden;
@@ -829,7 +844,7 @@
 
 .moto-card img {
     width: 100%;
-    height: 380px;           /* Idealna visina za veliku karticu */
+    height: 380px;
     object-fit: cover;
 }
 
@@ -842,13 +857,17 @@
     background: #f8fafc;
 }
 
-/* Responzivnost */
-@media (max-width: 768px) {
+/* Još bolja responzivnost za male ekrane */
+@media (max-width: 576px) {
     .project-card img {
         height: 160px;
     }
     .moto-card img {
-        height: 280px;
+        height: 260px;        /* malo niže na telefonu */
+    }
+    .moto-card span {
+        font-size: 1.5rem;
+        padding: 16px;
     }
 }
 
