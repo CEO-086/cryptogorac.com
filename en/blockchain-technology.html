@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Blockchain Technology — handbook | CryptoGorac.com</title>
+  <meta name="description" content="What blockchain is, its key elements and how it works, types of blockchain networks, cryptographic keys, risks, attacks and protection strategies.">
+  <link rel="canonical" href="https://www.cryptogorac.com/en/blockchain-technology.html">
+  <link rel="alternate" hreflang="sr-ME" href="https://www.cryptogorac.com/blockchain-tehnologije.html">
+  <link rel="alternate" hreflang="en" href="https://www.cryptogorac.com/en/blockchain-technology.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.cryptogorac.com/blockchain-tehnologije.html">
+  <meta name="theme-color" content="#2c3e50">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CryptoGorac.com">
+  <meta property="og:locale" content="en_US">
+  <meta property="og:title" content="Blockchain Technology — handbook | CryptoGorac.com">
+  <meta property="og:description" content="What blockchain is, its key elements and how it works, types of blockchain networks, cryptographic keys, risks, attacks and protection strategies.">
+  <meta property="og:url" content="https://www.cryptogorac.com/en/blockchain-technology.html">
+  <meta property="og:image" content="https://www.cryptogorac.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CryptoGorac.com — a software studio from Podgorica">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@cryptogorac">
+
+  <link rel="icon" href="../favicon.ico" sizes="48x48">
+  <link rel="icon" href="../assets/img/icon-32.png" sizes="32x32" type="image/png">
+  <meta name="application-name" content="CryptoGorac">
+  <meta name="apple-mobile-web-app-title" content="CryptoGorac">
+  <meta name="msapplication-TileColor" content="#2c3e50">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+  <link rel="preload" href="../assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/site.css?v=2026-10g">
+  <script src="../assets/js/site.js?v=2026-10g" defer></script>
+  <link rel="preconnect" href="https://api.coingecko.com" crossorigin>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https://www.cryptogorac.com/en/blockchain-technology.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://www.cryptogorac.com/en/"},{"@type":"ListItem","position":2,"name":"Crypto education","item":"https://www.cryptogorac.com/en/#edu-naslov"},{"@type":"ListItem","position":3,"name":"Blockchain Technology","item":"https://www.cryptogorac.com/en/blockchain-technology.html"}]},{"@type":"Book","name":"Blockchain Technology","description":"What blockchain is, its key elements and how it works, types of blockchain networks, cryptographic keys, risks, attacks and protection strategies.","url":"https://www.cryptogorac.com/en/blockchain-technology.html","inLanguage":"en","author":{"@id":"https://www.cryptogorac.com/#org"},"publisher":{"@id":"https://www.cryptogorac.com/#org"},"image":"https://www.cryptogorac.com/assets/img/blockchain.webp","bookFormat":"https://schema.org/Paperback"}]}</script>
+</head>
+<body class="theme-crypto">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Main navigation">
+      <a class="brand" href="index.html" aria-label="CryptoGorac.com — home">
+        <img src="../assets/img/logo-navi.webp" alt="" width="250" height="40">
+      </a>
+      <div class="lang-switch" role="group" aria-label="Language / Jezik"><a href="../blockchain-tehnologije.html" hreflang="sr-ME" lang="sr-ME">SRB</a><span aria-hidden="true">|</span><a href="blockchain-technology.html" hreflang="en" aria-current="true">ENG</a></div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Open menu"><span class="bars"></span></button>
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="index.html">Home</a></li>
+          <li><a class="nav-link" href="about.html">About us</a></li>
+          <li class="nav-item">
+            <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="sub-usluge">Services <svg class="chev" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#chev"></use></svg></button>
+            <ul class="nav-sub" id="sub-usluge">
+              <li><a href="it-consulting.html">IT consulting</a></li>
+              <li><a href="websites.html">Websites</a></li>
+              <li><a href="web-apps.html">Web applications</a></li>
+              <li><a href="desktop-apps.html">Desktop applications</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <button class="nav-sub-toggle is-current" type="button" aria-expanded="false" aria-controls="sub-edukacija">Crypto education <svg class="chev" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#chev"></use></svg></button>
+            <ul class="nav-sub" id="sub-edukacija">
+              <li><a href="cryptocurrencies.html">Cryptocurrencies</a></li>
+              <li><a href="blockchain-technology.html" aria-current="page">Blockchain Technology</a></li>
+              <li><a href="trading-techniques.html">Trading Techniques</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link" href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" tabindex="-1">
+    <section class="page-hero">
+      <div class="container">
+        <div class="price-bar" role="status" aria-label="Current prices">
+          <span class="price-chip"><span class="coin coin-btc" aria-hidden="true">₿</span>BTC: <span id="btc-price">loading…</span></span>
+          <span class="price-chip"><span class="coin coin-eth" aria-hidden="true">Ξ</span>ETH: <span id="eth-price">loading…</span></span>
+        </div>
+        <div class="article-hero">
+          <img class="cover" src="../assets/img/blockchain.webp" alt="Cover of the CryptoGorac handbook on blockchain technology" width="720" height="1078">
+          <div>
+            <span class="eyebrow">Crypto education · handbook</span>
+            <h1>Blockchain Technology</h1>
+            <p class="lead">Blockchain is a distributed, decentralized database that enables a secure, transparent and immutable record of data.</p>
+            <p>You can order the handbooks right away through our social media.</p>
+            <div class="social social-light">
+            <a href="https://x.com/cryptogorac" target="_blank" rel="noopener" aria-label="CryptoGorac on X"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#x"></use></svg></a>
+          <a href="https://www.instagram.com/cryptogorac/" target="_blank" rel="noopener" aria-label="CryptoGorac on Instagram"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#instagram"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="ticker" role="marquee" aria-label="Giveaway">
+      <div class="ticker-track">
+        <span>Blockchain Technology — <b>CryptoGorac.com</b> — Follow, like and tag two friends on X and Instagram – learn with the handbook and win a prize! The giveaway starts October 1 and runs until November 1!</span>
+        <span aria-hidden="true">Blockchain Technology — <b>CryptoGorac.com</b> — Follow, like and tag two friends on X and Instagram – learn with the handbook and win a prize! The giveaway starts October 1 and runs until November 1!</span>
+      </div>
+    </div>
+
+    <section class="section">
+      <div class="container-narrow">
+        <article class="prose">
+          <nav class="toc" aria-labelledby="toc-naslov">
+            <h2 id="toc-naslov">Contents</h2>
+            <ol>
+              <li><a href="#sta-je-blockchain">What is blockchain?</a></li>
+              <li><a href="#vrste-mreza">Types of blockchain networks</a></li>
+              <li><a href="#kriptografija">Cryptography in blockchain</a></li>
+              <li><a href="#rizici">Risks and challenges</a></li>
+            </ol>
+          </nav>
+
+          <h2 id="sta-je-blockchain">What is blockchain?</h2>
+          <p>Blockchain is a distributed, decentralized database that enables a secure, transparent and immutable record of data. The basic structure of blockchain technology consists of chains of blocks, where each block contains a set of transactions or data, along with a unique identifier (hash) of the previous block. This linkage between blocks creates a chain that is resistant to tampering and fraud.</p>
+          <h3>Key elements of blockchain</h3>
+          <ol>
+          <li><strong>Decentralization:</strong> Instead of data being stored on a single centralized server, a blockchain is spread across a network of interconnected computers (nodes). Every node in the network holds a copy of the entire chain of blocks, which increases resilience to attacks and failures.</li>
+          <li><strong>Transparency:</strong> All transactions on a blockchain network are public and accessible to everyone. This transparency allows users to check and verify transactions, reducing the potential for fraud.</li>
+          <li><strong>Security:</strong> Using cryptographic techniques such as hash functions, blockchain ensures data integrity. Each block contains the hash of the previous block, which means that any change to earlier data would require changing all subsequent blocks, which is almost impossible without the consent of the network.</li>
+          <li><strong>Immutability:</strong> Once data has been written to a blockchain, it cannot simply be modified or deleted. This property is essential for applications that require a high level of trust, such as financial transactions, contracts or records.</li>
+          </ol>
+          <h3>How it works</h3>
+          <p>When a user wants to make a transaction (e.g., transfer cryptocurrency), that transaction is broadcast to the network. Nodes in the network check and validate the transaction using consensus algorithms. Once the transaction is confirmed, it is grouped with other transactions into a block. After the block is filled, it is added to the end of the chain, and the process starts over.</p>
+
+          <h2 id="vrste-mreza">Types of blockchain networks</h2>
+          <h3>Public blockchain</h3>
+          <p>A public blockchain is an open network accessible to everyone. Anyone can participate in the network, validate transactions and add new blocks.</p>
+          <p><strong>Advantages:</strong></p>
+          <ul>
+          <li><strong>Decentralization:</strong> there is no central point of control, which increases security and resilience to attacks.</li>
+          <li><strong>Transparency:</strong> all transactions are publicly available and can be verified by anyone.</li>
+          <li><strong>Security:</strong> the large number of participants makes the network more secure against attacks.</li>
+          </ul>
+          <p><strong>Disadvantages:</strong></p>
+          <ul>
+          <li><strong>Scalability:</strong> public blockchains often struggle with scalability due to the high volume of transactions.</li>
+          <li><strong>Energy consumption:</strong> consensus algorithms such as Proof of Work (PoW) require large amounts of energy.</li>
+          <li><strong>Privacy:</strong> all transactions are public, which can be a problem for users who want privacy.</li>
+          </ul>
+          <h3>Private blockchain</h3>
+          <p>A private blockchain is a network with restricted access, where only selected participants can validate transactions and add blocks. Use in corporate environments:</p>
+          <ul>
+          <li><strong>Access control:</strong> only authorized participants can access the network, which allows greater control over data.</li>
+          <li><strong>Faster transactions:</strong> a smaller number of participants allows faster validation and transactions.</li>
+          <li><strong>Privacy:</strong> data is available only to authorized participants, which increases privacy.</li>
+          </ul>
+          <h3>Permissioned blockchain</h3>
+          <p>A permissioned blockchain combines features of public and private blockchains. Access to the network is restricted, but transactions can be publicly available. A combination of private and public access:</p>
+          <ul>
+          <li><strong>Flexibility:</strong> allows access control while keeping certain transactions transparent.</li>
+          <li><strong>Security:</strong> the combination of private access and public verification increases security.</li>
+          <li><strong>Efficiency:</strong> faster transactions with the option of public verification.</li>
+          </ul>
+          <h3>Consortium blockchain</h3>
+          <p>A consortium blockchain is a network governed by a group of organizations. This type of blockchain is often used in industry partnerships. Use in partnerships and industries:</p>
+          <ul>
+          <li><strong>Shared control:</strong> several organizations govern the network, which increases trust among partners.</li>
+          <li><strong>Cost reduction:</strong> sharing resources and infrastructure lowers costs.</li>
+          <li><strong>Specific applications:</strong> ideal for industries that require collaboration among multiple entities, such as finance, healthcare and logistics.</li>
+          </ul>
+
+          <h2 id="kriptografija">Cryptography in blockchain</h2>
+          <p>Cryptography sits at the center of the blockchain ecosystem, providing the core security mechanisms for protecting data, verifying transactions and maintaining the integrity of the system. Cryptographic keys are the heart of this security structure.</p>
+          <h3>The role of cryptographic keys</h3>
+          <p>Cryptographic keys are mathematical algorithms used to encrypt and decrypt data. There are two types of keys in asymmetric cryptography, which is dominant in blockchain technology:</p>
+          <ul>
+          <li><strong>Public key</strong> – the part of a digital identity that is available to everyone. Its function is twofold:
+          <ul>
+          <li><strong>Encryption:</strong> when someone sends a message or transfers funds, they use the public key to encrypt that information. Since the public key can be freely distributed, anyone can send encrypted data that only the owner of the corresponding private key can decrypt.</li>
+          <li><strong>Verification:</strong> the public key is used to check digital signatures, allowing participants to verify that a message or transaction was really sent by a specific individual or entity, with no possibility of forgery.</li>
+          </ul>
+          </li>
+          <li><strong>Private key</strong> – the secret component of the cryptographic pair. Its functions are:
+          <ul>
+          <li><strong>Decryption:</strong> this key is used to decrypt messages or transactions that were encrypted with the public key. The private key must remain private for the system to stay secure; a lost or exposed key can lead to loss of control over digital assets.</li>
+          <li><strong>Digital signing:</strong> when the private key is used to sign a transaction or message, it creates a digital signature that can be verified with the public key. This ensures that only the owner of the private key can authorize a transaction or confirm information.</li>
+          </ul>
+          </li>
+          </ul>
+          <h3>How does a key pair work?</h3>
+          <p>Asymmetric cryptography works on the principle of public–private key pairs.</p>
+          <ul>
+          <li><strong>Mathematical basis:</strong> this technology relies on complex mathematical problems, such as factoring large numbers in the case of the RSA algorithm, or elliptic curves in ECIES. Encryption and decryption are fast, but performing the reverse process (that is, deriving the private key from the public key) requires an extremely long time and computing resources, making the system practically unbreakable.</li>
+          <li><strong>Security:</strong> the security of the system lies in keeping the private key secret. Any transaction or message encrypted with the public key can be decrypted only with the corresponding private key, ensuring that only the rightful owner can access or authorize actions.</li>
+          </ul>
+          <h3>Impact on blockchain</h3>
+          <p>In the blockchain ecosystem, cryptography through keys provides:</p>
+          <ul>
+          <li><strong>Data integrity:</strong> any change to a transaction would be visible because of the digital signature.</li>
+          <li><strong>Authentication:</strong> verification of the identity of those sending transactions.</li>
+          <li><strong>Confidentiality:</strong> encryption ensures that only the intended recipients can decrypt and read the contents of a message or the details of a transaction. This is especially important for transaction privacy on public blockchain networks, where everyone can see transactions, but only those with the corresponding private key can decrypt and understand them.</li>
+          </ul>
+
+          <h2 id="rizici">Risks and challenges</h2>
+          <p>Despite its robustness and security, blockchain technology faces several risks and challenges that can affect the integrity, security and efficiency of the system.</p>
+          <h3>Hacker attacks</h3>
+          <ul>
+          <li><strong>51% attack:</strong> a theoretical attack in which, if a single entity controls the majority of the computing power (51%) in the network, it can manipulate transactions, prevent new transactions from being confirmed or even reverse transactions. In practice this is very difficult to pull off because of the decentralized nature of many blockchain networks, especially those with a large number of participants. <em>Risk:</em> in less decentralized networks or new cryptocurrencies, the risk of this attack can be higher.</li>
+          <li><strong>Sybil attack:</strong> the attacker creates many fake identities (nodes) in the network in order to gain more control or to disrupt the network. <em>Risk:</em> especially effective in consensus systems where the vote or power of nodes depends on their number.</li>
+          <li><strong>Other attacks on consensus protocols:</strong> there are other types of attacks as well, such as Double-spending, the Eclipse Attack (where the attacker isolates the victim from the rest of the network), etc.</li>
+          </ul>
+          <h3>Smart contract vulnerabilities</h3>
+          <p>Smart contracts are programs on a blockchain that execute automatically. However, they can be vulnerable to:</p>
+          <ul>
+          <li><strong>Code bugs:</strong> programming errors can lead to exploits, where an attacker uses a bug to carry out transactions that were never intended to be allowed.</li>
+          <li><strong>Reentrancy:</strong> a specific type of attack where a function calls itself before it finishes, which can lead to a loss of funds.</li>
+          <li><strong>Front-running:</strong> the attacker uses information about a transaction before it is executed to make a profit at the expense of the transaction's original initiator.</li>
+          <li><strong>Timestamp Dependency:</strong> if a smart contract depends on a timestamp, an attacker can exploit time variations between nodes to manipulate the system.</li>
+          </ul>
+          <h3>Protections and strategies</h3>
+          <ul>
+          <li><strong>Code audits:</strong> regular audits of programs are key to uncovering bugs, vulnerabilities and potential exploits in smart contracts or blockchain software.
+          <ul>
+          <li><strong>Regular reviews:</strong> code reviews (by expert teams or external auditors), automated static analysis tools that recognize known bug patterns, and penetration testing, i.e., simulating attacks to check the system's resilience.</li>
+          <li><strong>Focus on critical components:</strong> special attention is given to smart contracts because of their central role in automating transactions.</li>
+          </ul>
+          </li>
+          <li><strong>Security education and awareness:</strong> in addition to technical measures, it is important that all participants in the ecosystem are educated about security practices.
+          <ul>
+          <li><strong>Training and seminars:</strong> regular educational sessions for developers, users and managers on the latest threats and protection methods.</li>
+          <li><strong>Incident response protocols:</strong> clear steps for identifying, isolating and responding to security incidents.</li>
+          </ul>
+          </li>
+          <li><strong>Decentralization and consensus protocols:</strong>
+          <ul>
+          <li><strong>Developing resilient protocols:</strong> consensus protocols resistant to most known attacks (e.g., Proof of Stake (PoS), which reduces the risk of a 51% attack compared to Proof of Work (PoW)).</li>
+          <li><strong>Decentralization of power:</strong> maintaining a decentralized network structure by encouraging nodes around the world.</li>
+          </ul>
+          </li>
+          <li><strong>Increasing privacy and anonymity:</strong>
+          <ul>
+          <li><strong>Zero-Knowledge Proofs (ZKP):</strong> allow transactions to be confirmed without revealing their details.</li>
+          <li><strong>Private blockchain networks:</strong> for certain use cases, private or hybrid networks provide additional control over data and access.</li>
+          </ul>
+          </li>
+          </ul>
+          <p>Each of these strategies is a layer of defense, ensuring that the technology remains secure, reliable and efficient for all participants.</p>
+
+          <p class="author-note">These are some excerpts from our blockchain technology handbook by <strong>Miloš Božović</strong>, CEO of cryptogorac.com.</p>
+        </article>
+
+        <div class="cta-band reveal">
+          <div>
+            <h2>Want the full handbook?</h2>
+            <p>Message us on X or Instagram, or contact us directly.</p>
+          </div>
+          <a class="btn" href="contact.html">Contact us <svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#arrow-right"></use></svg></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="../assets/img/logo-navi.webp" alt="CryptoGorac.com" width="212" height="34" loading="lazy">
+          <p>A software studio from Podgorica: IT consulting, websites, web and desktop applications, plus crypto education.</p>
+          <div class="social">
+          <a href="https://x.com/cryptogorac" target="_blank" rel="noopener" aria-label="CryptoGorac on X"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#x"></use></svg></a>
+          <a href="https://www.instagram.com/cryptogorac/" target="_blank" rel="noopener" aria-label="CryptoGorac on Instagram"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#instagram"></use></svg></a>
+          </div>
+        </div>
+        <div>
+          <h2>Services</h2>
+          <ul class="footer-links">
+            <li><a href="it-consulting.html">IT consulting</a></li>
+            <li><a href="websites.html">Websites</a></li>
+            <li><a href="web-apps.html">Web applications</a></li>
+            <li><a href="desktop-apps.html">Desktop applications</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Crypto education</h2>
+          <ul class="footer-links">
+            <li><a href="cryptocurrencies.html">Cryptocurrencies</a></li>
+            <li><a href="blockchain-technology.html">Blockchain Technology</a></li>
+            <li><a href="trading-techniques.html">Trading Techniques</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Contact</h2>
+          <ul class="footer-links footer-contact">
+            <li><a href="tel:+38220332331"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#phone"></use></svg><span><small>Landline</small>+382&nbsp;20&nbsp;332&nbsp;331</span></a></li>
+            <li><a href="tel:+38269691621"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#phone"></use></svg><span><small>Mobile</small>+382&nbsp;69&nbsp;691&nbsp;621</span></a></li>
+            <li><a href="mailto:info@cryptogorac.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#mail"></use></svg><span><small>Email</small>info@cryptogorac.com</span></a></li>
+            <li><span class="footer-contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#pin"></use></svg><span><small>Location</small>Podgorica, Montenegro</span></span></li>
+          </ul>
+          <a class="footer-cta" href="contact.html">Book a consultation<svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#arrow-right"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <ul class="footer-nav" aria-label="Quick links">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About us</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <p>© 2025–<span data-year>2026</span> CryptoGorac.com · All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <button class="back-to-top" type="button" aria-label="Back to top"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#arrow-up"></use></svg></button>
+</body>
+</html>

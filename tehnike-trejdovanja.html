@@ -1,922 +1,298 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="sr-Latn-ME">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tehnike-trejdovanja CryptoGorac</title>
-    <!-- Bootstrap CSS -->
-     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="icon" type="image/png" href="logo-naviT.png">
-    <style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: white;
-        min-height: 100vh; /* Ensures body takes full viewport height */
-        margin: 0; /* Removes default margin */
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Navigacija */
-    .navbar {
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        padding: 1.2rem 1rem;
-    }
-
-     .navbar-brand img {
-        height: 40px;
-        width: auto;
-        border-radius: 10px; /* Blago zaobljenje ivica */
-        box-shadow: 0 6px 20px rgba(26, 188, 156, 1.6);
-    }
-
-    .navbar-toggler {
-        border: none;
-        color: #ecf0f1;
-        font-size: 1.8rem;
-    }
-
-    .navbar-toggler:focus {
-        outline: none;
-    }
-
-    .navbar-nav {
-        justify-content: center; /* Centriranje stavki na desktopu */
-        width: 100%; /* Osigurava da meni zauzme punu širinu container-a */
-    }
-
-    .navbar-nav .nav-link {
-        color: #ecf0f1;
-        font-size: 1.1rem;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        transition: color 0.3s ease, transform 0.3s ease;
-        position: relative;
-    }
-
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link.active {
-        color: #1abc9c;
-        transform: translateY(-2px);
-    }
-
-    .navbar-nav .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #1abc9c;
-        bottom: 0;
-        left: 1rem;
-        transition: width 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover::after,
-    .navbar-nav .nav-link.active::after {
-        width: calc(100% - 2rem);
-    }
-
-    /* Dropdown */
-    .dropdown-menu {
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        border: none;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .dropdown-item {
-        color: #ecf0f1;
-        font-size: 1rem;
-        padding: 0.8rem 1rem;
-        transition: color 0.3s ease, background-color 0.3s ease;
-        position: relative;
-    }
-
-    .dropdown-item:hover {
-        color: #1abc9c;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .dropdown-item::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #1abc9c;
-        bottom: 0;
-        left: 1rem;
-        transition: width 0.3s ease;
-    }
-
-    .dropdown-item:hover::after {
-        width: calc(100% - 2rem);
-    }
-
-    /* Sadržaj */
-    main {
-        padding-top: 4.4rem;
-        flex: 1; /* Allows main content to grow and push footer down */
-    }
-
-    p {
-        font-size: 1.2rem;
-        color: #333;
-        text-align: center;
-        padding: 1rem;
-    }
-
-        /* Stil za kontejner Kripto Valute */
-        .kripto-valute {
-            max-width: 700px; /* Maksimalna širina */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano sa razmakom odozgo */
-            padding: 40px; /* Unutrašnji razmak */
-            background-color: white;
-            border-radius: 15px; /* Zaobljene ivice */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka u stilu sajta */
-            text-align: center; /* Centriran sadržaj */
-        }
-
-        .kripto-valute h2 {
-            font-size: 36px; /* Veliki naslov */
-            color: #1abc9c; /* Boja inspirisana senkom */
-            margin-bottom: 20px;
-        }
-
-        .kripto-valute img {
-            max-width: 100%; /* Slika se prilagođava širini kontejnera */
-            height: auto; /* Zadržava proporcije */
-            border-radius: 15px; /* Zaobljene ivice slike */
-            margin: 15px 0; /* Razmak iznad i ispod slike */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Blaga senka na slici */
-        }
-
-        /* Responzivnost */
-        @media (max-width: 768px) {
-            .kripto-valute {
-                width: 90%;
-                padding: 20px; /* Smanjeni padding */
-                margin: 1.5rem auto;
-            }
-
-            .kripto-valute h2 {
-                font-size: 28px; /* Smanjeni naslov */
-            }
-
-            .kripto-valute img {
-                max-width: 100%; /* Osigurava prilagođavanje na malim ekranima */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .kripto-valute {
-                padding: 15px;
-                margin: 1rem auto;
-            }
-
-            .kripto-valute h2 {
-                font-size: 24px;
-            }
-        }
-
-
-       /* Stil za text-ticker kontejner */
-          .text-ticker {
-            max-width: 1300px; /* Maksimalna širina u skladu s prethodnim kontejnerima */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano */
-            padding: 20px; /* Unutrašnji razmak */
-            background-color: white;
-            border: 3px solid #2ecc71; /* Zeleni border kao u prethodnom primeru */
-            border-radius: 10px; /* Zaobljene ivice */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka u stilu sajta */
-            overflow: hidden; /* Sakriva tekst koji prelazi granice */
-        }
-
-        /* Stil za sadržaj text-ticker-a */
-       .text-ticker {
-            max-width: 1300px; /* Maksimalna širina u skladu s prethodnim kontejnerima */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano */
-            padding: 20px; /* Unutrašnji razmak */
-            background-color: white;
-            border: 3px solid #2ecc71; /* Zeleni border kao u prethodnom primeru */
-            border-radius: 10px; /* Zaobljene ivice */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka u stilu sajta */
-            overflow: hidden; /* Sakriva tekst koji prelazi granice */
-        }
-
-        /* Stil za sadržaj text-ticker-a */
-        .text-ticker-content {
-            display: inline-block; /* Omogućava animaciju pomeranja */
-            white-space: nowrap; /* Tekst ostaje u jednoj liniji */
-            font-size: 21px; /* Veličina teksta */
-            color: #333; /* Tamno siva boja za osnovni tekst */
-            animation: ticker 37s linear infinite; /* Animacija pomeranja */
-        }
-
-        /* Boldirani deo */
-        .text-ticker-content b {
-            color: #1abc9c; /* zelena boja za naglašeni tekst */
-            font-weight: bold;
-        }
-
-        /* Animacija za pomeranje teksta - sa desne ka levoj */
-       @keyframes ticker {
-    0% {
-        transform: translateX(30%); /* Tekst počinje na vidljivom mestu */
-    }
-    100% {
-        transform: translateX(-100%); /* Završava van leve strane */
-    }
-}
-
-        /* Responzivnost */
-        @media (max-width: 768px) {
-            .text-ticker {
-                width: 90%;
-                padding: 10px; /* Smanjeni padding */
-                margin: 1.5rem auto;
-                border-width: 2px; /* Tanji border */
-            }
-
-            .text-ticker-content {
-                font-size: 18px; /* Smanjena veličina teksta */
-                animation-duration: 37s; /* Ubrzana animacija za manje ekrane */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .text-ticker {
-                padding: 8px;
-                margin: 1rem auto;
-            }
-
-            .text-ticker-content {
-                font-size: 16px; /* Još manji tekst */
-                animation-duration: 37s; /* Još brža animacija */
-            }
-        }
-
-                
-
-                                 /* Stil za tekst kontejner */
-       .tekst-kontejner {
-    max-width: 1000px; /* Maksimalna širina */
-    width: 95%; /* Prilagođava se ekranu */
-    margin: 2rem auto; /* Centrirano sa razmakom odozgo */
-    padding: 40px; /* Unutrašnji razmak */
-    background-color: white;
-    border: 4px solid #2ecc71; /* Zeleni border */
-    border-radius: 15px; /* Zaobljene ivice */
-    text-align: center; /* Centriran sadržaj */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Blaga senka */
-}
-
-/* Stil za naslov */
-.tekst-kontejner h2 {
-    font-size: 36px; /* Veliki naslov */
-    color: #1abc9c; /* zelena */
-    margin-bottom: 20px;
-}
-.tekst-kontejner p {
-    font-size: 18px; /* Normalna veličina teksta */
-    color: #333; /* Tamno siva boja za tekst */
-    line-height: 1.6; /* Prored za čitljivost */
-    margin-bottom: 20px; /* Razmak između paragrafa i ikonica */
-}
-
-/* Stil za kontejner sa ikonama */
-.tekst-kontejner .store-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px; /* Razmak između ikonica */
-    margin-top: 20px; /* Razmak od naslova */
-}
-
-/* Stil za linkove sa ikonama */
-.tekst-kontejner .store-link {
-    font-size: 2.9rem; /* Veličina ikonica */
-    color: #333; /* Osnovna boja ikonica, usklađena sa tekstom */
-    text-decoration: none; /* Bez podvlačenja */
-    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Prelazi usklađeni sa temom */
-    position: relative;
-}
-
-/* Hover efekat za ikonice */
-.tekst-kontejner .store-link:hover {
-    color: #1abc9c; /* Zelena boja iz teme za hover */
-    transform: translateY(-2px); /* Efekat pomeranja, isti kao kod nav-link */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka slična ostalim elementima */
-}
-
-/* Responzivnost */
-@media (max-width: 768px) {
-    .tekst-kontejner {
-        width: 90%;
-        padding: 20px; /* Smanjeni padding */
-        border-width: 3px; /* Malo tanji border */
-        margin: 1.5rem auto;
-    }
-
-    .tekst-kontejner h2 {
-        font-size: 28px; /* Smanjeni naslov */
-    }
-
-    .tekst-kontejner .store-link {
-        font-size: 2rem; /* Smanjena veličina ikonica za tablete */
-    }
-
-    .tekst-kontejner .store-icons {
-        gap: 20px; /* Smanjeni razmak između ikonica */
-    }
-}
-
-@media (max-width: 480px) {
-    .tekst-kontejner {
-        padding: 15px;
-        margin: 1rem auto;
-        border-width: 2px; /* Još tanji border */
-    }
-
-    .tekst-kontejner h2 {
-        font-size: 24px;
-    }
-
-    .tekst-kontejner .store-link {
-        font-size: 1.5rem; /* Smanjena veličina ikonica za mobilne */
-    }
-
-    .tekst-kontejner .store-icons {
-        gap: 15px; /* Još manji razmak između ikonica */
-    }
-}
-
-
-
-
-    /* Footer */
-    .footer {
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        color: #ecf0f1;
-        padding: 2rem 1rem;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .footer-section h5 {
-        font-size: 1.3rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-        color: #1abc9c;
-    }
-
-    .footer-section p {
-        font-size: 1rem;
-        color: #ecf0f1;
-        margin: 0.5rem 0;
-    }
-
-    .footer-link {
-        color: #ecf0f1;
-        text-decoration: none;
-        position: relative;
-        transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .footer-link:hover {
-        color: #1abc9c;
-        transform: translateY(-2px);
-    }
-
-    .footer-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #1abc9c;
-        bottom: -4px;
-        left: 0;
-        transition: width 0.3s ease;
-    }
-
-    .footer-link:hover::after {
-        width: 100%;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-top: 1.5rem;
-        padding-top: 1rem;
-        text-align: center;
-    }
-
-    .footer-bottom p {
-        font-size: 0.9rem;
-        color: #bdc3c7;
-    }
-
-    /* Responsive podešavanja */
-    @media (max-width: 768px) {
-        .navbar-brand img {
-            height: 30px;
-        }
-
-        .navbar-nav {
-            padding: 1rem; /* Dodat padding za bolji raspored */
-            justify-content: flex-start; /* Vraćeno na početak za mobilni */
-        }
-
-        .navbar-nav .nav-link {
-            font-size: 1.2rem;
-            padding: 0.8rem 0;
-        }
-
-        .navbar-nav .nav-link::after {
-            bottom: 0.2rem;
-            left: 0;
-        }
-
-        .navbar-nav .nav-link:hover::after,
-        .navbar-nav .nav-link.active::after {
-            width: 100%;
-        }
-
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            transform: translateX(5px);
-        }
-
-        .dropdown-menu {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin: 0.5rem 0;
-        }
-
-        .dropdown-item {
-            padding: 0.6rem 1.5rem;
-        }
-
-        .dropdown-item::after {
-            left: 1.5rem;
-            bottom: 0.1rem;
-        }
-
-        .dropdown-item:hover::after {
-            width: calc(100% - 3rem);
-        }
-
-        main {
-            padding-top: 3.4rem;
-        }
-
-        p {
-            font-size: 1rem;
-        }
-
-        .footer-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section h5 {
-            font-size: 1.2rem;
-        }
-
-        .footer-section p {
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom p {
-            font-size: 0.8rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .navbar-nav .nav-link {
-            font-size: 1.1rem;
-        }
-
-        .dropdown-item {
-            font-size: 0.9rem;
-        }
-
-        .footer-section h5 {
-            font-size: 1.1rem;
-        }
-
-        .footer-section p {
-            font-size: 0.85rem;
-        }
-    }
-
-    .btn-back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: #ecf0f1;
-    border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    display: none; /* Početno sakriveno */
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2); /* Zelena senka + originalna senka */
-}
-
-.btn-back-to-top:hover {
-    background: #1abc9c;
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3); /* Jača senka na hover */
-}
-
-.btn-back-to-top.show {
-    display: block; /* Prikazuje se kada se doda klasa 'show' */
-}
-
-/* CSS dio za stilizovanje cijena. Ovo možete dodati u postojeći <style> tag ili modificirati .price-bar ako je potrebno. Boje i stilovi uklopljeni sa temom sajta (zelena za cijene, bijeli tekst, itd.). */
-
-
-.price-bar {
-    position: fixed;
-    top: 90px; /* Odmaknuto od navi bara */
-    right: 20px;
-    background: linear-gradient(135deg, #2c3e50, #34495e); /* Usklađeno sa temom sajta */
-    color: #ecf0f1;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-radius: 15px;
-    border: 1px solid rgba(26, 188, 156, 0.5);
-    transition: all 0.3s ease;
-    display: inline-flex; /* Dinamična širina prema sadržaju */
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    white-space: nowrap; /* Sprečava prelamanje */
-    max-width: 100vw;
-}
-
-.price-bar:hover {
-    box-shadow: 0 6px 16px rgba(26, 188, 156, 0.6);
-    transform: translateY(-2px);
-}
-
-#btc-price, #eth-price {
-    color: #1abc9c;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    flex-shrink: 0;
-}
-
-#btc-price::before {
-    content: '₿';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-    color: #f7931a;
-}
-
-#eth-price::before {
-    content: '◇';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-    color: #627eea;
-}
-
-/* Responzivnost za mobilne i tablet uređaje */
-@media (max-width: 1024px) {
-    .price-bar {
-        top: 90px; /* Veći razmak od navi bara */
-        right: 10px;
-        font-size: 1rem; /* ~10% umanjenje */
-        padding: 0.6rem 1rem;
-        gap: 0.6rem;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-        background: linear-gradient(135deg, #2c3e50, #3b4b5e); /* Blago tamnija pozadina */
-        max-width: 95vw;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-
-    #btc-price, #eth-price {
-        font-size: 0.95rem;
-        padding: 0.2rem 0.4rem;
-        border-radius: 6px;
-        background-color: rgba(255, 255, 255, 0.04);
-    }
-
-    #btc-price::before, #eth-price::before {
-        font-size: 1rem;
-        margin-right: 0.4rem;
-    }
-}
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Tehnike trejdovanja — priručnik | CryptoGorac.com</title>
+  <meta name="description" content="Tehnike trejdovanja kriptovalutama: fundamentalna, tehnička i sentimentalna analiza tržišta, indikatori, alati i iskustva iz prakse.">
+  <link rel="canonical" href="https://www.cryptogorac.com/tehnike-trejdovanja.html">
+  <link rel="alternate" hreflang="sr-ME" href="https://www.cryptogorac.com/tehnike-trejdovanja.html">
+  <link rel="alternate" hreflang="en" href="https://www.cryptogorac.com/en/trading-techniques.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.cryptogorac.com/tehnike-trejdovanja.html">
+  <meta name="theme-color" content="#2c3e50">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CryptoGorac.com">
+  <meta property="og:locale" content="sr_ME">
+  <meta property="og:title" content="Tehnike trejdovanja — priručnik | CryptoGorac.com">
+  <meta property="og:description" content="Tehnike trejdovanja kriptovalutama: fundamentalna, tehnička i sentimentalna analiza tržišta, indikatori, alati i iskustva iz prakse.">
+  <meta property="og:url" content="https://www.cryptogorac.com/tehnike-trejdovanja.html">
+  <meta property="og:image" content="https://www.cryptogorac.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CryptoGorac.com — softverski studio iz Podgorice">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@cryptogorac">
+
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/img/icon-32.png" sizes="32x32" type="image/png">
+  <meta name="application-name" content="CryptoGorac">
+  <meta name="apple-mobile-web-app-title" content="CryptoGorac">
+  <meta name="msapplication-TileColor" content="#2c3e50">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" href="assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10g">
+  <script src="assets/js/site.js?v=2026-10g" defer></script>
+  <link rel="preconnect" href="https://api.coingecko.com" crossorigin>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https://www.cryptogorac.com/tehnike-trejdovanja.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Početna","item":"https://www.cryptogorac.com/"},{"@type":"ListItem","position":2,"name":"Crypto edukacija","item":"https://www.cryptogorac.com/#edu-naslov"},{"@type":"ListItem","position":3,"name":"Tehnike trejdovanja","item":"https://www.cryptogorac.com/tehnike-trejdovanja.html"}]},{"@type":"Book","name":"Tehnike trejdovanja","description":"Tehnike trejdovanja kriptovalutama: fundamentalna, tehnička i sentimentalna analiza tržišta, indikatori, alati i iskustva iz prakse.","url":"https://www.cryptogorac.com/tehnike-trejdovanja.html","inLanguage":"sr-Latn","author":{"@id":"https://www.cryptogorac.com/#org"},"publisher":{"@id":"https://www.cryptogorac.com/#org"},"image":"https://www.cryptogorac.com/assets/img/trejdovanje.webp","bookFormat":"https://schema.org/Paperback"}]}</script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="index.html">
-                <img src="logo navi.jpg" alt="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                ☰
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Početna</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="o-nama.html">O nama</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#usluge" id="uslugeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Usluge
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="uslugeDropdown">
-                             <li><a class="dropdown-item" href="it-konsalting.html">IT konsalting</a></li>
-                            <li><a class="dropdown-item" href="sajtovi.html">Izrada sajtova</a></li>
-                            <li><a class="dropdown-item" href="web-app.html">izrada web app</a></li>
-                            <li><a class="dropdown-item" href="desktop-app.html">Izrada desk-top app</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#kripto-edukacija" id="kriptoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Crypto edukacija
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="kriptoDropdown">
-                            <li><a class="dropdown-item" href="crypto-valute.html">Crypto valute</a></li>
-                            <li><a class="dropdown-item" href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
-                            <li><a class="dropdown-item" href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kontakti.html">Kontakti</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body class="theme-crypto">
+  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Glavna navigacija">
+      <a class="brand" href="index.html" aria-label="CryptoGorac.com — početna">
+        <img src="assets/img/logo-navi.webp" alt="" width="250" height="40">
+      </a>
+      <div class="lang-switch" role="group" aria-label="Jezik / Language"><a href="tehnike-trejdovanja.html" hreflang="sr-ME" aria-current="true">SRB</a><span aria-hidden="true">|</span><a href="en/trading-techniques.html" hreflang="en" lang="en">ENG</a></div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Otvori meni"><span class="bars"></span></button>
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="index.html">Početna</a></li>
+          <li><a class="nav-link" href="o-nama.html">O nama</a></li>
+          <li class="nav-item">
+            <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="sub-usluge">Usluge <svg class="chev" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#chev"></use></svg></button>
+            <ul class="nav-sub" id="sub-usluge">
+              <li><a href="it-konsalting.html">IT konsalting</a></li>
+              <li><a href="sajtovi.html">Izrada sajtova</a></li>
+              <li><a href="web-app.html">Izrada web aplikacija</a></li>
+              <li><a href="desktop-app.html">Izrada desktop aplikacija</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <button class="nav-sub-toggle is-current" type="button" aria-expanded="false" aria-controls="sub-edukacija">Crypto edukacija <svg class="chev" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#chev"></use></svg></button>
+            <ul class="nav-sub" id="sub-edukacija">
+              <li><a href="crypto-valute.html">Crypto valute</a></li>
+              <li><a href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
+              <li><a href="tehnike-trejdovanja.html" aria-current="page">Tehnike trejdovanja</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link" href="kontakti.html">Kontakti</a></li>
+        </ul>
+      </div>
     </nav>
+  </header>
 
-    <main>
+  <main id="main" tabindex="-1">
+    <section class="page-hero">
+      <div class="container">
+        <div class="price-bar" role="status" aria-label="Trenutne cijene">
+          <span class="price-chip"><span class="coin coin-btc" aria-hidden="true">₿</span>BTC: <span id="btc-price">učitavanje…</span></span>
+          <span class="price-chip"><span class="coin coin-eth" aria-hidden="true">Ξ</span>ETH: <span id="eth-price">učitavanje…</span></span>
+        </div>
+        <div class="article-hero">
+          <img class="cover" src="assets/img/trejdovanje.webp" alt="Korica priručnika Tehnike trejdovanja, CryptoGorac" width="720" height="1078">
+          <div>
+            <span class="eyebrow">Crypto edukacija · priručnik</span>
+            <h1>Tehnike trejdovanja</h1>
+            <p class="lead">Dobrodošli u priručnik „Tehnike trejdovanja, CRYPTOGORAC“. U svijetu digitalnih valuta, trejdovanje kriptovalutama postaje sve popularnije i privlači pažnju kako iskusnih investitora, tako i onih koji tek ulaze u svijet finansija.</p>
+            <p>Priručnike možete naručiti odmah putem društvenih mreža.</p>
+            <div class="social social-light">
+            <a href="https://x.com/cryptogorac" target="_blank" rel="noopener" aria-label="CryptoGorac na X-u"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#x"></use></svg></a>
+          <a href="https://www.instagram.com/cryptogorac/" target="_blank" rel="noopener" aria-label="CryptoGorac na Instagramu"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#instagram"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-                <!-- HTML dio za prikaz cijena BTC i ETH. Dodajte ovo unutar <div class="price-bar"> ili kao novi fiksni element ispod navi bara. Ako želite da zamijeni postojeći sadržaj .price-bar, zamijenite <div class="price-bar">Cijena: 100€</div> sa ovim: -->
-<div class="price-bar">
-    <span id="btc-price">BTC: Učitavanje...</span> | 
-    <span id="eth-price">ETH: Učitavanje...</span>
-</div>
-        <div style="margin-bottom: 100px;"></div>
-       
-
-          <div class="kripto-valute">
-        <h2>Tehnike trejdovanja</h2>
-        <img src="trejdovanje.jpg" alt="tehnike trejdovanja Slika">
+    <div class="ticker" role="marquee" aria-label="Nagradna igra">
+      <div class="ticker-track">
+        <span>Tehnike trejdovanja — <b>CryptoGorac.com</b> — Zapratite, lajkujte, tagujte dva prijatelja na X-u i Instagramu – učite uz priručnik i osvojite nagradu! Igra kreće 1. oktobra i traje do 1. novembra!</span>
+        <span aria-hidden="true">Tehnike trejdovanja — <b>CryptoGorac.com</b> — Zapratite, lajkujte, tagujte dva prijatelja na X-u i Instagramu – učite uz priručnik i osvojite nagradu! Igra kreće 1. oktobra i traje do 1. novembra!</span>
+      </div>
     </div>
 
-                <div class="text-ticker">
-        <div class="text-ticker-content">
-            Tehnike trejdovanja - <b>CryptoGorac.com</b> -Zapratite, lajkujte, tagujte dva prijatelja na X-u i Instagramu – učite uz priručnik i osvojite nagradu! Igra kreće 1. oktobra i traje do 1. novembra!
+    <section class="section">
+      <div class="container-narrow">
+        <article class="prose">
+          <nav class="toc" aria-labelledby="toc-naslov">
+            <h2 id="toc-naslov">Sadržaj</h2>
+            <ol>
+              <li><a href="#fundamentalna">Fundamentalna analiza</a></li>
+              <li><a href="#tehnicka">Tehnička analiza</a></li>
+              <li><a href="#sentimentalna">Sentimentalna analiza</a></li>
+            </ol>
+          </nav>
 
+          <h2 id="fundamentalna">Fundamentalna analiza</h2>
+          <p>Fundamentalna analiza je metodologija koja se koristi za procjenu stvarne vrijednosti finansijskog instrumenta, kao što su akcije, obveznice ili kriptovalute, na osnovu analize ekonomskih, finansijskih i drugih kvalitativnih i kvantitativnih faktora. Evo kako se fundamentalna analiza primjenjuje u kontekstu trejdovanja kriptovalutama:</p>
+          <h3>1. Analiza tima i čelnih ljudi</h3>
+          <ul>
+          <li><strong>Iskustvo i stručnost:</strong> provjerite relevantno iskustvo i stručnost članova tima. Da li su radili na sličnim projektima? Da li imaju uspješne projekte iza sebe i koliko su cijenjeni u kripto zajednici?</li>
+          <li><strong>Prisustvo na mrežama:</strong> aktivnost na poslovnim mrežama kao što su LinkedIn i X (nekadašnji Twitter) može pružiti uvid u angažman tima u zajednici i tehnologiji (pažljivo provjerite ispravnost naloga i profila).</li>
+          </ul>
+          <h3>2. Whitepaper i poslovni planovi</h3>
+          <ul>
+          <li><strong>Whitepaper:</strong> dokument koji detaljno opisuje projekat, njegovu svrhu, tehnologiju, plan razvoja i način na koji će riješiti određeni problem. Kvalitetan whitepaper je ključan za procjenu ozbiljnosti projekta.</li>
+          <li><strong>Poslovni plan:</strong> analizirajte poslovni plan projekta. Da li je realan i ostvariv? Da li su ciljevi jasno definisani?</li>
+          </ul>
+          <h3>3. Tehnologija i inovacije</h3>
+          <ul>
+          <li><strong>Tehnološka osnova:</strong> procijenite tehnologiju koja stoji iza kriptovalute. Da li je inovativna? Da li rješava stvarne probleme? Kako na nju gledaju i kako je komentarišu stručnjaci?</li>
+          <li><strong>Razvojni tim:</strong> da li tim ima dovoljno stručnjaka za razvoj i održavanje tehnologije? Da li su planovi za razvoj jasno definisani?</li>
+          </ul>
+          <h3>4. Tržišni potencijal i konkurencija</h3>
+          <ul>
+          <li><strong>Ciljno tržište:</strong> procijenite veličinu i potencijal ciljnog tržišta. Da li postoji stvarna potreba za rješenjem koje projekat nudi?</li>
+          <li><strong>Konkurencija:</strong> analizirajte konkurenciju. Da li postoje slični projekti? Kako se projekat razlikuje i koje su njegove prednosti i mane u odnosu na konkurenciju?</li>
+          </ul>
+          <h3>5. Tokenomika</h3>
+          <ul>
+          <li><strong>Distribucija tokena:</strong> provjerite kako su tokeni distribuirani. Da li postoji ravnoteža između tokena namijenjenih timu, investitorima i zajednici? Takođe je jako bitan i ukupan broj tokena: projekat koji ima 50 milijardi tokena morao bi, da bi dostigao cijenu od jednog dolara po tokenu, imati 50 milijardi dolara uloženih u projekat, dok bi kod projekta od milijardu tokena, ukoliko bi ušlo 50 milijardi dolara, cijena tokena iznosila 50 dolara. Međutim, to ne mora biti suština.</li>
+          <li><strong>Upotreba tokena:</strong> razumijte svrhu i upotrebu tokena unutar ekosistema. Da li token ima stvarnu vrijednost i korisnost?</li>
+          </ul>
+          <h3>6. Zajednica i podrška</h3>
+          <ul>
+          <li><strong>Aktivnost zajednice:</strong> procijenite aktivnost i angažovanost zajednice oko projekta, kao i partnere van kripto zajednice. Aktivna i podržavajuća zajednica može biti dobar indikator uspjeha.</li>
+          <li><strong>Podrška i partnerstva:</strong> da li projekat ima podršku poznatih investitora ili partnerstva sa drugim relevantnim projektima?</li>
+          </ul>
+          <h3>7. Regulativa i pravna pitanja</h3>
+          <ul>
+          <li><strong>Regulatorni okvir:</strong> provjerite da li projekat ispunjava sve relevantne regulatorne zahtjeve. Da li postoje pravni rizici koji bi mogli uticati na projekat?</li>
+          <li><strong>Poreske obaveze:</strong> razumijte poreske obaveze vezane za trejdovanje i držanje kriptovaluta.</li>
+          </ul>
+          <h3>8. Finansijski izvještaji i transparentnost</h3>
+          <ul>
+          <li><strong>Finansijska stabilnost:</strong> procijenite finansijsku stabilnost projekta. Da li ima dovoljno sredstava za realizaciju svojih ciljeva?</li>
+          <li><strong>Transparentnost:</strong> da li projekat redovno objavljuje izvještaje i informacije o napretku? Transparentnost je ključna za povjerenje investitora.</li>
+          </ul>
+          <p>Fundamentalna analiza zahtijeva detaljno istraživanje i razumijevanje svih aspekata projekta. Cilj je da se procijeni dugoročni potencijal kriptovalute i donesu informisane odluke o investiranju i trejdovanju.</p>
 
- 
+          <h2 id="tehnicka">Tehnička analiza</h2>
+          <p>Tehnička analiza je metodologija koja se koristi za procjenu investicionih prilika kroz analizu istorijskih podataka o cijenama i obimu trgovanja. Evo kako se tehnička analiza primjenjuje u kontekstu trejdovanja kriptovalutama:</p>
+          <h3>Trendovi i obrasci</h3>
+          <ul>
+          <li><strong>Trendovi:</strong> identifikacija dugoročnih (bullish – rastući, bearish – padajući) i kratkoročnih trendova.</li>
+          <li><strong>Obrasci:</strong> prepoznavanje obrazaca kao što su „glava i ramena“ (head and shoulders), dvostruki vrh (double top), trougao (triangle) itd. Ovi obrasci mogu signalizirati potencijalne promjene u trendu.</li>
+          </ul>
+          <h3>Tehnički indikatori</h3>
+          <ul>
+          <li><strong>Pokretni prosjeci (Moving Averages):</strong> prosječna cijena kriptovalute tokom određenog perioda. Najčešće korišćeni su SMA (Simple Moving Average) i EMA (Exponential Moving Average).</li>
+          <li><strong>Indeks relativne snage (RSI):</strong> mjera brzine i promjene cijena. Vrijednosti iznad 70 ukazuju na prekupljenost, dok vrijednosti ispod 30 ukazuju na preprodanost.</li>
+          <li><strong>MACD (Moving Average Convergence Divergence):</strong> kombinacija pokretnih prosjeka koja pomaže u identifikaciji promjena u snazi, pravcu, momentumu i trajanju trenda.</li>
+          <li><strong>Bollinger Bands:</strong> prikazuju volatilnost tržišta. Sastoje se od srednjeg pokretnog prosjeka i dvije linije koje su standardna devijacija iznad i ispod tog prosjeka.</li>
+          </ul>
+          <h3>Podrška i otpor (Support and Resistance)</h3>
+          <ul>
+          <li><strong>Podrška:</strong> nivo cijene na kojem se očekuje da će potražnja biti dovoljno jaka da spriječi dalji pad cijene.</li>
+          <li><strong>Otpor:</strong> nivo cijene na kojem se očekuje da će prodaja biti dovoljno jaka da spriječi dalji rast cijene.</li>
+          </ul>
+          <h3>Volumen trgovanja</h3>
+          <p>Količina kriptovalute kojom se trguje u određenom vremenskom periodu. Visok volumen može ukazivati na snažan trend, dok nizak volumen može ukazivati na slabost trenda.</p>
+          <h3>Analiza svijeća (Candlestick Patterns)</h3>
+          <ul>
+          <li><strong>Bullish engulfing:</strong> signalizira potencijalni preokret u rastući trend.</li>
+          <li><strong>Bearish engulfing:</strong> signalizira potencijalni preokret u padajući trend.</li>
+          <li><strong>Doji:</strong> indikator neodlučnosti na tržištu, može signalizirati preokret trenda.</li>
+          </ul>
+          <h3>Alati za tehničku analizu</h3>
+          <ul>
+          <li><strong>TradingView:</strong> popularna platforma za tehničku analizu koja nudi širok spektar alata i indikatora.</li>
+          <li><strong>Coinigy:</strong> platforma specijalizovana za kriptovalute koja omogućava analizu i trgovanje na više berzi.</li>
+          </ul>
+          <p>Tehnička analiza je veoma korisna za kratkoročne trejdere jer omogućava identifikaciju potencijalnih ulaznih i izlaznih tačaka na tržištu. Međutim, važno je kombinovati je sa fundamentalnom analizom, ali i sa drugim tehnikama, kako biste dobili jasniju sliku o tržištu.</p>
+
+          <h2 id="sentimentalna">Sentimentalna analiza</h2>
+          <p>Sentimentalna analiza, ili analiza sentimenta, je metoda koja se koristi za procjenu opšteg raspoloženja ili stava investitora prema određenoj kriptovaluti ili tržištu u cjelini. Ova analiza se oslanja na prikupljanje i analizu podataka iz različitih izvora, kao što su društvene mreže, forumi, vijesti i drugi mediji, kako bi se utvrdilo da li je sentiment pozitivan, negativan ili neutralan.</p>
+          <h3>Ključni aspekti sentimentalne analize</h3>
+          <p><strong>Izvori podataka:</strong></p>
+          <ul>
+          <li><strong>Društvene mreže:</strong> X (Twitter), Reddit, Telegram i drugi forumi gdje se diskutuje o kriptovalutama.</li>
+          <li><strong>Vijesti i članci:</strong> analiza naslova i sadržaja članaka o kriptovalutama.</li>
+          <li><strong>Komentari i recenzije:</strong> mišljenja korisnika na različitim platformama.</li>
+          </ul>
+          <p><strong>Alati i tehnike:</strong></p>
+          <ul>
+          <li><strong>Analiza teksta:</strong> korišćenje algoritama za obradu prirodnog jezika (NLP) za analizu tonova i emocija u tekstovima.</li>
+          <li><strong>Sentiment score:</strong> kvantifikacija sentimenta u numeričkom obliku, gdje se pozitivni, negativni i neutralni komentari ocjenjuju i sumiraju.</li>
+          </ul>
+          <p><strong>Primjena:</strong></p>
+          <ul>
+          <li><strong>Predviđanje cijena:</strong> pozitivan sentiment može ukazivati na potencijalni rast cijene, dok negativan sentiment može ukazivati na pad.</li>
+          <li><strong>Identifikacija trendova:</strong> praćenje promjena u sentimentu može pomoći u identifikaciji novih trendova ili promjena na tržištu.</li>
+          </ul>
+          <h3>Prednosti i ograničenja</h3>
+          <ul>
+          <li><strong>Brza reakcija:</strong> omogućava brzo reagovanje na promjene u raspoloženju tržišta.</li>
+          <li><strong>Dodatni uvidi:</strong> pruža informacije koje nisu dostupne kroz tehničku ili fundamentalnu analizu.</li>
+          <li><strong>Subjektivnost (ograničenje):</strong> sentiment može biti subjektivan i podložan manipulaciji.</li>
+          <li><strong>Lažne informacije (ograničenje):</strong> prisustvo lažnih vijesti i dezinformacija može uticati na tačnost analize.</li>
+          </ul>
+          <p>Sentimentalna analiza je korisna alatka koja, kada se koristi zajedno sa tehničkom i fundamentalnom analizom, može pružiti sveobuhvatan uvid u tržište kriptovaluta.</p>
+          <blockquote>Lično sam tokom 2018. godine bio izmanipulisan lažnim vijestima, i to od jednog do tada prilično poznatog i pouzdanog portala u svijetu kripta. Takođe, jednom prilikom početkom 2019. godine, ne provjeravajući Twitter nalog (današnji X), povjerovao sam u prevaru koja me je koštala gubitka značajne količine sredstava, upravo zato što sam ušao prebrzo u jedan projekat i pokušao da se priključim štednji (stake) sa enormnim kamatama. Zato je veoma bitno strpljivo provjeriti i istražiti gdje i na koji način ulažete svoja sredstva!</blockquote>
+
+          <p class="author-note">Ovo su neki od dijelova iz našeg priručnika za tehnike trejdovanja od autora <strong>Miloš Božović</strong>, CEO cryptogorac.com.</p>
+        </article>
+
+        <div class="cta-band reveal">
+          <div>
+            <h2>Želite cijeli priručnik?</h2>
+            <p>Pišite nam na X-u ili Instagramu, ili nas kontaktirajte direktno.</p>
+          </div>
+          <a class="btn" href="kontakti.html">Kontaktirajte nas <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#arrow-right"></use></svg></a>
         </div>
-    </div>     
+      </div>
+    </section>
+  </main>
 
-             <div class="tekst-kontejner">
-    <h2>Tehnike trejdovanja</h2>
- <p>Priručnike možete naručiti odmah putem društvenih mreža.</p>
-  <div class="store-icons">
-       <a href="https://x.com/cryptogorac" target="_blank" class="store-link" title="Visit us on X">
-    <i class="fab fa-x-twitter"></i>
-</a>
-<a href="https://www.instagram.com/cryptogorac/" target="_blank" class="store-link" title="Visit us on Instagram">
-    <i class="fab fa-instagram"></i>
-</a>
-      
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo-navi.webp" alt="CryptoGorac.com" width="212" height="34" loading="lazy">
+          <p>Softverski studio iz Podgorice: IT konsalting, sajtovi, web i desktop aplikacije, uz crypto edukaciju.</p>
+          <div class="social">
+          <a href="https://x.com/cryptogorac" target="_blank" rel="noopener" aria-label="CryptoGorac na X-u"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#x"></use></svg></a>
+          <a href="https://www.instagram.com/cryptogorac/" target="_blank" rel="noopener" aria-label="CryptoGorac na Instagramu"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#instagram"></use></svg></a>
+          </div>
+        </div>
+        <div>
+          <h2>Usluge</h2>
+          <ul class="footer-links">
+            <li><a href="it-konsalting.html">IT konsalting</a></li>
+            <li><a href="sajtovi.html">Izrada sajtova</a></li>
+            <li><a href="web-app.html">Web aplikacije</a></li>
+            <li><a href="desktop-app.html">Desktop aplikacije</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Crypto edukacija</h2>
+          <ul class="footer-links">
+            <li><a href="crypto-valute.html">Crypto valute</a></li>
+            <li><a href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
+            <li><a href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Kontakti</h2>
+          <ul class="footer-links footer-contact">
+            <li><a href="tel:+38220332331"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#phone"></use></svg><span><small>Fiksni</small>+382&nbsp;20&nbsp;332&nbsp;331</span></a></li>
+            <li><a href="tel:+38269691621"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#phone"></use></svg><span><small>Mobilni</small>+382&nbsp;69&nbsp;691&nbsp;621</span></a></li>
+            <li><a href="mailto:info@cryptogorac.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#mail"></use></svg><span><small>E-pošta</small>info@cryptogorac.com</span></a></li>
+            <li><span class="footer-contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#pin"></use></svg><span><small>Lokacija</small>Podgorica, Crna Gora</span></span></li>
+          </ul>
+          <a class="footer-cta" href="kontakti.html">Zakažite konsultacije<svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#arrow-right"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <ul class="footer-nav" aria-label="Brzi linkovi">
+          <li><a href="index.html">Početna</a></li>
+          <li><a href="o-nama.html">O nama</a></li>
+          <li><a href="kontakti.html">Kontakt</a></li>
+        </ul>
+        <p>© 2025–<span data-year>2026</span> CryptoGorac.com · Sva prava zadržana.</p>
+      </div>
     </div>
-</div>
+  </footer>
 
-
- <div class="tekst-kontejner">
-        <h2>Tehnike trejdovanja</h2>
-
-        <h2>Uvod</h2>
-Dobrodošli u priručnik “Tehnike trejdovanja, CRYPYOGORAC ”. U svetu digitalnih valuta, trejdovanje kriptovalutama postaje sve popularnije i privlači pažnju kako iskusnih investitora, tako i onih koji tek ulaze u svet finansija. <br>
-
-
-        <h2>Analiza tržista</h2>
-
-        <p>Fundamentalna analiza<br>
-            Fundamentalna analiza je metodologija koja se koristi za procenu stvarne vrednosti finansijskog instrumenta, kao što su akcije, obveznice ili kriptovalute, na osnovu analize ekonomskih, finansijskih i drugih kvalitativnih i kvantitativnih faktora. Evo kako se fundamentalna analiza primenjuje u kontekstu trejdovanja kriptovalutama:
-            <br>1.Analiza tima i celnih ljudi
-Iskustvo i stručnost: Proverite relevantno iskustvo i stručnost članova tima. Da li su radili na sličnim projektima? Da li imaju uspešne projekte iza sebe, koliko su cijenjeni u kripto zajednici!?
-Prisustvo na mrežama: Aktivnost na poslovnim mrežama kao što su LinkedIn i X-nekadasnji Tweeter može pružiti uvid u angažman tima u zajednici i tehnologiji (pazljivo provjeriti ispravnost naloga-profila).<br>
-
-2.Whitepaper i poslovni planovi
-Whitepaper: Ovo je dokument koji detaljno opisuje projekat, njegovu svrhu, tehnologiju, plan razvoja i način na koji će rešiti određeni problem. Kvalitetan whitepaper je ključan za procenu ozbiljnosti projekta.
-Poslovni plan: Analizirajte poslovni plan projekta. Da li je realan i ostvariv? Da li su ciljevi jasno definisani? <br>
-
-3.Tehnologija i inovacije
-Tehnološka osnova: Procenite tehnologiju koja stoji iza kriptovalute. Da li je inovativna? Da li rešava stvarne probleme? I kako na nju gledaju i komentarisu strucnjaci.
-Razvojni tim: Da li tim ima dovoljno stručnjaka za razvoj i održavanje tehnologije? Da li su planovi za razvoj jasno definisani?<br>
-
-4.Tržišni potencijal i konkurencija
-Ciljno tržište: Procenite veličinu i potencijal ciljnog tržišta. Da li postoji stvarna potreba za rešenjem koje projekat nudi?
-Konkurencija: Analizirajte konkurenciju. Da li postoje slični projekti? Kako se vaš projekat razlikuje i koje su njegove prednostiu I mane u odnosu na konkurenciju.<br>
-
-5.Tokenomika
-Distribucija tokena: Proverite kako su tokeni distribuirani. Da li postoji ravnoteža između tokena namenjenih timu, investitorima i zajednici? Takodjei kompletan broj tokena je jako bitan, sama cinjenica da proekat koji ima 50 milijardi tokena , mora da bi dostigao cijenu tokena od jedan dolar, imati ulozeno u taj proekat 50 milijardi dolara,sto kod projekta od 1 milijardu tokena u koliko bi uslo 50 milijardi dolara , cijena tokena bi iznosila 50 dolara. Medjutim to nemora da bude sustina.
-Upotreba tokena: Razumite svrhu i upotrebu tokena unutar ekosistema. Da li token ima stvarnu vrednost i korisnost?<br>
-
-6.Zajednica i podrška
-Aktivnost zajednice: Procenite aktivnost i angažovanost zajednice oko projekta. Aktivna i podržavajuća zajednica može biti dobar indikator uspeha. Kao i partnera van kripto zajednice.
-Podrška i partnerstva: Da li projekat ima podršku poznatih investitora ili partnerstva sa drugim relevantnim projektima?<br>
-
-7.Regulativa i pravna pitanja
-Regulatorni okvir: Proverite da li projekat ispunjava sve relevantne regulatorne zahteve. Da li postoje pravni rizici koji bi mogli uticati na projekat?
-Poreske obaveze: Razumite poreske obaveze vezane za trejdovanje i držanje kriptovaluta.<br>
-
-8.Finansijski izveštaji i iransparentnost
-finansijska stabilnost: Procenite finansijsku stabilnost projekta. Da li ima dovoljno sredstava za realizaciju svojih ciljeva!?
-Transparentnost: Da li projekat redovno objavljuje izveštaje i informacije o napretku?<br>Transparentnost je ključna za poverenje investitora.
-Fundamentalna analiza zahteva detaljno istraživanje i razumevanje svih aspekata projekta. Cilj je da se proceni dugoročni potencijal kriptovalute i donesu informisane odluke o investiranju i trejdovanju.
-
-</p>
-        
-     
-     <h2>Tehnicka analiza</h2>
-
-     <p>Tehnička analiza je metodologija koja se koristi za procenu investicionih prilika kroz analizu istorijskih podataka o cenama i obimu trgovanja. Evo kako se tehnička analiza primenjuje u kontekstu nama potrebnog trejdovanja kriptovalutama:<br>
-
-Trendovi i obrasci<br>
-Trendovi: Identifikacija dugoročnih (bullish - rastući, bearish - padajući) i kratkoročnih trendova.
-Obrasci: Prepoznavanje obrazaca kao što su “glava i ramena” (head and shoulders), dvostruki vrh (double top), trokut (triangle), itd. Ovi obrasci mogu signalizirati potencijalne promene u trendu.<br>
-Tehnički indikatori<br>
-Pokretni proseci (Moving Averages): Prosečna cena kriptovalute tokom određenog perioda. Najčešće korišćeni su SMA (Simple Moving Average) i EMA (Exponential Moving Average).
-Indeks relativne snage (RSI): Mera brzine i promene cena. Vrednosti iznad 70 ukazuju na prekupljenost, dok vrednosti ispod 30 ukazuju na preprodanost.
-MACD (Moving Average Convergence Divergence): Kombinacija pokretnih proseka koja pomaže u identifikaciji promena u snazi, pravcu, momentumu i trajanju trenda.
-Bollinger bands: Prikazuju volatilnost tržišta. Sastoje se od srednjeg pokretnog proseka i dve linije koje su standardna devijacija iznad i ispod tog proseka.<br>
-Podrška i otpor (Support and Resistance)<br>
-Podrška: Nivo cene na kojem se očekuje da će potražnja biti dovoljno jaka da spreči dalji pad cijene.
-Otpor: Nivo cene na kojem se očekuje da će prodaja biti dovoljno jaka da spreči dalji rast cijene.
-<br>
-Volumen trgovanja<br>
-Volumen: Količina kriptovalute koja se trguje u određenom vremenskom periodu. Visok volumen može ukazivati na snažan trend, dok nizak volumen može ukazivati na slabost trenda.<br>
-Analiza sveća (Candlestick Patterns)<br>
-Bullish engulfing: Signalizira potencijalni preokret u rastući trend.
-Bearish engulfing: Signalizira potencijalni preokret u padajući trend.
-Doji: Indikator neodlučnosti na tržištu, može signalizirati preokret trenda.<br>
-Alati za tehničku analizu<br>
-TradingView: Popularna platforma za tehničku analizu koja nudi širok spektar alata i indikatora.
-Coinigy: Platforma specijalizovana za kriptovalute koja omogućava analizu i trgovanje na više berzi.
-Tehnička analiza je veoma korisna za kratkoročne trejdere jer omogućava identifikaciju potencijalnih ulaznih i izlaznih tačaka na tržištu. Međutim, važno je kombinovati je sa fundamentalnom analizom, ali i sa drugim tehnikama kako biste dobili jasniju sliku o tržištu.
-
-</p>
-
-   <h2>Sentimentalma analiza</h2>
-
-   <p>Sentimentalna analiza ili analiza sentimenta je metoda koja se koristi za procenu opšteg raspoloženja ili stava investitora prema određenoj kriptovaluti ili tržištu u cjelini. Ova analiza se oslanja na prikupljanje i analizu podataka iz različitih izvora, kao što su društvene mreže, forumi, vesti i drugi mediji, kako bi se utvrdilo da li je sentiment pozitivan, negativan ili neutralan. Evo kako se sentimentalna analiza primenjuje u kontekstu kriptovaluta:<br>
-    Ključni aspekti sentimentalne analize<br>
-Izvori podataka:
-Društvene mreže: Twitter, Reddit, Telegram i drugi forumi gde se diskutuje o kriptovalutama.
-Vesti i članci: Analiza naslova i sadržaja članaka o kriptovalutama.
-Komentari i recenzije: Mišljenja korisnika na različitim platformama.
-Alati i tehnike:
-Analiza teksta: Korišćenje algoritama za obradu prirodnog jezika (NLP) za analizu tonova i emocija u tekstovima.
-Sentiment score: Kvantifikacija sentimenta u numeričkom obliku, gde se pozitivni, negativni i neutralni komentari ocenjuju i sumiraju.
-Primena:
-Predviđanje cena: Pozitivan sentiment može ukazivati na potencijalni rast cene, dok negativan sentiment može ukazivati na pad.
-Identifikacija trendova: Praćenje promena u sentimentu može pomoći u identifikaciji novih trendova ili promena na tržištu.<br>
-
-Prednosti i ograničenja<br>
-Prednosti:<br>
-Brza reakcija: Omogućava brzo reagovanje na promene u raspoloženju tržišta.
-Dodatni uvidi: Pruža dodatne informacije koje nisu dostupne kroz tehničku ili fundamentalnu analizu.<br>
-Ograničenja:<br>
-Subjektivnost: Sentiment može biti subjektivan i podložan manipulaciji.
-Lažne informacije: Prisustvo lažnih vesti i dezinformacija može uticati na tačnost analize.
-Sentimentalna analiza je korisna alatka koja, kada se koristi zajedno sa tehničkom i fundamentalnom analizom, može pružiti sveobuhvatan uvid u tržište kriptovaluta.<br>
- Licno sam tokom 2018.god bio izmanipulisan laznim vijestima i to od jednog do tada prilicno pozdanog i pouzdanog portala u svijetu kripta. Takodje jednom prilikom pocetkom 2019.god. sam neprovjeravajuci Twitter nalog , danasnji X  povjerovao u prevaru koja me je kostala gubitka znacajne kolicine sredstava, upravo sto sam usao prebrzo u jedan proekat i  pokusao da se prikljucim na stednju (stake) sa enornim kamatama. Tako da je mnogo bitno strpljivo provjeriti i istraziti gdje i na koji nacin ulazete vasa sredstava!<br>
-Ovo su neki od dijelova iz našeg priručnika za tehnike trejdovanja od autora:<br> Miloš Božović CEO cryptogorac.com . 
-</p>
-
-
-
-
-    </main>
-
-      <footer class="footer">
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-md-4 col-12 footer-section">
-                    <h5>Kontakt</h5>
-                    <p>Email: <a href="mailto:info@cryptogorac.com">info@cryptogorac.com</a></p>
-                    <p>Telefon: +382 20 332 331</p>
-                </div>
-              <div class="col-md-4 col-12 footer-section">
-    <h5>Pratite nas</h5>
-    <p>
-        <a href="https://x.com/cryptogorac" target="_blank">
-    <i class="fab fa-x-twitter" style="font-size: 3em;"></i>
-</a>|
-        <a href="https://www.instagram.com/cryptogorac/" target="_blank">
-    <i class="fab fa-instagram" style="font-size: 3em;"></i>
-</a>
-    </p>
-</div>
-                <div class="col-md-4 col-12 footer-section">
-                    <h5>Navigacija</h5>
-                    <p>
-                        <a href="index.html" class="footer-link">Početna</a> | 
-                        <a href="o-nama.html" class="footer-link">O nama</a> | 
-
-                        <a href="kontakti.html" class="footer-link">Kontakti</a>
-                    </p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025-26 CryptoGorac.com | Sva prava zadržana.</p>
-            </div>
-        </div>
-    </footer>
-
-<button id="back-to-top" class="btn-back-to-top">↑</button>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-      <script>
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-
- async function updatePrices() {
-    try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
-        const data = await response.json();
-        
-        const btcPrice = data.bitcoin.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        const ethPrice = data.ethereum.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        
-        document.getElementById('btc-price').textContent = `BTC: ${btcPrice}`;
-        document.getElementById('eth-price').textContent = `ETH: ${ethPrice}`;
-    } catch (error) {
-        console.error('Greška pri dohvaćanju cijena:', error);
-        document.getElementById('btc-price').textContent = 'BTC: Greška';
-        document.getElementById('eth-price').textContent = 'ETH: Greška';
-    }
-}
-
-// Pozovi funkciju na učitavanju stranice
-window.addEventListener('load', updatePrices);
-
-// Ažuriraj svakih 300 sekundi
-setInterval(updatePrices, 300000);
-    </script>
+  <button class="back-to-top" type="button" aria-label="Nazad na vrh"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#arrow-up"></use></svg></button>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

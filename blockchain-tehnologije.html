@@ -1,960 +1,318 @@
 <!DOCTYPE html>
-<html lang="sr">
+<html lang="sr-Latn-ME">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blockchain-tehnologije CryptoGorac</title>
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap" rel="stylesheet">
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-<link rel="icon" type="image/png" href="logo-naviT.png">
-    <style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        font-family: 'Poppins', sans-serif;
-        background-color: white;
-        min-height: 100vh; /* Ensures body takes full viewport height */
-        margin: 0; /* Removes default margin */
-        display: flex;
-        flex-direction: column;
-    }
-
-    /* Navigacija */
-    .navbar {
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-        padding: 1.2rem 1rem;
-    }
-
-      .navbar-brand img {
-        height: 40px;
-        width: auto;
-        border-radius: 10px; /* Blago zaobljenje ivica */
-        box-shadow: 0 6px 20px rgba(26, 188, 156, 1.6);
-    }
-
-    .navbar-toggler {
-        border: none;
-        color: #ecf0f1;
-        font-size: 1.8rem;
-    }
-
-    .navbar-toggler:focus {
-        outline: none;
-    }
-
-    .navbar-nav {
-        justify-content: center; /* Centriranje stavki na desktopu */
-        width: 100%; /* Osigurava da meni zauzme punu širinu container-a */
-    }
-
-    .navbar-nav .nav-link {
-        color: #ecf0f1;
-        font-size: 1.1rem;
-        font-weight: 500;
-        padding: 0.5rem 1rem;
-        transition: color 0.3s ease, transform 0.3s ease;
-        position: relative;
-    }
-
-    .navbar-nav .nav-link:hover,
-    .navbar-nav .nav-link.active {
-        color: #1abc9c;
-        transform: translateY(-2px);
-    }
-
-    .navbar-nav .nav-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #1abc9c;
-        bottom: 0;
-        left: 1rem;
-        transition: width 0.3s ease;
-    }
-
-    .navbar-nav .nav-link:hover::after,
-    .navbar-nav .nav-link.active::after {
-        width: calc(100% - 2rem);
-    }
-
-    /* Dropdown */
-    .dropdown-menu {
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        border: none;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    .dropdown-item {
-        color: #ecf0f1;
-        font-size: 1rem;
-        padding: 0.8rem 1rem;
-        transition: color 0.3s ease, background-color 0.3s ease;
-        position: relative;
-    }
-
-    .dropdown-item:hover {
-        color: #1abc9c;
-        background-color: rgba(255, 255, 255, 0.1);
-    }
-
-    .dropdown-item::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #1abc9c;
-        bottom: 0;
-        left: 1rem;
-        transition: width 0.3s ease;
-    }
-
-    .dropdown-item:hover::after {
-        width: calc(100% - 2rem);
-    }
-
-    /* Sadržaj */
-    main {
-        padding-top: 4.4rem;
-        flex: 1; /* Allows main content to grow and push footer down */
-    }
-
-    p {
-        font-size: 1.2rem;
-        color: #333;
-        text-align: center;
-        padding: 1rem;
-    }
-
-         
-             /* Stil za kontejner Kripto Valute */
-        .kripto-valute {
-            max-width: 700px; /* Maksimalna širina */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano sa razmakom odozgo */
-            padding: 40px; /* Unutrašnji razmak */
-            background-color: white;
-            border-radius: 15px; /* Zaobljene ivice */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka u stilu sajta */
-            text-align: center; /* Centriran sadržaj */
-        }
-
-        .kripto-valute h2 {
-            font-size: 36px; /* Veliki naslov */
-            color:red; /* Boja inspirisana senkom */
-            margin-bottom: 20px;
-        }
-
-        .kripto-valute img {
-            max-width: 100%; /* Slika se prilagođava širini kontejnera */
-            height: auto; /* Zadržava proporcije */
-            border-radius: 15px; /* Zaobljene ivice slike */
-            margin: 15px 0; /* Razmak iznad i ispod slike */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Blaga senka na slici */
-        }
-
-        /* Responzivnost */
-        @media (max-width: 768px) {
-            .kripto-valute {
-                width: 90%;
-                padding: 20px; /* Smanjeni padding */
-                margin: 1.5rem auto;
-            }
-
-            .kripto-valute h2 {
-                font-size: 28px; /* Smanjeni naslov */
-            }
-
-            .kripto-valute img {
-                max-width: 100%; /* Osigurava prilagođavanje na malim ekranima */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .kripto-valute {
-                padding: 15px;
-                margin: 1rem auto;
-            }
-
-            .kripto-valute h2 {
-                font-size: 24px;
-            }
-        }
-
-
- .text-ticker {
-            max-width: 1300px; /* Maksimalna širina u skladu s prethodnim kontejnerima */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano */
-            padding: 20px; /* Unutrašnji razmak */
-            background-color: white;
-            border: 3px solid #2ecc71; /* Zeleni border kao u prethodnom primeru */
-            border-radius: 10px; /* Zaobljene ivice */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka u stilu sajta */
-            overflow: hidden; /* Sakriva tekst koji prelazi granice */
-        }
-
-        /* Stil za sadržaj text-ticker-a */
-       .text-ticker {
-            max-width: 1300px; /* Maksimalna širina u skladu s prethodnim kontejnerima */
-            width: 95%; /* Prilagođava se ekranu */
-            margin: 2rem auto; /* Centrirano */
-            padding: 20px; /* Unutrašnji razmak */
-            background-color: white;
-            border: 3px solid #2ecc71; /* Zeleni border kao u prethodnom primeru */
-            border-radius: 10px; /* Zaobljene ivice */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2), 0 0 10px rgba(26, 188, 156, 0.6); /* Senka u stilu sajta */
-            overflow: hidden; /* Sakriva tekst koji prelazi granice */
-        }
-
-        /* Stil za sadržaj text-ticker-a */
-        .text-ticker-content {
-            display: inline-block; /* Omogućava animaciju pomeranja */
-            white-space: nowrap; /* Tekst ostaje u jednoj liniji */
-            font-size: 21px; /* Veličina teksta */
-            color: #333; /* Tamno siva boja za osnovni tekst */
-            animation: ticker 37s linear infinite; /* Animacija pomeranja */
-        }
-
-        /* Boldirani deo */
-        .text-ticker-content b {
-            color: red; /* Narandžasta boja za naglašeni tekst */
-            font-weight: bold;
-        }
-
-        /* Animacija za pomeranje teksta - sa desne ka levoj */
-       @keyframes ticker {
-    0% {
-        transform: translateX(30%); /* Tekst počinje na vidljivom mestu */
-    }
-    100% {
-        transform: translateX(-100%); /* Završava van leve strane */
-    }
-}
-
-        /* Responzivnost */
-        @media (max-width: 768px) {
-            .text-ticker {
-                width: 90%;
-                padding: 10px; /* Smanjeni padding */
-                margin: 1.5rem auto;
-                border-width: 2px; /* Tanji border */
-            }
-
-            .text-ticker-content {
-                font-size: 18px; /* Smanjena veličina teksta */
-                animation-duration: 37s; /* Ubrzana animacija za manje ekrane */
-            }
-        }
-
-        @media (max-width: 480px) {
-            .text-ticker {
-                padding: 8px;
-                margin: 1rem auto;
-            }
-
-            .text-ticker-content {
-                font-size: 16px; /* Još manji tekst */
-                animation-duration: 37s; /* Još brža animacija */
-            }
-        }
-
-
-                 /* Stil za tekst kontejner */
-       .tekst-kontejner {
-    max-width: 1000px; /* Maksimalna širina */
-    width: 95%; /* Prilagođava se ekranu */
-    margin: 2rem auto; /* Centrirano sa razmakom odozgo */
-    padding: 40px; /* Unutrašnji razmak */
-    background-color: white;
-    border: 4px solid #2ecc71; /* Zeleni border */
-    border-radius: 15px; /* Zaobljene ivice */
-    text-align: center; /* Centriran sadržaj */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Blaga senka */
-}
-
-/* Stil za naslov */
-.tekst-kontejner h2 {
-    font-size: 36px; /* Veliki naslov */
-    color: red; /* Crvena boja */
-    margin-bottom: 20px;
-}
-.tekst-kontejner p {
-    font-size: 18px; /* Normalna veličina teksta */
-    color: #333; /* Tamno siva boja za tekst */
-    line-height: 1.6; /* Prored za čitljivost */
-    margin-bottom: 20px; /* Razmak između paragrafa i ikonica */
-}
-
-/* Stil za kontejner sa ikonama */
-.tekst-kontejner .store-icons {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 60px; /* Razmak između ikonica */
-    margin-top: 20px; /* Razmak od naslova */
-}
-
-/* Stil za linkove sa ikonama */
-.tekst-kontejner .store-link {
-    font-size: 2.9rem; /* Veličina ikonica */
-    color: #333; /* Osnovna boja ikonica, usklađena sa tekstom */
-    text-decoration: none; /* Bez podvlačenja */
-    transition: color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease; /* Prelazi usklađeni sa temom */
-    position: relative;
-}
-
-/* Hover efekat za ikonice */
-.tekst-kontejner .store-link:hover {
-    color: #1abc9c; /* Zelena boja iz teme za hover */
-    transform: translateY(-2px); /* Efekat pomeranja, isti kao kod nav-link */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2); /* Senka slična ostalim elementima */
-}
-
-/* Responzivnost */
-@media (max-width: 768px) {
-    .tekst-kontejner {
-        width: 90%;
-        padding: 20px; /* Smanjeni padding */
-        border-width: 3px; /* Malo tanji border */
-        margin: 1.5rem auto;
-    }
-
-    .tekst-kontejner h2 {
-        font-size: 28px; /* Smanjeni naslov */
-    }
-
-    .tekst-kontejner .store-link {
-        font-size: 2rem; /* Smanjena veličina ikonica za tablete */
-    }
-
-    .tekst-kontejner .store-icons {
-        gap: 20px; /* Smanjeni razmak između ikonica */
-    }
-}
-
-@media (max-width: 480px) {
-    .tekst-kontejner {
-        padding: 15px;
-        margin: 1rem auto;
-        border-width: 2px; /* Još tanji border */
-    }
-
-    .tekst-kontejner h2 {
-        font-size: 24px;
-    }
-
-    .tekst-kontejner .store-link {
-        font-size: 1.5rem; /* Smanjena veličina ikonica za mobilne */
-    }
-
-    .tekst-kontejner .store-icons {
-        gap: 15px; /* Još manji razmak između ikonica */
-    }
-}
-
-
-
-    /* Footer */
-    .footer {
-        background: linear-gradient(135deg, #2c3e50, #34495e);
-        color: #ecf0f1;
-        padding: 2rem 1rem;
-        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.2);
-    }
-
-    .footer-section h5 {
-        font-size: 1.3rem;
-        font-weight: 500;
-        margin-bottom: 1rem;
-        color: #1abc9c;
-    }
-
-    .footer-section p {
-        font-size: 1rem;
-        color: #ecf0f1;
-        margin: 0.5rem 0;
-    }
-
-    .footer-link {
-        color: #ecf0f1;
-        text-decoration: none;
-        position: relative;
-        transition: color 0.3s ease, transform 0.3s ease;
-    }
-
-    .footer-link:hover {
-        color: #1abc9c;
-        transform: translateY(-2px);
-    }
-
-    .footer-link::after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 2px;
-        background: #1abc9c;
-        bottom: -4px;
-        left: 0;
-        transition: width 0.3s ease;
-    }
-
-    .footer-link:hover::after {
-        width: 100%;
-    }
-
-    .footer-bottom {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        margin-top: 1.5rem;
-        padding-top: 1rem;
-        text-align: center;
-    }
-
-    .footer-bottom p {
-        font-size: 0.9rem;
-        color: #bdc3c7;
-    }
-
-    /* Responsive podešavanja */
-    @media (max-width: 768px) {
-        .navbar-brand img {
-            height: 30px;
-        }
-
-        .navbar-nav {
-            padding: 1rem; /* Dodat padding za bolji raspored */
-            justify-content: flex-start; /* Vraćeno na početak za mobilni */
-        }
-
-        .navbar-nav .nav-link {
-            font-size: 1.2rem;
-            padding: 0.8rem 0;
-        }
-
-        .navbar-nav .nav-link::after {
-            bottom: 0.2rem;
-            left: 0;
-        }
-
-        .navbar-nav .nav-link:hover::after,
-        .navbar-nav .nav-link.active::after {
-            width: 100%;
-        }
-
-        .navbar-nav .nav-link:hover,
-        .navbar-nav .nav-link.active {
-            transform: translateX(5px);
-        }
-
-        .dropdown-menu {
-            background: linear-gradient(135deg, #2c3e50, #34495e);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            margin: 0.5rem 0;
-        }
-
-        .dropdown-item {
-            padding: 0.6rem 1.5rem;
-        }
-
-        .dropdown-item::after {
-            left: 1.5rem;
-            bottom: 0.1rem;
-        }
-
-        .dropdown-item:hover::after {
-            width: calc(100% - 3rem);
-        }
-
-        main {
-            padding-top: 3.4rem;
-        }
-
-        p {
-            font-size: 1rem;
-        }
-
-        .footer-section {
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-section h5 {
-            font-size: 1.2rem;
-        }
-
-        .footer-section p {
-            font-size: 0.9rem;
-        }
-
-        .footer-bottom p {
-            font-size: 0.8rem;
-        }
-    }
-
-    @media (max-width: 480px) {
-        .navbar-nav .nav-link {
-            font-size: 1.1rem;
-        }
-
-        .dropdown-item {
-            font-size: 0.9rem;
-        }
-
-        .footer-section h5 {
-            font-size: 1.1rem;
-        }
-
-        .footer-section p {
-            font-size: 0.85rem;
-        }
-    }
-
-    .btn-back-to-top {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    background: linear-gradient(135deg, #2c3e50, #34495e);
-    color: #ecf0f1;
-    border: none;
-    border-radius: 50px;
-    padding: 10px 20px;
-    font-size: 1rem;
-    font-family: 'Poppins', sans-serif;
-    cursor: pointer;
-    display: none; /* Početno sakriveno */
-    transition: all 0.3s ease;
-    box-shadow: 0 0 10px #1abc9c, 0 4px 12px rgba(0, 0, 0, 0.2); /* Zelena senka + originalna senka */
-}
-
-.btn-back-to-top:hover {
-    background: #1abc9c;
-    transform: translateY(-3px);
-    box-shadow: 0 0 15px #1abc9c, 0 6px 16px rgba(0, 0, 0, 0.3); /* Jača senka na hover */
-}
-
-.btn-back-to-top.show {
-    display: block; /* Prikazuje se kada se doda klasa 'show' */
-}
-/* CSS dio za stilizovanje cijena. Ovo možete dodati u postojeći <style> tag ili modificirati .price-bar ako je potrebno. Boje i stilovi uklopljeni sa temom sajta (zelena za cijene, bijeli tekst, itd.). */
-
-
-.price-bar {
-    position: fixed;
-    top: 90px; /* Odmaknuto od navi bara */
-    right: 20px;
-    background: linear-gradient(135deg, #2c3e50, #34495e); /* Usklađeno sa temom sajta */
-    color: #ecf0f1;
-    padding: 0.75rem 1.25rem;
-    font-size: 1.1rem;
-    font-weight: 500;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    z-index: 1000;
-    border-radius: 15px;
-    border: 1px solid rgba(26, 188, 156, 0.5);
-    transition: all 0.3s ease;
-    display: inline-flex; /* Dinamična širina prema sadržaju */
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-    white-space: nowrap; /* Sprečava prelamanje */
-    max-width: 100vw;
-}
-
-.price-bar:hover {
-    box-shadow: 0 6px 16px rgba(26, 188, 156, 0.6);
-    transform: translateY(-2px);
-}
-
-#btc-price, #eth-price {
-    color: #1abc9c;
-    font-weight: bold;
-    display: inline-flex;
-    align-items: center;
-    padding: 0.25rem 0.5rem;
-    background-color: rgba(255, 255, 255, 0.05);
-    border-radius: 8px;
-    flex-shrink: 0;
-}
-
-#btc-price::before {
-    content: '₿';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-    color: #f7931a;
-}
-
-#eth-price::before {
-    content: '◇';
-    margin-right: 0.5rem;
-    font-size: 1.2rem;
-    color: #627eea;
-}
-
-/* Responzivnost za mobilne i tablet uređaje */
-@media (max-width: 1024px) {
-    .price-bar {
-        top: 90px; /* Veći razmak od navi bara */
-        right: 10px;
-        font-size: 1rem; /* ~10% umanjenje */
-        padding: 0.6rem 1rem;
-        gap: 0.6rem;
-        border-radius: 10px;
-        box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
-        background: linear-gradient(135deg, #2c3e50, #3b4b5e); /* Blago tamnija pozadina */
-        max-width: 95vw;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-    }
-
-    #btc-price, #eth-price {
-        font-size: 0.95rem;
-        padding: 0.2rem 0.4rem;
-        border-radius: 6px;
-        background-color: rgba(255, 255, 255, 0.04);
-    }
-
-    #btc-price::before, #eth-price::before {
-        font-size: 1rem;
-        margin-right: 0.4rem;
-    }
-}
-
-
-
-
-</style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Blockchain tehnologije — priručnik | CryptoGorac.com</title>
+  <meta name="description" content="Šta je blockchain, ključni elementi i princip rada, vrste blockchain mreža, kriptografski ključevi, rizici, napadi i strategije zaštite.">
+  <link rel="canonical" href="https://www.cryptogorac.com/blockchain-tehnologije.html">
+  <link rel="alternate" hreflang="sr-ME" href="https://www.cryptogorac.com/blockchain-tehnologije.html">
+  <link rel="alternate" hreflang="en" href="https://www.cryptogorac.com/en/blockchain-technology.html">
+  <link rel="alternate" hreflang="x-default" href="https://www.cryptogorac.com/blockchain-tehnologije.html">
+  <meta name="theme-color" content="#2c3e50">
+  <meta name="color-scheme" content="light">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="CryptoGorac.com">
+  <meta property="og:locale" content="sr_ME">
+  <meta property="og:title" content="Blockchain tehnologije — priručnik | CryptoGorac.com">
+  <meta property="og:description" content="Šta je blockchain, ključni elementi i princip rada, vrste blockchain mreža, kriptografski ključevi, rizici, napadi i strategije zaštite.">
+  <meta property="og:url" content="https://www.cryptogorac.com/blockchain-tehnologije.html">
+  <meta property="og:image" content="https://www.cryptogorac.com/assets/img/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="CryptoGorac.com — softverski studio iz Podgorice">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@cryptogorac">
+
+  <link rel="icon" href="favicon.ico" sizes="48x48">
+  <link rel="icon" href="assets/img/icon-32.png" sizes="32x32" type="image/png">
+  <meta name="application-name" content="CryptoGorac">
+  <meta name="apple-mobile-web-app-title" content="CryptoGorac">
+  <meta name="msapplication-TileColor" content="#2c3e50">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="apple-touch-icon" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+
+  <link rel="preload" href="assets/fonts/poppins-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/poppins-latin-700-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/site.css?v=2026-10g">
+  <script src="assets/js/site.js?v=2026-10g" defer></script>
+  <link rel="preconnect" href="https://api.coingecko.com" crossorigin>
+  <script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"BreadcrumbList","@id":"https://www.cryptogorac.com/blockchain-tehnologije.html#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Početna","item":"https://www.cryptogorac.com/"},{"@type":"ListItem","position":2,"name":"Crypto edukacija","item":"https://www.cryptogorac.com/#edu-naslov"},{"@type":"ListItem","position":3,"name":"Blockchain tehnologije","item":"https://www.cryptogorac.com/blockchain-tehnologije.html"}]},{"@type":"Book","name":"Blockchain tehnologije","description":"Šta je blockchain, ključni elementi i princip rada, vrste blockchain mreža, kriptografski ključevi, rizici, napadi i strategije zaštite.","url":"https://www.cryptogorac.com/blockchain-tehnologije.html","inLanguage":"sr-Latn","author":{"@id":"https://www.cryptogorac.com/#org"},"publisher":{"@id":"https://www.cryptogorac.com/#org"},"image":"https://www.cryptogorac.com/assets/img/blockchain.webp","bookFormat":"https://schema.org/Paperback"}]}</script>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg fixed-top">
-        <div class="container-fluid nav-container">
-            <a class="navbar-brand" href="index.html">
-                <img src="logo navi.jpg" alt="Logo">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                ☰
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Početna</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="o-nama.html">O nama</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#usluge" id="uslugeDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Usluge
-                        </a>
-                         <ul class="dropdown-menu" aria-labelledby="uslugeDropdown">
-                             <li><a class="dropdown-item" href="it-konsalting.html">IT konsalting</a></li>
-                            <li><a class="dropdown-item" href="sajtovi.html">Izrada sajtova</a></li>
-                            <li><a class="dropdown-item" href="web-app.html">izrada web app</a></li>
-                            <li><a class="dropdown-item" href="desktop-app.html">Izrada desk-top app</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#kripto-edukacija" id="kriptoDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Crypto edukacija
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="kriptoDropdown">
-                            <li><a class="dropdown-item" href="crypto-valute.html">Crypto valute</a></li>
-                            <li><a class="dropdown-item" href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
-                            <li><a class="dropdown-item" href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="kontakti.html">Kontakti</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
+<body class="theme-crypto">
+  <a class="skip-link" href="#main">Preskoči na sadržaj</a>
+
+  <header class="site-header">
+    <nav class="nav container" aria-label="Glavna navigacija">
+      <a class="brand" href="index.html" aria-label="CryptoGorac.com — početna">
+        <img src="assets/img/logo-navi.webp" alt="" width="250" height="40">
+      </a>
+      <div class="lang-switch" role="group" aria-label="Jezik / Language"><a href="blockchain-tehnologije.html" hreflang="sr-ME" aria-current="true">SRB</a><span aria-hidden="true">|</span><a href="en/blockchain-technology.html" hreflang="en" lang="en">ENG</a></div>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-panel" aria-label="Otvori meni"><span class="bars"></span></button>
+      <div class="nav-panel" id="nav-panel">
+        <ul class="nav-menu">
+          <li><a class="nav-link" href="index.html">Početna</a></li>
+          <li><a class="nav-link" href="o-nama.html">O nama</a></li>
+          <li class="nav-item">
+            <button class="nav-sub-toggle" type="button" aria-expanded="false" aria-controls="sub-usluge">Usluge <svg class="chev" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#chev"></use></svg></button>
+            <ul class="nav-sub" id="sub-usluge">
+              <li><a href="it-konsalting.html">IT konsalting</a></li>
+              <li><a href="sajtovi.html">Izrada sajtova</a></li>
+              <li><a href="web-app.html">Izrada web aplikacija</a></li>
+              <li><a href="desktop-app.html">Izrada desktop aplikacija</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <button class="nav-sub-toggle is-current" type="button" aria-expanded="false" aria-controls="sub-edukacija">Crypto edukacija <svg class="chev" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#chev"></use></svg></button>
+            <ul class="nav-sub" id="sub-edukacija">
+              <li><a href="crypto-valute.html">Crypto valute</a></li>
+              <li><a href="blockchain-tehnologije.html" aria-current="page">Blockchain tehnologije</a></li>
+              <li><a href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
+            </ul>
+          </li>
+          <li><a class="nav-link" href="kontakti.html">Kontakti</a></li>
+        </ul>
+      </div>
     </nav>
+  </header>
 
-    <main>
-        <!-- HTML dio za prikaz cijena BTC i ETH. Dodajte ovo unutar <div class="price-bar"> ili kao novi fiksni element ispod navi bara. Ako želite da zamijeni postojeći sadržaj .price-bar, zamijenite <div class="price-bar">Cijena: 100€</div> sa ovim: -->
-<div class="price-bar">
-    <span id="btc-price">BTC: Učitavanje...</span> | 
-    <span id="eth-price">ETH: Učitavanje...</span>
-</div>
-        <div style="margin-bottom: 100px;"></div>
-        
+  <main id="main" tabindex="-1">
+    <section class="page-hero">
+      <div class="container">
+        <div class="price-bar" role="status" aria-label="Trenutne cijene">
+          <span class="price-chip"><span class="coin coin-btc" aria-hidden="true">₿</span>BTC: <span id="btc-price">učitavanje…</span></span>
+          <span class="price-chip"><span class="coin coin-eth" aria-hidden="true">Ξ</span>ETH: <span id="eth-price">učitavanje…</span></span>
+        </div>
+        <div class="article-hero">
+          <img class="cover" src="assets/img/blockchain.webp" alt="Korica priručnika za blockchain tehnologiju, CryptoGorac" width="720" height="1078">
+          <div>
+            <span class="eyebrow">Crypto edukacija · priručnik</span>
+            <h1>Blockchain tehnologija</h1>
+            <p class="lead">Blockchain je distribuirana, decentralizovana baza podataka koja omogućava sigurnu, transparentnu i nepromjenjivu evidenciju podataka.</p>
+            <p>Priručnike možete naručiti odmah putem društvenih mreža.</p>
+            <div class="social social-light">
+            <a href="https://x.com/cryptogorac" target="_blank" rel="noopener" aria-label="CryptoGorac na X-u"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#x"></use></svg></a>
+          <a href="https://www.instagram.com/cryptogorac/" target="_blank" rel="noopener" aria-label="CryptoGorac na Instagramu"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#instagram"></use></svg></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-   <div class="kripto-valute">
-        <h2>Blockchain tehnologija</h2>
-        <img src="blockchain.jpg" alt="blockchain tehnologija Slika">
+    <div class="ticker" role="marquee" aria-label="Nagradna igra">
+      <div class="ticker-track">
+        <span>Blockchain tehnologije — <b>CryptoGorac.com</b> — Zapratite, lajkujte, tagujte dva prijatelja na X-u i Instagramu – učite uz priručnik i osvojite nagradu! Igra kreće 1. oktobra i traje do 1. novembra!</span>
+        <span aria-hidden="true">Blockchain tehnologije — <b>CryptoGorac.com</b> — Zapratite, lajkujte, tagujte dva prijatelja na X-u i Instagramu – učite uz priručnik i osvojite nagradu! Igra kreće 1. oktobra i traje do 1. novembra!</span>
+      </div>
     </div>
 
-       <div class="text-ticker">
-        <div class="text-ticker-content">
-            Blockchain-tehnologije - <b>CryptoGorac.com</b> -Zapratite, lajkujte, tagujte dva prijatelja na X-u i Instagramu – učite uz priručnik i osvojite nagradu! Igra kreće 1. oktobra i traje do 1. novembra!
+    <section class="section">
+      <div class="container-narrow">
+        <article class="prose">
+          <nav class="toc" aria-labelledby="toc-naslov">
+            <h2 id="toc-naslov">Sadržaj</h2>
+            <ol>
+              <li><a href="#sta-je-blockchain">Šta je blockchain?</a></li>
+              <li><a href="#vrste-mreza">Vrste blockchain mreža</a></li>
+              <li><a href="#kriptografija">Kriptografija u blockchainu</a></li>
+              <li><a href="#rizici">Rizici i izazovi</a></li>
+            </ol>
+          </nav>
 
+          <h2 id="sta-je-blockchain">Šta je blockchain?</h2>
+          <p>Blockchain je distribuirana, decentralizovana baza podataka koja omogućava sigurnu, transparentnu i nepromjenjivu evidenciju podataka. Osnovna struktura blockchain tehnologije sastoji se od lanaca blokova, pri čemu svaki blok sadrži niz transakcija ili podataka, kao i jedinstveni identifikator (hash) prethodnog bloka. Ova povezanost između blokova stvara lanac koji je otporan na izmjene i prevare.</p>
+          <h3>Ključni elementi blockchaina</h3>
+          <ol>
+          <li><strong>Decentralizacija:</strong> Umjesto da se podaci čuvaju na jednom centralizovanom serveru, blockchain se širi kroz mrežu računara (node-ova) koji su povezani međusobno. Svaki čvor u mreži ima kopiju cijelog lanca blokova, što povećava otpornost na napade i greške.</li>
+          <li><strong>Transparentnost:</strong> Sve transakcije na blockchain mreži su javne i dostupne svima. Ova transparentnost omogućava korisnicima da provjeravaju i verifikuju transakcije, čime se smanjuje mogućnost prevare.</li>
+          <li><strong>Sigurnost:</strong> Koristeći kriptografske tehnike, poput hash funkcija, blockchain osigurava integritet podataka. Svaki blok sadrži hash prethodnog bloka, što znači da bi bilo koja promjena u prethodnim podacima zahtijevala promjenu svih narednih blokova, što je gotovo nemoguće bez saglasnosti mreže.</li>
+          <li><strong>Nepromjenjivost:</strong> Kada su podaci jednom zapisani u blockchain, oni se ne mogu jednostavno mijenjati ili brisati. Ova karakteristika je ključna za primjene koje zahtijevaju visok nivo povjerenja, poput finansijskih transakcija, ugovora ili evidencija.</li>
+          </ol>
+          <h3>Princip rada</h3>
+          <p>Kada korisnik želi da izvrši transakciju (npr. prenese kriptovalutu), ta transakcija se šalje mreži. Čvorovi u mreži provjeravaju i validiraju transakciju koristeći konsenzusne algoritme. Kada se transakcija potvrdi, ona se grupiše sa drugim transakcijama u blok. Nakon što je blok popunjen, on se dodaje na kraj lanca, a proces započinje iznova.</p>
 
- 
+          <h2 id="vrste-mreza">Vrste blockchain mreža</h2>
+          <h3>Javni (Public) blockchain</h3>
+          <p>Javni blockchain je otvorena mreža dostupna svima. Svako može učestvovati u mreži, validirati transakcije i dodavati nove blokove.</p>
+          <p><strong>Prednosti:</strong></p>
+          <ul>
+          <li><strong>Decentralizacija:</strong> nema centralne tačke kontrole, što povećava sigurnost i otpornost na napade.</li>
+          <li><strong>Transparentnost:</strong> sve transakcije su javno dostupne i može ih provjeriti bilo ko.</li>
+          <li><strong>Sigurnost:</strong> veliki broj učesnika čini mrežu sigurnijom protiv napada.</li>
+          </ul>
+          <p><strong>Mane:</strong></p>
+          <ul>
+          <li><strong>Skalabilnost:</strong> javni blockchainovi često imaju problema sa skalabilnošću zbog velikog broja transakcija.</li>
+          <li><strong>Energetska potrošnja:</strong> konsenzusni algoritmi kao što je Proof of Work (PoW) zahtijevaju veliku količinu energije.</li>
+          <li><strong>Privatnost:</strong> sve transakcije su javne, što može biti problem za korisnike koji žele privatnost.</li>
+          </ul>
+          <h3>Privatni (Private) blockchain</h3>
+          <p>Privatni blockchain je mreža sa ograničenim pristupom, gdje samo odabrani učesnici mogu validirati transakcije i dodavati blokove. Upotreba u korporativnim okruženjima:</p>
+          <ul>
+          <li><strong>Kontrola pristupa:</strong> samo ovlašćeni učesnici mogu pristupiti mreži, što omogućava veću kontrolu nad podacima.</li>
+          <li><strong>Brže transakcije:</strong> manji broj učesnika omogućava brže validacije i transakcije.</li>
+          <li><strong>Privatnost:</strong> podaci su dostupni samo ovlašćenim učesnicima, što povećava privatnost.</li>
+          </ul>
+          <h3>Dozvoljeni (Permissioned) blockchain</h3>
+          <p>Dozvoljeni blockchain kombinuje karakteristike javnih i privatnih blockchainova. Pristup mreži je ograničen, ali transakcije mogu biti javno dostupne. Kombinacija privatnog i javnog pristupa:</p>
+          <ul>
+          <li><strong>Fleksibilnost:</strong> omogućava kontrolu pristupa uz zadržavanje transparentnosti za određene transakcije.</li>
+          <li><strong>Sigurnost:</strong> kombinacija privatnog pristupa i javne verifikacije povećava sigurnost.</li>
+          <li><strong>Efikasnost:</strong> brže transakcije uz mogućnost javne provjere.</li>
+          </ul>
+          <h3>Konzorcijumski blockchain</h3>
+          <p>Konzorcijumski blockchain je mreža kojom upravlja grupa organizacija. Ova vrsta blockchaina se često koristi u industrijskim partnerstvima. Upotreba u partnerstvima i industrijama:</p>
+          <ul>
+          <li><strong>Zajednička kontrola:</strong> više organizacija upravlja mrežom, što povećava povjerenje među partnerima.</li>
+          <li><strong>Smanjenje troškova:</strong> dijeljenje resursa i infrastrukture smanjuje troškove.</li>
+          <li><strong>Specifične primjene:</strong> idealno za industrije gdje je potrebna saradnja između više entiteta, kao što su finansije, zdravstvo i logistika.</li>
+          </ul>
+
+          <h2 id="kriptografija">Kriptografija u blockchainu</h2>
+          <p>Kriptografija zauzima centralno mjesto u blockchain ekosistemu, obezbjeđujući osnovne sigurnosne mehanizme za zaštitu podataka, verifikaciju transakcija i održavanje integriteta sistema. Kriptografski ključevi su srce ove sigurnosne strukture.</p>
+          <h3>Uloga kriptografskih ključeva</h3>
+          <p>Kriptografski ključevi su matematički algoritmi koji se koriste za šifrovanje i dešifrovanje podataka. Postoje dvije vrste ključeva u sistemu asimetrične kriptografije, koja je dominantna u blockchain tehnologiji:</p>
+          <ul>
+          <li><strong>Javni ključ (Public Key)</strong> – segment digitalnog identiteta koji je dostupan svima. Njegova funkcija je dvojaka:
+          <ul>
+          <li><strong>Šifrovanje:</strong> kada neko šalje poruku ili transferiše sredstva, koristi javni ključ za šifrovanje ovih informacija. Pošto javni ključ može biti slobodno distribuiran, bilo ko može da pošalje šifrovane podatke koje može dešifrovati samo vlasnik odgovarajućeg privatnog ključa.</li>
+          <li><strong>Verifikacija:</strong> javni ključ se koristi za provjeru digitalnih potpisa, omogućavajući učesnicima da verifikuju da je poruka ili transakcija stvarno poslata od određenog pojedinca ili entiteta, bez mogućnosti falsifikovanja.</li>
+          </ul>
+          </li>
+          <li><strong>Privatni ključ (Private Key)</strong> – tajna komponenta kriptografskog para. Njegove funkcije su:
+          <ul>
+          <li><strong>Dešifrovanje:</strong> ovaj ključ se koristi za dešifrovanje poruka ili transakcija koje su šifrovane javnim ključem. Privatni ključ mora ostati privatan da bi sistem sačuvao svoju sigurnost; izgubljen ili otkriven ključ može dovesti do gubitka kontrole nad digitalnom imovinom.</li>
+          <li><strong>Digitalno potpisivanje:</strong> kada se privatni ključ koristi za potpisivanje transakcije ili poruke, on stvara digitalni potpis koji se može verifikovati javnim ključem. Ovo obezbjeđuje da samo vlasnik privatnog ključa može autorizovati transakciju ili potvrditi informaciju.</li>
+          </ul>
+          </li>
+          </ul>
+          <h3>Kako funkcioniše par ključeva?</h3>
+          <p>Asimetrična kriptografija radi na principu parova javni–privatni ključ.</p>
+          <ul>
+          <li><strong>Matematička osnova:</strong> ova tehnologija se oslanja na komplikovane matematičke probleme, kao što je faktorizacija velikih brojeva u slučaju RSA algoritma, ili eliptične krive u ECIES. Šifrovanje i dešifrovanje su brzi, ali izvođenje obrnutog procesa (odnosno pronalaženje privatnog ključa iz javnog) zahtijeva ekstremno dugo vrijeme i računarske resurse, čineći sistem praktično neprobojnim.</li>
+          <li><strong>Sigurnost:</strong> sigurnost sistema leži u tajnosti privatnog ključa. Svaka transakcija ili poruka šifrovana javnim ključem može biti dešifrovana samo odgovarajućim privatnim ključem, čime se obezbjeđuje da samo odgovarajući vlasnik može pristupiti ili autorizovati akcije.</li>
+          </ul>
+          <h3>Uticaj na blockchain</h3>
+          <p>U blockchain ekosistemu, kriptografija kroz ključeve obezbjeđuje:</p>
+          <ul>
+          <li><strong>Integritet podataka:</strong> svaka promjena u transakciji bila bi vidljiva zbog digitalnog potpisa.</li>
+          <li><strong>Autentifikaciju:</strong> verifikaciju identiteta onih koji šalju transakcije.</li>
+          <li><strong>Povjerljivost:</strong> šifrovanjem se osigurava da samo namijenjeni primaoci mogu dešifrovati i čitati sadržaj poruke ili detalje transakcije. Ovo je posebno važno za privatnost transakcija na javnim blockchain mrežama gdje svi mogu vidjeti transakcije, ali samo oni s odgovarajućim privatnim ključem mogu da ih dešifruju i razumiju.</li>
+          </ul>
+
+          <h2 id="rizici">Rizici i izazovi</h2>
+          <p>Blockchain tehnologija, uprkos svojoj robusnosti i sigurnosti, suočava se sa nekoliko rizika i izazova koji mogu uticati na integritet, sigurnost i efikasnost sistema.</p>
+          <h3>Hakerski napadi</h3>
+          <ul>
+          <li><strong>Napad 51%:</strong> teorijski napad gdje, ako jedan entitet kontroliše većinu računske snage (51%) u mreži, može manipulisati transakcijama, sprečavati potvrđivanje novih transakcija ili čak poništiti transakcije. U praksi je ovo veoma teško izvesti zbog decentralizovane prirode mnogih blockchain mreža, posebno onih sa velikim brojem učesnika. <em>Rizik:</em> u manje decentralizovanim mrežama ili novim kriptovalutama rizik od ovog napada može biti veći.</li>
+          <li><strong>Sybil napad:</strong> napadač stvara mnogo lažnih identiteta (nodova) u mreži da bi imao veću kontrolu ili da bi ometao mrežu. <em>Rizik:</em> posebno efikasan u sistemima konsenzusa gdje glas ili moć nodova zavisi od njihovog broja.</li>
+          <li><strong>Drugi napadi na konsenzus protokole:</strong> postoje i druge vrste napada, kao što su Double-spending (dvostruko trošenje), Eclipse Attack (gdje napadač izoluje žrtvu od ostatka mreže) itd.</li>
+          </ul>
+          <h3>Ranjivosti pametnih ugovora</h3>
+          <p>Pametni ugovori su programi na blockchainu koji se automatski izvršavaju. Međutim, mogu biti ranjivi na:</p>
+          <ul>
+          <li><strong>Greške u kodu:</strong> programerske greške mogu dovesti do eksploatacija, gdje napadač iskoristi grešku da izvrši transakcije koje nisu bile namjerno omogućene.</li>
+          <li><strong>Reentrancy:</strong> posebna vrsta napada gdje funkcija poziva samu sebe prije nego što se završi, što može dovesti do gubitka sredstava.</li>
+          <li><strong>Front-running:</strong> napadač koristi informacije o transakciji prije nego što se ona izvrši da bi zaradio profit na račun originalnog pokretača transakcije.</li>
+          <li><strong>Timestamp Dependency:</strong> ako pametni ugovor zavisi od vremenskog pečata, napadač može koristiti varijaciju vremena između nodova da manipuliše sistemom.</li>
+          </ul>
+          <h3>Zaštite i strategije</h3>
+          <ul>
+          <li><strong>Auditi koda:</strong> redovni auditi programa ključni su za otkrivanje grešaka, ranjivosti i mogućih eksploatacija u pametnim ugovorima ili blockchain softveru.
+          <ul>
+          <li><strong>Redovni pregledi:</strong> revizija koda (timovi stručnjaka ili vanjski auditori), automatski alati za statičku analizu koji prepoznaju poznate obrasce grešaka i testiranje penetracije, odnosno simuliranje napada da bi se provjerila otpornost sistema.</li>
+          <li><strong>Fokus na kritične komponente:</strong> posebna pažnja posvećuje se pametnim ugovorima zbog njihove centralne uloge u automatizaciji transakcija.</li>
+          </ul>
+          </li>
+          <li><strong>Edukacija i svijest o sigurnosti:</strong> osim tehničkih mjera, važno je da se svi učesnici u ekosistemu obrazuju o sigurnosnim praksama.
+          <ul>
+          <li><strong>Treninzi i seminari:</strong> redovne edukativne sesije za developere, korisnike i menadžere o najnovijim prijetnjama i metodama zaštite.</li>
+          <li><strong>Protokoli za odgovor na incident:</strong> jasni koraci za identifikaciju, izolaciju i reakciju na sigurnosne incidente.</li>
+          </ul>
+          </li>
+          <li><strong>Decentralizacija i konsenzus protokoli:</strong>
+          <ul>
+          <li><strong>Razvoj otpornih protokola:</strong> konsenzus protokoli otporni na većinu poznatih napada (npr. Proof of Stake (PoS), koji smanjuje rizik napada 51% u odnosu na Proof of Work (PoW)).</li>
+          <li><strong>Decentralizacija moći:</strong> održavanje decentralizovane strukture mreže podsticanjem čvorova širom svijeta.</li>
+          </ul>
+          </li>
+          <li><strong>Povećanje privatnosti i anonimnosti:</strong>
+          <ul>
+          <li><strong>Zero-Knowledge Proofs (ZKP):</strong> omogućavaju potvrđivanje transakcija bez otkrivanja njihovih detalja.</li>
+          <li><strong>Privatne blockchain mreže:</strong> za određene slučajeve upotrebe, privatne ili hibridne mreže pružaju dodatnu kontrolu nad podacima i pristupom.</li>
+          </ul>
+          </li>
+          </ul>
+          <p>Svaka od navedenih strategija predstavlja sloj odbrane, osiguravajući da tehnologija ostane sigurna, pouzdana i efikasna za sve učesnike.</p>
+
+          <p class="author-note">Ovo su neki od dijelova iz našeg priručnika za blockchain tehnologiju od autora <strong>Miloš Božović</strong>, CEO cryptogorac.com.</p>
+        </article>
+
+        <div class="cta-band reveal">
+          <div>
+            <h2>Želite cijeli priručnik?</h2>
+            <p>Pišite nam na X-u ili Instagramu, ili nas kontaktirajte direktno.</p>
+          </div>
+          <a class="btn" href="kontakti.html">Kontaktirajte nas <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#arrow-right"></use></svg></a>
         </div>
-    </div> 
+      </div>
+    </section>
+  </main>
 
-             <div class="tekst-kontejner">
-    <h2>Blockchain tehnologija</h2>
- <p>Priručnike možete naručiti odmah putem društvenih mreža.</p>
-    <div class="store-icons">
-       <a href="https://x.com/" target="_blank" class="store-link" title="Visit us on X">
-    <i class="fab fa-x-twitter"></i>
-</a>
-<a href="https://www.instagram.com/" target="_blank" class="store-link" title="Visit us on Instagram">
-    <i class="fab fa-instagram"></i>
-</a>
-      
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <img src="assets/img/logo-navi.webp" alt="CryptoGorac.com" width="212" height="34" loading="lazy">
+          <p>Softverski studio iz Podgorice: IT konsalting, sajtovi, web i desktop aplikacije, uz crypto edukaciju.</p>
+          <div class="social">
+          <a href="https://x.com/cryptogorac" target="_blank" rel="noopener" aria-label="CryptoGorac na X-u"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#x"></use></svg></a>
+          <a href="https://www.instagram.com/cryptogorac/" target="_blank" rel="noopener" aria-label="CryptoGorac na Instagramu"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#instagram"></use></svg></a>
+          </div>
+        </div>
+        <div>
+          <h2>Usluge</h2>
+          <ul class="footer-links">
+            <li><a href="it-konsalting.html">IT konsalting</a></li>
+            <li><a href="sajtovi.html">Izrada sajtova</a></li>
+            <li><a href="web-app.html">Web aplikacije</a></li>
+            <li><a href="desktop-app.html">Desktop aplikacije</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Crypto edukacija</h2>
+          <ul class="footer-links">
+            <li><a href="crypto-valute.html">Crypto valute</a></li>
+            <li><a href="blockchain-tehnologije.html">Blockchain tehnologije</a></li>
+            <li><a href="tehnike-trejdovanja.html">Tehnike trejdovanja</a></li>
+          </ul>
+        </div>
+        <div>
+          <h2>Kontakti</h2>
+          <ul class="footer-links footer-contact">
+            <li><a href="tel:+38220332331"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#phone"></use></svg><span><small>Fiksni</small>+382&nbsp;20&nbsp;332&nbsp;331</span></a></li>
+            <li><a href="tel:+38269691621"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#phone"></use></svg><span><small>Mobilni</small>+382&nbsp;69&nbsp;691&nbsp;621</span></a></li>
+            <li><a href="mailto:info@cryptogorac.com"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#mail"></use></svg><span><small>E-pošta</small>info@cryptogorac.com</span></a></li>
+            <li><span class="footer-contact-row"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#pin"></use></svg><span><small>Lokacija</small>Podgorica, Crna Gora</span></span></li>
+          </ul>
+          <a class="footer-cta" href="kontakti.html">Zakažite konsultacije<svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#arrow-right"></use></svg></a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <ul class="footer-nav" aria-label="Brzi linkovi">
+          <li><a href="index.html">Početna</a></li>
+          <li><a href="o-nama.html">O nama</a></li>
+          <li><a href="kontakti.html">Kontakt</a></li>
+        </ul>
+        <p>© 2025–<span data-year>2026</span> CryptoGorac.com · Sva prava zadržana.</p>
+      </div>
     </div>
-</div>
+  </footer>
 
- <div class="tekst-kontejner">
-        <h2>Blockchain tehnologija</h2>
-        <p>Šta je Blockchain?
-Blockchain je distribuirana, decentralizovana baza podataka koja omogućava sigurnu, transparentnu i nepromenjivu evidenciju podataka. Osnovna struktura blockchain tehnologije sastoji se od lanaca blokova, pri čemu svaki blok sadrži niz transakcija ili podataka, kao i jedinstveni identifikator (hash) prethodnog bloka. Ova povezanost između blokova stvara lanac koji je otporan na izmene i prevare.
-Ključni elementi blockchaina:
-1.  Decentralizacija:
-o   Umesto da se podaci čuvaju na jednom centralizovanom serveru, blockchain se širi kroz mrežu računara (node-ova) koji su povezani međusobno. Svaki čvor u mreži ima kopiju celog lanca blokova, što povećava otpornost na napade i greške.
-2.  Transparentnost:
-o   Sve transakcije na blockchain mreži su javne i dostupne svima. Ova transparentnost omogućava korisnicima da proveravaju i verifikuju transakcije, čime se smanjuje mogućnost prevare.
-3.  Sigurnost:
-o   Koristeći kriptografske tehnike, poput hash funkcija, blockchain osigurava integritet podataka. Svaki blok sadrži hash prethodnog bloka, što znači da bi bilo koja promena u prethodnim podacima zahtevala promenu svih narednih blokova, što je gotovo nemoguće bez saglasnosti mreže.
-4.  Nepromenjivost:
-o   Kada su podaci jednom zapisani u blockchain, oni se ne mogu jednostavno menjati ili brisati. Ova karakteristika je ključna za primene koje zahtevaju visoku razinu poverenja, poput finansijskih transakcija, ugovora ili evidencija.
-Princip rada:
-Kada korisnik želi da izvrši transakciju (npr. prenese kriptovalutu), ta transakcija se šalje mreži. Čvorovi u mreži proveravaju i validiraju transakciju koristeći konsenzusne algoritme. Kada se transakcija potvrdi, ona se grupiše sa drugim transakcijama u blok. Nakon što je blok popunjen, on se dodaje na kraj lanca, a proces započinje iznova.
-</p>
-<h2> Vrste BLOCKCHAIN mreže </h2>
-
-<p>3.1. Javni (Public) blockchain<br>
-
-Javni blockchain je otvorena mreža dostupna svima. Svako može učestvovati u mreži, validirati transakcije i dodavati nove blokove.
-
-Prednosti:
-Decentralizacija: Nema centralne tačke kontrole, što povećava sigurnost i otpornost na napade.
-Transparentnost: Sve transakcije su javno dostupne i mogu se proveriti od strane bilo koga.
-Sigurnost: Veliki broj učesnika čini mrežu sigurnijom protiv napada.
-Mane:
-Skalabilnost: Javni blockchainovi često imaju problema sa skalabilnošću zbog velikog broja transakcija.
-Energetska potrošnja: Konsenzusni algoritmi kao što je Proof of Work (PoW) zahtevaju veliku količinu energije.
-Privatnost: Sve transakcije su javne, što može biti problem za korisnike koji žele privatnost.<br>
-
-3.2. Privatni (Private) blockchain<br>
-
-Privatni blockchain je mreža sa ograničenim pristupom, gde samo odabrani učesnici mogu validirati transakcije i dodavati blokove.
-
-Upotreba u korporativnim okruženjima:
-Kontrola pristupa: Samo ovlašćeni učesnici mogu pristupiti mreži, što omogućava veću kontrolu nad podacima.
-Brže transakcije: Manji broj učesnika omogućava brže validacije i transakcije3.
-Privatnost: Podaci su dostupni samo ovlašćenim učesnicima, što povećava privatnost.<br>
-
-3.3. Dozvoljeni (Permissioned) blockchain<br>
-
-Dozvoljeni blockchain kombinuje karakteristike javnih i privatnih blockchainova. Pristup mreži je ograničen, ali transakcije mogu biti javno dostupne.
-
-Kombinacija privatnog i javnog pristupa:
-Fleksibilnost: Omogućava kontrolu pristupa uz zadržavanje transparentnosti za određene transakcije.
-Sigurnost: Kombinacija privatnog pristupa i javne verifikacije povećava sigurnost.
-Efikasnost: Brže transakcije uz mogućnost javne provere.<br>
-
-3.4. Konsorcijumski blockchain<br>
-
-Konsorcijumski blockchain je mreža koju upravlja grupa organizacija. Ova vrsta blockchaina se često koristi u industrijskim partnerstvima.
-
-Upotreba u partnerstvima i industrijama:
-Zajednička kontrola: Više organizacija upravlja mrežom, što povećava poverenje među partnerima.
-Smanjenje troškova: Deljenje resursa i infrastrukture smanjuje troškove.
-Specifične primene: Idealno za industrije gde je potrebna saradnja između više entiteta, kao što su finansije, zdravstvo i logistika…</p>
-
-<h2>Kriptografija</h2>
-
-<p>Kriptografija u blockchainu<br>
-Uloga kriptografskih ključeva
-
-Kriptografija zauzima centralno mesto u blockchain ekosistemu, obezbeđujući osnovne sigurnosne mehanizme za zaštitu podataka, verifikaciju transakcija i održavanje integriteta sistema. Kriptografski ključevi su srce ove sigurnosne strukture.
-
-
-•   Definicija i funkcija ključeva: Kriptografski ključevi su matematički algoritmi koji se koriste za šifrovanje i dešifrovanje podataka. Postoji dva vrsta ključeva u sistemu asimetrične kriptografije, koja je dominantna u blockchain tehnologiji:
-
-
-o   Javni ključ (Public Key): Ovo je segment digitalnog identiteta koji je dostupan svima. Njegova funkcija je dvoje:
-
-
-   Šifrovanje: Kada neko šalje poruku ili transferira sredstva, koristi javni ključ za šifrovanje ovih informacija. Pošto javni ključ može da bude slobodno distribuiran, bilo ko može da pošalje šifrovane podatke koji mogu biti dešifrovani samo od strane vlasnika odgovarajućeg privatnog ključa.
-   Verifikacija: Javni ključ se koristi za proveru digitalnih potpisa, omogućavajući učesnicima da verifikuju da je poruka ili transakcija stvarno poslata od određenog pojedinca ili entiteta, bez mogućnosti falsifikovanja.
-o   Privatni ključ (Private Key): Privatni ključ je tajna komponenta kriptografskog para. Njegove funkcije su:
-
-
-   Dešifrovanje: Ovaj ključ se koristi za dešifrovanje poruka ili transakcija koje su bile šifrovane javnim ključem. Privatni ključ mora ostati privat da bi sistem sačuvao svoju sigurnost; izgubljen ili otkriven ključ može dovesti do gubitka kontrola nad digitalnim aktivima.
-   Digitalno potpisivanje: Kada se privatni ključ koristi za potpisivanje transakcije ili poruke, on stvara digitalni potpis koji može biti verificiran javnim ključem. Ovo obezbeđuje da samo vlasnik privatnog ključa može autorizovati transakciju ili potvrditi informaciju.
-•   Kako funkcioniše par ključeva?: Asimetrična kriptografija radi na principu funkcionalnosti parova javni-privatni ključ. 
-
-
-o   Matematički osnovano: Ova tehnologija se oslanja na komplikovanim matematičkim problemima, kao što je faktorizacija velikih brojeva u slučaju RSA algoritma, ili eliptične krivine u ECIES. Teorija je da je šifrovanje i dešifrovanje brzo, ali izvođenje obrnutog procesa (odnosno pronalaženje privatnog ključa iz javnog) zahteva ekstremno dugo vreme i računarske resurse, čineći sistem praktično neprobojnim.
-o   Sigurnost: Sigurnost sistema leži u tajnosti privatnog ključa. Svaka transakcija ili poruka šifrovana javnim ključem može biti dešifrovana samo odgovarajućim privatnim ključem, čime se obezbeđuje da samo odgovarajući vlasnik može pristupiti ili autorizovati akcije.
-•   Uticaj na blockchain: U blockchain ekosistemu, kriptografija kroz ključeve obezbeđuje:
-
-
-o   Integritet podataka: Svaka promena u transakciji biht biti vidljiva zbog digitalnog potpisa.
-o   Autentifikacija: Verifikacija identiteta onih koji šalju transakcije.
-Konfidencijalnost: Šifrovanjem osigura da samo namenjeni primaoci mogu dešifrovati i čitati sadržaj poruke ili detalje transakcije. Ovo je posebno važno za privatnost transakcija na javnim blockchain mrežama gde svi mogu videti transakcije, ali samo oni s odgovarajućim privatnim ključem mogu da ih dešifruju i razumeju.
-
-5.2. Rizici i izazovi
-Blockchain tehnologija, unatoč svojoj robustnosti i sigurnosti, suočava se sa nekoliko rizika i izazova koji mogu uticati na integritet, sigurnost i efikasnost sistema. 
-
-Hakerski napadi
-
-
-•   51% Napad: Ovo je teorijski napad gde, ako jedan entitet kontrolira većinu računske snage (51%) u mreži, on može manipulirati transakcijama, sprečavati nove transakcije da se potvrde, ili čak obrnuti transakcije. U praksi, ovo je veoma teško izvesti zbog decentralizovane prirode mnogih blockchain mreža, posebno onih sa velikim brojem učesnika.
-
-
-o   Rizik: U manje decentralizovanim mrežama ili novim kriptovalutama, rizik od ovog napada može biti veći.
-•   Sybil Napad: U ovoj vrsti napada, napadač stvara mnogo lažnih identiteta (nodova) u mreži da bi imao veću kontrolu ili da zabušava mrežu. 
-
-
-o   Rizik: Posebno efektivan u nekim sistemima za konsensus gde glas ili moć nodova zavisi od njihovog broja.
-•   Različiti napadi na konsensus protokole: Postoje i druge vrste napada kao što su Double-spending (dvostruko trošenje), Eclipse Attack (gde napadač izoluje žrtvu od ostatka mreže), itd.
-
-Ranjivosti pametnih ugovora
-
-Pametni ugovori su automatski izvršavajući programi na blockchainu. Međutim, oni mogu biti ranjivi na:
-
-
-•   Kodiranje grešaka: Programerske greške mogu voditi ka eksploatacijama gde napadač može iskoristiti kodiranje greške da izvrši transakcije koje nisu bile namerno omogućene.
-•   Reentrancy: Posebna vrsta napada gde funkcija poziva samu sebe pre nego što se završi, što može dovesti do gubitka sredstava.
-•   Front-running: U ovom napadu, napadač koristi informacije o transakciji pre nego što se ona izvrši da bi zaradio profit na račun originalnog pokretača transakcije.
-•   Timestamp Dependency: Ako pametni ugovor zavisi od vremenskog pečata, napadač može koristiti varijaciju vremena između nodova da manipuliše sistemom.
-
-Zaštite i strategije:
-
-
-•   Auditi koda: Regularni auditi programa su ključni za otkrivanje grešaka, ranjivosti, i mogućih eksploatacija u pametnim ugovorima ili blockchain softveru. 
-
-
-o   Redovni pregledi: Implementacija redovnih pregleda koda je bitna za identifikaciju i popravku grešaka pre nego što one dovedu do eksploatacija ili gubitka sredstava. Ovo uključuje:
-
-
-   Reviziju koda: Timovi stručnjaka ili vanjski auditori pregledaju kod za potencijalne greške, sigurnosne pukotine, ili neefikasnosti.
-   Automatski alati: Korišćenje alata za statičku analizu koda koji mogu prepoznati poznate obrasce grešaka ili bezbednosne ranjivosti.
-   Testiranje penetracije: Simuliranje napada na sistem da bi se proverila njegova otpornost na realne ugroze.
-o   Fokus na kritične komponente: Posebna pažnja se posvećuje pametnim ugovorima zbog njihove centralne uloge u automatizaciji transakcija na blockchainu.
-
-•   Edukacija i svest o sigurnosti: Osim tehničkih mera, važno je da se svi učesnici u blockchain ekosistemu obrazuju o sigurnosnim praksama.
-
-
-o   Treninzi i seminari: Redovne edukativne sesije za developере, korisnike i menadžere o najnovijim pretnjama i metodama zaštite.
-o   Protokoli za odgovor na incident: Definisanje jasnih koraka za identifikaciju, izolaciju, i reakciju na potencijalne sigurnosne incidente.
-•   Dekentralizacija i konsensus protokoli: 
-
-
-o   Razvoj otpornih protokola: Implementacija konsensus protokola koji su otporni na većinu poznatih napada (npr. Proof of Stake (PoS) koji smanjuje rizik 51% napada u odnosu na Proof of Work (PoW)).
-o   Dekentralizacija moći: Održavanje decentralizovane strukture blockchain mreže kroz podsticanje čvorova širom sveta kako bi se smanjila mogućnost centralizacije moći.
-•   Povećanje privatnosti i anonimnosti: 
-
-
-o   Tehnologije kao što su Zero-Knowledge Proofs (ZKP): Omogućuju potvrđivanje transakcija bez otkrivanja detalja o tim transakcijama, čime se povećava privatnost.
-o   Privatne blockchain mreže: Za određene slučajeve upotrebe, privatne ili hibridne blockchain mreže mogu pružiti dodatnu kontrolu nad podacima i pristupom.
-
-Svaka od navedenih strategija za zaštitu od rizika i izazova u blockchainu predstavlja sloj odbrane, osiguravajući da tehnologija ostaje sigurna, pouzdana i efikasna za sve učesike.<br>
-
-
-Ovo su neki od dijelova iz našeg priručnika za Blockchain tehnologija od autora:<br> Miloš Božović CEO cryptogorac.com .
-</p>
-
-
-
-    </main>
-
- <footer class="footer">
-        <div class="container-fluid">
-            <div class="row text-center">
-                <div class="col-md-4 col-12 footer-section">
-                    <h5>Kontakt</h5>
-                    <p>Email: <a href="mailto:info@cryptogorac.com">info@cryptogorac.com</a></p>
-                    <p>Telefon: +382 20 332 331</p>
-                </div>
-              <div class="col-md-4 col-12 footer-section">
-    <h5>Pratite nas</h5>
-    <p>
-       <a href="https://x.com/cryptogorac" target="_blank">
-    <i class="fab fa-x-twitter" style="font-size: 3em;"></i>
-</a>|
-       <a href="https://www.instagram.com/cryptogorac/" target="_blank">
-    <i class="fab fa-instagram" style="font-size: 3em;"></i>
-</a>
-    </p>
-</div>
-
-
-
-                <div class="col-md-4 col-12 footer-section">
-                    <h5>Navigacija</h5>
-                    <p>
-                        <a href="index.html" class="footer-link">Početna</a> | 
-                        <a href="o-nama.html" class="footer-link">O nama</a> | 
-
-                        <a href="kontakti.html" class="footer-link">Kontakti</a>
-                    </p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2025-26 CryptoGorac.com | Sva prava zadržana.</p>
-            </div>
-        </div>
-    </footer>
-<button id="back-to-top" class="btn-back-to-top">↑</button>
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-      <script>
-        const backToTopButton = document.getElementById('back-to-top');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
-        });
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
-        async function updatePrices() {
-    try {
-        const response = await fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd');
-        const data = await response.json();
-        
-        const btcPrice = data.bitcoin.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        const ethPrice = data.ethereum.usd.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
-        
-        document.getElementById('btc-price').textContent = `BTC: ${btcPrice}`;
-        document.getElementById('eth-price').textContent = `ETH: ${ethPrice}`;
-    } catch (error) {
-        console.error('Greška pri dohvaćanju cijena:', error);
-        document.getElementById('btc-price').textContent = 'BTC: Greška';
-        document.getElementById('eth-price').textContent = 'ETH: Greška';
-    }
-}
-
-// Pozovi funkciju na učitavanju stranice
-window.addEventListener('load', updatePrices);
-
-// Ažuriraj svakih 300 sekundi
-setInterval(updatePrices, 300000);
-    </script>
+  <button class="back-to-top" type="button" aria-label="Nazad na vrh"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#arrow-up"></use></svg></button>
 </body>
 </html>
-
-
-
-
-
-
-
