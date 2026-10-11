@@ -309,8 +309,35 @@
   /* ---------- Tawk.to chat — učitava se tek kad je stranica spremna ---------- */
   const chatId = document.body.dataset.tawk;
   if (chatId) {
+    // Na telefonu Tawk dok je chat otvoren zaključa stranicu (body position:fixed + overflow:hidden)
+    // i isključi zumiranje (viewport user-scalable=no). Ako zaključavanje pokrene dvaput, pri zatvaranju
+    // vrati zaključano stanje i stranica se više ne skroluje — zato poslije zatvaranja sami vraćamo
+    // stil stranice, viewport i poziciju skrola. Funkcije moraju biti na Tawk_API prije učitavanja skripte.
+    const body = document.body;
+    const vp = document.querySelector('meta[name="viewport"]');
+    const bodyCss = body.style.cssText, vpContent = vp?.getAttribute('content');
+    let lastY = window.scrollY, chatOpen = false;
+    window.addEventListener('scroll', () => { if (body.style.position !== 'fixed') lastY = window.scrollY; }, { passive: true });
+    const isMax = () => { try { return chatOpen || window.Tawk_API?.isChatMaximized?.() === true; } catch { return chatOpen; } };
+    const restore = () => {
+      if (isMax()) return;
+      if (body.style.cssText !== bodyCss) body.style.cssText = bodyCss;
+      if (vp && vp.getAttribute('content') !== vpContent) vp.setAttribute('content', vpContent);
+      if (lastY > 1 && Math.abs(window.scrollY - lastY) > 1) {
+        doc.style.scrollBehavior = 'auto';   // bez glatkog klizanja — odmah na staro mjesto
+        window.scrollTo(0, lastY);
+        doc.style.scrollBehavior = '';
+      }
+    };
+    const onClose = () => { chatOpen = false; setTimeout(restore, 0); };
+    // zaključavanje koje stigne kad je chat već zatvoren (ili zakasni) skidamo kad se stanje smiri
+    new MutationObserver(() => { if (body.style.position === 'fixed' && !chatOpen) setTimeout(restore, 600); })
+      .observe(body, { attributes: true, attributeFilter: ['style'] });
     const loadChat = () => {
       window.Tawk_API = window.Tawk_API || {};
+      window.Tawk_API.onChatMaximized = () => { chatOpen = true; };
+      window.Tawk_API.onChatMinimized = onClose;
+      window.Tawk_API.onChatHidden = onClose;
       window.Tawk_LoadStart = new Date();
       const s = document.createElement('script');
       s.async = true;

@@ -871,3 +871,5 @@ html { scrollbar-color: #8fa3b3 #eef2f5; }
 /* ilustracija usluge manja na telefonu, "Zašto mi?" bliže vrhu */
 @media (max-width: 560px) { .service-layout .service-media { max-width: 260px; margin-inline: auto; } }
 @media (max-width: 340px) { .code-window pre { font-size: .6rem; padding-inline: .7rem; } }
+/* Mapa na početnoj (u mreži pored kartice): na telefonu puna širina, visina iz omjera, bez rastezanja — Safari je inače sužava ulijevo */
+@media (max-width: 860px) { .contact-grid > .map-frame { width: 100%; justify-self: stretch; align-self: start; } }
