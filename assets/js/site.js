@@ -206,7 +206,7 @@
         const n = Math.round(Math.min(70, Math.max(w < 600 ? 12 : 22, (w * h) / 16000)));
         pts = Array.from({ length: n }, () => ({
           x: Math.random() * w, y: Math.random() * h,
-          vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
+          vx: (Math.random() - .5) * .52, vy: (Math.random() - .5) * .52,
           r: (1 + Math.random() * 1.6) * dotR,
         }));
       };
@@ -216,13 +216,17 @@
       const buckets = [[], [], [], []];
       const coarse = !finePointer;
       let tick = 0;
-      const frame = () => {
+      let last = 0;
+      const frame = (now) => {
         raf = 0;
         // na ekranima na dodir 30 slika u sekundi je dovoljno i štedi bateriju
         if (coarse && !reduceMotion && (tick++ & 1)) { raf = visible && !document.hidden ? requestAnimationFrame(frame) : 0; return; }
         ctx.clearRect(0, 0, w, h);
+        // pomjeraj po stvarno proteklom vremenu: telefon (30 slika u sekundi) se kreće istom brzinom kao računar
+        const dt = last ? Math.min(3, (now - last) / 16.7) : 1;
+        last = now;
         if (!reduceMotion) for (const p of pts) {
-          p.x += p.vx; p.y += p.vy;
+          p.x += p.vx * dt; p.y += p.vy * dt;
           if (p.x < 0 || p.x > w) p.vx *= -1;
           if (p.y < 0 || p.y > h) p.vy *= -1;
         }
@@ -262,7 +266,7 @@
         ctx.fill();
         raf = !reduceMotion && visible && !document.hidden ? requestAnimationFrame(frame) : 0;
       };
-      const run = () => { if (!raf && visible && !document.hidden) raf = requestAnimationFrame(frame); };
+      const run = () => { if (!raf && visible && !document.hidden) { last = 0; raf = requestAnimationFrame(frame); } };
       size();
       new ResizeObserver(() => { size(); run(); }).observe(host);
       new IntersectionObserver((en) => { visible = en[0].isIntersecting; run(); }).observe(host);
