@@ -321,6 +321,87 @@
     document.querySelectorAll('.section-head').forEach((h) => { h.classList.add('fx-head'); heads.observe(h); });
   }
 
+  // 6) Računar: efekti koji prate miš i "dešifrovanje" naslova (MotoGorac kartica ostaje kakva jeste)
+  if (finePointer && !reduceMotion) {
+    // nagib i na karticama priručnika, kao na uslugama i projektima
+    document.querySelectorAll('.book-card').forEach((c) => {
+      c.addEventListener('pointermove', (e) => {
+        const r = c.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        c.style.transform = `perspective(900px) rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 6).toFixed(2)}deg) translateY(-6px)`;
+      }, { passive: true });
+      c.addEventListener('pointerleave', () => { c.style.transform = ''; });
+    });
+
+    // dugmad se blago povuku prema mišu
+    document.querySelectorAll('.btn').forEach((b) => {
+      b.addEventListener('pointermove', (e) => {
+        const r = b.getBoundingClientRect();
+        const x = ((e.clientX - r.left) / r.width - .5) * 10, y = ((e.clientY - r.top) / r.height - .5) * 8;
+        b.style.translate = `${x.toFixed(1)}px ${y.toFixed(1)}px`;
+      }, { passive: true });
+      b.addEventListener('pointerleave', () => { b.style.translate = ''; });
+    });
+
+    // početna: kartica "Šta radimo" i mreža u pozadini se pomjeraju sa mišem (dubina)
+    const hero = document.querySelector('.hero');
+    if (hero) {
+      let hx = 0, hy = 0, hq = false;
+      const setHero = () => { hq = false; hero.style.setProperty('--px', hx.toFixed(3)); hero.style.setProperty('--py', hy.toFixed(3)); };
+      hero.classList.add('fx-depth');
+      hero.addEventListener('pointermove', (e) => {
+        const r = hero.getBoundingClientRect();
+        hx = (e.clientX - r.left) / r.width - .5; hy = (e.clientY - r.top) / r.height - .5;
+        if (!hq) { hq = true; requestAnimationFrame(setHero); }
+      }, { passive: true });
+      hero.addEventListener('pointerleave', () => { hx = hy = 0; requestAnimationFrame(setHero); });
+    }
+
+    // naslovi sekcija i oznake iznad naslova se "dešifruju" kad uđu u ekran; pravi tekst ostaje
+    // na mjestu (za čitače ekrana i raspored), a slova koja se smjenjuju idu preko njega
+    if ('IntersectionObserver' in window) {
+      const glyphs = '01ABCDEF#$%&*+=<>?';
+      const decrypt = (el) => {
+        const text = el.textContent;
+        const cs = getComputedStyle(el);
+        const ov = document.createElement('span');
+        ov.className = 'fx-scr';
+        ov.setAttribute('aria-hidden', 'true');
+        ov.style.color = cs.color;
+        ov.style.textShadow = cs.textShadow;
+        el.classList.add('fx-scr-host', 'fx-scr-on');
+        el.appendChild(ov);
+        const t0 = performance.now(), dur = 900;
+        let last = 0;
+        const step = (now) => {
+          const p = Math.min(1, (now - t0) / dur);
+          if (p === 1) { ov.remove(); el.classList.remove('fx-scr-on'); return; }
+          if (now - last > 45) {
+            last = now;
+            const done = Math.floor(p * text.length);
+            let out = text.slice(0, done);
+            for (let i = done; i < text.length; i++) out += /\s|·/.test(text[i]) ? text[i] : glyphs[(Math.random() * glyphs.length) | 0];
+            ov.textContent = out;
+          }
+          requestAnimationFrame(step);
+        };
+        requestAnimationFrame(step);
+      };
+      const io = new IntersectionObserver((entries) => entries.forEach((e) => {
+        if (e.isIntersecting) { io.unobserve(e.target); decrypt(e.target); }
+      }), { threshold: 1 });
+      const oneLine = (el) => { const rg = document.createRange(); rg.selectNodeContents(el); return rg.getClientRects().length === 1; };
+      const startScr = () => document.querySelectorAll('.section-head h2, .eyebrow').forEach((el) => {
+        if (el.children.length || !oneLine(el) || el.closest('section')?.querySelector('.moto-card')) return;
+        io.observe(el);
+      });
+      // tek kad se stranica učita, da ne smeta prvom prikazu
+      const idle3 = window.requestIdleCallback || ((cb) => setTimeout(cb, 300));
+      if (document.readyState === 'complete') idle3(startScr, { timeout: 1200 });
+      else window.addEventListener('load', () => idle3(startScr, { timeout: 1200 }), { once: true });
+    }
+  }
+
   /* ---------- Tawk.to chat — učitava se tek kad je stranica spremna ---------- */
   const chatId = document.body.dataset.tawk;
   if (chatId) {

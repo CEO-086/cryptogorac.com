@@ -906,3 +906,15 @@ html { scrollbar-color: #8fa3b3 #eef2f5; }
 @keyframes fxPop { from { transform: scale(0) rotate(-90deg); } 60% { transform: scale(1.25); } }
 @keyframes fxSweep { 0%, 62% { transform: translateX(-120%); } 88%, 100% { transform: translateX(120%); } }
 @media (forced-colors: active) { .hero-actions .btn::after { display: none; } }
+/* ===== Efekti za računar (2026-10j) ===== */
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  /* dugmad koja prate miš (site.js postavlja translate) */
+  .btn { transition: transform .2s var(--ease), translate .35s var(--ease), box-shadow .2s, background-color .2s, color .2s; }
+  /* početna: dubina u vrhu stranice */
+  .hero.fx-depth .hero-card { transform: perspective(1000px) rotateX(calc(var(--py, 0) * -6deg)) rotateY(calc(var(--px, 0) * 8deg)) translate3d(calc(var(--px, 0) * -10px), calc(var(--py, 0) * -10px), 0); transition: transform .6s var(--ease); }
+  .hero.fx-depth::after { translate: calc(var(--px, 0) * 18px) calc(var(--py, 0) * 18px); transition: translate .8s var(--ease); }
+  /* "dešifrovanje" naslova */
+  .fx-scr-host { position: relative; }
+  .fx-scr-on { color: transparent !important; text-shadow: none !important; }
+  .fx-scr { position: absolute; inset: 0; padding: inherit; white-space: nowrap; pointer-events: none; }
+}
