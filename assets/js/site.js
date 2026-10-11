@@ -198,17 +198,21 @@
         w = host.clientWidth; h = host.clientHeight;
         cv.width = w * dpr; cv.height = h * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-        link = w < 600 ? 95 : 120; link2 = link * link;
+        // na telefonu mreža jača: duže veze, deblje i izraženije linije i tačke (ista boja, isti broj tačaka)
+        const phone = w < 600;
+        link = phone ? 130 : 120; link2 = link * link;
+        tones = (phone ? [.8, .62, .44, .26] : [.5, .375, .25, .125]).map((a) => `rgba(26,188,156,${a})`);
+        lineW = phone ? 1.5 : 1; dotA = phone ? .95 : .8; dotR = phone ? 1.35 : 1;
         const n = Math.round(Math.min(70, Math.max(w < 600 ? 12 : 22, (w * h) / 16000)));
         pts = Array.from({ length: n }, () => ({
           x: Math.random() * w, y: Math.random() * h,
           vx: (Math.random() - .5) * .35, vy: (Math.random() - .5) * .35,
-          r: 1 + Math.random() * 1.6,
+          r: (1 + Math.random() * 1.6) * dotR,
         }));
       };
-      let link = 120, link2 = link * link;
+      let link = 120, link2 = link * link, lineW = 1, dotA = .8, dotR = 1;
       // linije su grupisane u 4 nivoa providnosti: jedan stroke po nivou umjesto po liniji (brže na telefonima)
-      const tones = [.5, .375, .25, .125].map((a) => `rgba(26,188,156,${a})`);
+      let tones = [];
       const buckets = [[], [], [], []];
       const coarse = !finePointer;
       let tick = 0;
@@ -233,7 +237,7 @@
             buckets[Math.min(3, (Math.sqrt(d2) / link * 4) | 0)].push(a.x, a.y, b.x, b.y);
           }
         }
-        ctx.lineWidth = 1;
+        ctx.lineWidth = lineW;
         for (let k = 0; k !== 4; k++) {
           const L = buckets[k];
           if (!L.length) continue;
@@ -243,6 +247,7 @@
           ctx.stroke();
         }
         if (mouse.x > -1e3) {
+          ctx.lineWidth = 1;
           ctx.strokeStyle = 'rgba(26,188,156,.35)';
           ctx.beginPath();
           for (const a of pts) {
@@ -251,7 +256,7 @@
           }
           ctx.stroke();
         }
-        ctx.fillStyle = 'rgba(26,188,156,.8)';
+        ctx.fillStyle = `rgba(26,188,156,${dotA})`;
         ctx.beginPath();
         for (const a of pts) { ctx.moveTo(a.x + a.r, a.y); ctx.arc(a.x, a.y, a.r, 0, Math.PI * 2); }
         ctx.fill();

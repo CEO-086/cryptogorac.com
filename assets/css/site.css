@@ -918,3 +918,8 @@ html { scrollbar-color: #8fa3b3 #eef2f5; }
   .fx-scr-on { color: transparent !important; text-shadow: none !important; }
   .fx-scr { position: absolute; inset: 0; padding: inherit; white-space: nowrap; pointer-events: none; }
 }
+/* ===== Kontakti (2026-10l): obje kartice iste visine, društvene mreže na sredini kartice ===== */
+.contact-grid-eq > .contact-card, .contact-grid-eq > .form-card { align-self: stretch; }
+.contact-grid-eq > .contact-card { display: flex; flex-direction: column; }
+.contact-grid-eq > .contact-card h3 { margin-top: auto; text-align: center; }
+.contact-grid-eq > .contact-card .social { justify-content: center; }
