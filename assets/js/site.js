@@ -306,6 +306,21 @@
     }, { passive: true });
   }
 
+  // 4) Telefon: kartica koja prolazi sredinom ekrana zasvijetli kao na hover (MotoGorac kartica ostaje kakva jeste)
+  if (!finePointer && !reduceMotion && 'IntersectionObserver' in window) {
+    const lit = new IntersectionObserver((entries) => entries.forEach((e) => e.target.classList.toggle('is-lit', e.isIntersecting)),
+      { rootMargin: '-42% 0px -42% 0px' });
+    document.querySelectorAll('.service-card, .project-card, .book-card').forEach((c) => lit.observe(c));
+  }
+
+  // 5) Linija ispod naslova sekcije se iscrta kad naslov uđe u ekran
+  if (!reduceMotion && 'IntersectionObserver' in window) {
+    const heads = new IntersectionObserver((entries) => entries.forEach((e) => {
+      if (e.isIntersecting) { e.target.classList.add('is-in'); heads.unobserve(e.target); }
+    }), { threshold: .6 });
+    document.querySelectorAll('.section-head').forEach((h) => { h.classList.add('fx-head'); heads.observe(h); });
+  }
+
   /* ---------- Tawk.to chat — učitava se tek kad je stranica spremna ---------- */
   const chatId = document.body.dataset.tawk;
   if (chatId) {

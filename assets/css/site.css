@@ -873,3 +873,36 @@ html { scrollbar-color: #8fa3b3 #eef2f5; }
 @media (max-width: 340px) { .code-window pre { font-size: .6rem; padding-inline: .7rem; } }
 /* Mapa na početnoj (u mreži pored kartice): na telefonu puna širina, visina iz omjera, bez rastezanja — Safari je inače sužava ulijevo */
 @media (max-width: 860px) { .contact-grid > .map-frame { width: 100%; justify-self: stretch; align-self: start; } }
+/* ===== Efekti za telefon (2026-10i) ===== */
+/* kartica koja prolazi sredinom ekrana svijetli kao na hover (site.js dodaje .is-lit); kratak pritisak pri dodiru */
+@media (hover: none) and (prefers-reduced-motion: no-preference) {
+  .service-card, .project-card, .book-card { transition: transform .45s var(--ease), box-shadow .45s var(--ease), border-color .45s; }
+  .service-card.is-lit { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+  .service-card.is-lit img { transform: scale(1.04); }
+  .project-card.is-lit { transform: translateY(-4px); border-color: var(--teal); box-shadow: 0 18px 32px -12px rgb(16 185 129 / .35); }
+  .book-card.is-lit { transform: translateY(-4px); border-color: var(--book); box-shadow: var(--shadow-lg), 0 0 0 2px var(--book), 0 18px 40px -12px color-mix(in srgb, var(--book) 55%, transparent); }
+  .fx-glow.is-lit::after { opacity: 1; }
+  .service-card:active, .project-card:active, .book-card:active { transform: scale(.98); transition-duration: .12s; }
+}
+@media (prefers-reduced-motion: no-preference) {
+  /* linija ispod naslova sekcije se iscrta */
+  .fx-head h2::after { transform: scaleX(0); transition: transform .9s var(--ease) .1s; }
+  .fx-head.is-in h2::after { transform: none; }
+  /* kvačice u kartici "Šta radimo" iskaču jedna za drugom */
+  .hero-card .check-list .icon { animation: fxPop .55s var(--ease) backwards; }
+  .hero-card .check-list li:nth-child(1) .icon { animation-delay: .35s; }
+  .hero-card .check-list li:nth-child(2) .icon { animation-delay: .5s; }
+  .hero-card .check-list li:nth-child(3) .icon { animation-delay: .65s; }
+  .hero-card .check-list li:nth-child(4) .icon { animation-delay: .8s; }
+  .hero-card .check-list li:nth-child(5) .icon { animation-delay: .95s; }
+  /* odsjaj preko glavnog dugmeta u vrhu početne */
+  .hero-actions .btn:not(.btn-outline) { position: relative; overflow: hidden; isolation: isolate; }
+  .hero-actions .btn:not(.btn-outline)::after {
+    content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; transform: translateX(-120%);
+    background: linear-gradient(110deg, transparent 35%, rgb(255 255 255 / .55) 50%, transparent 65%);
+    animation: fxSweep 5s ease-in-out 2s infinite;
+  }
+}
+@keyframes fxPop { from { transform: scale(0) rotate(-90deg); } 60% { transform: scale(1.25); } }
+@keyframes fxSweep { 0%, 62% { transform: translateX(-120%); } 88%, 100% { transform: translateX(120%); } }
+@media (forced-colors: active) { .hero-actions .btn::after { display: none; } }
