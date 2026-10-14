@@ -925,3 +925,8 @@ html { scrollbar-color: #8fa3b3 #eef2f5; }
 .contact-grid-eq > .contact-card .social { justify-content: center; }
 /* Kontakti: dugme "Pošalji poruku" zazeleni kad je miš na njemu ili kad dobije fokus tastaturom (tamni tekst zbog kontrasta) */
 .form-card .btn-dark:hover, .form-card .btn-dark:focus-visible { background: var(--teal); color: var(--navy-900); box-shadow: 0 12px 24px -8px rgb(26 188 156 / .8); }
+/* Logo u footeru vodi na početnu (2026-10o); link je običan inline, pa raspored ostaje isti */
+.footer-logo img { transition: opacity .2s; }
+.footer-logo:hover img { opacity: .85; }
+.footer-logo:focus-visible { outline: none; }
+.footer-logo:focus-visible img { outline: 3px solid var(--teal); outline-offset: 3px; }
