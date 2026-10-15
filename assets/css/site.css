@@ -622,11 +622,13 @@ article.moto-card:hover { transform: none; }
 .moto-media { display: block; height: 100%; }
 .moto-media img { transition: transform .5s var(--ease); }
 .moto-media:hover img { transform: scale(1.03); }
-.moto-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.5rem; margin-top: .25rem; }
+.moto-actions { display: flex; flex-direction: column; align-items: flex-start; gap: 1rem; margin-top: .25rem; }
+.store-badges { display: flex; flex-wrap: wrap; gap: 1rem; align-self: stretch; }
 .moto-card .moto-link { text-decoration: none; }
 .moto-card .moto-link:hover { text-decoration: underline; }
 .store-badge {
-  display: inline-flex; align-items: center; gap: .6rem; min-height: 48px; padding: .45rem 1.1rem .45rem .9rem;
+  display: inline-flex; align-items: center; justify-content: center; gap: .6rem; min-height: 48px; padding: .45rem 1.1rem .45rem .9rem;
+  flex: 1 1 200px; max-width: 260px;
   background: #000; color: #fff; text-decoration: none; border-radius: 10px; border: 1px solid #a6a6a6;
   transition: transform .2s var(--ease), box-shadow .2s;
 }
