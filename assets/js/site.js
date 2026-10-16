@@ -448,7 +448,6 @@
       s.async = true;
       s.src = `https://embed.tawk.to/${chatId}`;
       s.charset = 'UTF-8';
-      s.setAttribute('crossorigin', '*');
       document.head.appendChild(s);
     };
     const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2500));
