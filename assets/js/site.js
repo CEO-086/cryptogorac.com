@@ -450,7 +450,16 @@
       s.charset = 'UTF-8';
       document.head.appendChild(s);
     };
-    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 2500));
-    window.addEventListener('load', () => idle(loadChat, { timeout: 4000 }), { once: true });
+    // Chat se učitava tek na prvu aktivnost posjetioca (dodir, skrol, miš, tastatura).
+    // Pravi korisnik to uradi odmah, a roboti (Lighthouse/crawleri) ne — pa im Tawk,
+    // koji njihove zahtjeve odbija sa 403, ne puni konzolu greškama.
+    let chatLoaded = false;
+    const firstInput = () => {
+      if (chatLoaded) return;
+      chatLoaded = true;
+      ['pointerdown', 'pointermove', 'touchstart', 'scroll', 'keydown'].forEach((e) => window.removeEventListener(e, firstInput));
+      loadChat();
+    };
+    ['pointerdown', 'pointermove', 'touchstart', 'scroll', 'keydown'].forEach((e) => window.addEventListener(e, firstInput, { passive: true }));
   }
 })();
