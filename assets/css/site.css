@@ -691,7 +691,7 @@ article.moto-card:hover { transform: none; }
 
 /* Projekti: pet kartica (razvitak.me) */
 .project-card-contain img { object-fit: contain; background: #fff; padding: .5rem; }
-@media (min-width: 992px) { .project-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+@media (min-width: 992px) { .project-grid { grid-template-columns: repeat(6, minmax(0, 1fr)); } }
 @media (min-width: 561px) and (max-width: 991.98px) { .project-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .project-grid > :last-child:nth-child(odd) { grid-column: 1 / -1; justify-self: center; width: calc(50% - .5rem); } }
 
